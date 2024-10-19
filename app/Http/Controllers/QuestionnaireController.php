@@ -22,7 +22,7 @@ class QuestionnaireController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -31,7 +31,7 @@ class QuestionnaireController extends Controller
     {
         return view('questionnaires.create');
     }
-    
+
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -39,12 +39,12 @@ class QuestionnaireController extends Controller
             'description' => 'nullable'
         ]);
         $data['user_id'] = Auth::user()->id;
-        
+
         $questionnaire = Questionnaire::create($data);
-        
-        return redirect('/questionnaires/'.$questionnaire->id);
+
+        return redirect('/questionnaires/' . $questionnaire->id);
     }
-    
+
     public function show(Questionnaire $questionnaire)
     {
         $questionnaire->load('questions.options', 'responses.answers');
@@ -75,25 +75,24 @@ class QuestionnaireController extends Controller
         //
     }
     public function thankyou(Questionnaire $questionnaire)
-{
-    return view('questionnaires.thankyou', compact('questionnaire'));
-}
-public function responses(Request $request, Questionnaire $questionnaire)
-{
-    $query = $questionnaire->responses()->with(['answers.question']);
-
-    // Search functionality
-    if ($request->has('search')) {
-        $search = $request->input('search');
-        $query->where('respondent_email', 'LIKE', "%{$search}%")
-              ->orWhereHas('answers', function($q) use ($search) {
-                  $q->where('answer', 'LIKE', "%{$search}%");
-              });
+    {
+        return view('questionnaires.thankyou', compact('questionnaire'));
     }
+    public function responses(Request $request, Questionnaire $questionnaire)
+    {
+        $query = $questionnaire->responses()->with(['answers.question']);
 
-    $responses = $query->latest()->paginate(10);
+        // Search functionality
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('respondent_email', 'LIKE', "%{$search}%")
+                ->orWhereHas('answers', function ($q) use ($search) {
+                    $q->where('answer', 'LIKE', "%{$search}%");
+                });
+        }
 
-    return view('questionnaires.responses', compact('questionnaire', 'responses'));
-}
-
+        $responses = $query->latest()->paginate(10);
+        // return $responses;
+        return view('questionnaires.responses', compact('questionnaire', 'responses'));
+    }
 }

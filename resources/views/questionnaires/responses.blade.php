@@ -11,15 +11,12 @@
                 </div>
 
                 <div class="card-body">
+                    <button class="btn btn-primary btn-sm" id="btnexport">Export Excel</button>
                     <div class="mb-4">
                         <form>
                             <div class="input-group">
-                                <input type="text" 
-                                       class="form-control" 
-                                       placeholder="Cari responden..."
-                                       name="search"
-                                       value="{{ request('search') }}"
-                                       aria-label="Search">
+                                <input type="text" class="form-control" placeholder="Cari responden..." name="search"
+                                    value="{{ request('search') }}" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
                                         <i class="fas fa-search"></i>
@@ -41,41 +38,75 @@
                             </thead>
                             <tbody>
                                 @forelse($responses as $key => $response)
-                                    <tr>
-                                        <td class="text-center">{{ ($responses->currentpage()-1) * $responses->perpage() + $key + 1 }}</td>
-                                        <td>{!! $response->respondent_email ?? '<span class="text-secondary">Anonymous</span>' !!}</td>
-                                        <td>{{ $response->created_at->format('d M Y H:i') }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ route('responses.show', $response->id) }}" class="btn btn-info btn-sm">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="text-center">{{ ($responses->currentpage()-1) * $responses->perpage() +
+                                        $key + 1 }}</td>
+                                    <td>{!! $response->respondent_email ?? '<span
+                                            class="text-secondary">Anonymous</span>' !!}</td>
+                                    <td>{{ $response->created_at->format('d M Y H:i') }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('responses.show', $response->id) }}"
+                                            class="btn btn-info btn-sm">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                                 @empty
-                                    <tr>
-                                        <td colspan="4" class="text-center py-5">
-                                            <div class="empty-state">
-                                                <div class="empty-state-icon bg-light">
-                                                    <i class="fas fa-question"></i>
-                                                </div>
-                                                <h2 class="mt-3">Belum Ada Responden</h2>
-                                                <p class="lead">Belum ada yang mengisi kuesioner ini.</p>
+                                <tr>
+                                    <td colspan="4" class="text-center py-5">
+                                        <div class="empty-state">
+                                            <div class="empty-state-icon bg-light">
+                                                <i class="fas fa-question"></i>
                                             </div>
-                                        </td>
-                                    </tr>
+                                            <h2 class="mt-3">Belum Ada Responden</h2>
+                                            <p class="lead">Belum ada yang mengisi kuesioner ini.</p>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
 
                     @if($responses->hasPages())
-                        <div class="card-footer text-center">
-                            {{ $responses->links() }}
-                        </div>
+                    <div class="card-footer text-center">
+                        {{ $responses->links() }}
+                    </div>
                     @endif
+                </div>
+                <div>
+                    <table id="table1">
+                        <tbody>
+                            @foreach($responses as $key => $r)
+                            <tr>
+                                <th colspan="3">{{$r->respondent_email}}</th>
+                            </tr>
+                            @if(count($r->answers) > 0)
+                            <tr>
+                                <td></td>
+                                <td>Pertanyaan</td>
+                                <td>Jawaban</td>
+                            </tr>
+                            @foreach($r->answers as $k => $a)
+                            <tr>
+                                <td></td>
+                                <td>{{$a->question->question_text}}</td>
+                                <td>{{$a->answer}}</td>
+                            </tr>
+                            @endforeach
+                            @endif
+                            <tr></tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $('#btnexport').on('click',function () {
+        TableToExcel.convert(document.getElementById("table1"));
+    })
+</script>
 @endsection
