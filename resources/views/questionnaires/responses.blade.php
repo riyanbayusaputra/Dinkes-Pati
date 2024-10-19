@@ -6,8 +6,24 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="text-primary">{{ $questionnaire->title }}</h4>
-                    <span class="badge badge-secondary">{{ $responses->total() }} Responden</span>
+                    <div class="d-flex align-items-center">
+                        <!-- Tombol Previous -->
+                        @if($prevQuestionnaire = App\Models\Questionnaire::where('id', '<', $questionnaire->id)->orderBy('id', 'desc')->first())
+                            <a href="/questionnaires/{{ $prevQuestionnaire->id }}/responses" class="btn btn-sm btn-outline-primary me-2">
+                                <i class="fas fa-chevron-left"></i> Prev
+                            </a>
+                        @endif
+
+                        <h4 class="text-primary mb-0">{{ $questionnaire->title }}</h4>
+
+                        <!-- Tombol Next -->
+                        @if($nextQuestionnaire = App\Models\Questionnaire::where('id', '>', $questionnaire->id)->orderBy('id')->first())
+                            <a href="/questionnaires/{{ $nextQuestionnaire->id }}/responses" class="btn btn-sm btn-outline-primary ms-2">
+                                Next <i class="fas fa-chevron-right"></i>
+                            </a>
+                        @endif
+                    </div>
+                    <span class="badge badge-secondary">{{ $questionnaire->responses->count() }} Responden</span>
                 </div>
 
                 <div class="card-body">
@@ -74,7 +90,9 @@
                     </div>
                     @endif
                 </div>
-                <div>
+                
+                <!-- Tabel tersembunyi untuk eksport -->
+                <div class="d-none">
                     <table id="table1">
                         <tbody>
                             @foreach($responses as $key => $r)
@@ -104,9 +122,11 @@
         </div>
     </div>
 </div>
+
+<!-- Script untuk export tabel -->
 <script>
-    $('#btnexport').on('click',function () {
+    $('#btnexport').on('click', function () {
         TableToExcel.convert(document.getElementById("table1"));
-    })
+    });
 </script>
 @endsection

@@ -12,6 +12,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ResponseController;
+use App\Http\Controllers\VideoBannerController;
 use App\Http\Controllers\QuestionnaireController;
 use App\Http\Controllers\ActivityGalleryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -30,9 +31,9 @@ Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->
 Route::get('/questionnaires/{questionnaire}/question', [QuestionController::class, 'index'])->name('questions.index');
 
 
-// Responses
-Route::get('/questionnaires/{questionnaire}/responses', [ResponseController::class, 'index'])->name('questionnaires.responses.index');
 
+Route::get('/questionnaires/{id}/responses', [QuestionnaireController::class, 'showResponses'])
+    ->name('questionnaires.responses');
 Route::get('/questionnaires/{questionnaire}/fill', [ResponseController::class, 'create']);
 
 Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::class, 'store'])->name('responses.store');
@@ -57,6 +58,9 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::middleware(['auth', 'can:manage video banner'])->group(function () {
+Route::resource('video_banners', VideoBannerController::class);
+});
 Route::middleware(['auth', 'can:manage banner'])->group(function () {
     Route::resource('banner', BannerController::class);
 });
@@ -94,8 +98,10 @@ Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
 Route::get('/questionnaires/{questionnaire}/thankyou', [QuestionnaireController::class, 'thankyou'])
     ->name('questionnaires.thankyou');
 Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::class, 'store'])->name('responses.store');
-Route::get('/questionnaires/{questionnaire}/responses', [QuestionnaireController::class, 'responses'])
-    ->name('questionnaires.responses');
+// Route::get('/questionnaires/{questionnaire}/responses', [QuestionnaireController::class, 'responses'])
+//     ->name('questionnaires.responses');
+
+
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');
 Route::get('chart', function () {

@@ -116,6 +116,14 @@
 @endsection
 
 @push('scripts')
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Pilih roles",
+            allowClear: true
+        });
+    });
+</script>
     <!-- JS Libraries -->
     <script src="{{ asset('library/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>

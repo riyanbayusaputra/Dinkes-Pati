@@ -23,7 +23,8 @@ class RolePermissionSeeder extends Seeder
             'manage gallery',
             'manage faq',
            'manage documents',
-           'manage merchant'
+           'manage merchant',
+           'manage video banner'
         ];
 
         // Create or find permissions
@@ -36,7 +37,7 @@ class RolePermissionSeeder extends Seeder
       
 
         $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
-        $superAdminPermissions = ['manage users', 'manage kuisioner', 'manage banner', 'manage videos', 'manage gallery', 'manage faq','manage documents'];
+        $superAdminPermissions = ['manage users', 'manage kuisioner', 'manage banner', 'manage videos', 'manage gallery', 'manage faq','manage documents','manage video banner'];
         $superAdminRole->syncPermissions($superAdminPermissions);
 
 

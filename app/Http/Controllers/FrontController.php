@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faq;
 use App\Models\Document;
+use App\Models\VideoBanner;
 use Illuminate\Http\Request;
 use App\Models\ActivityGallery;
 use App\Models\Video; // Pastikan untuk mengimpor model Video
@@ -18,6 +19,7 @@ class FrontController extends Controller
 
         // Mengambil semua video untuk slider
         $videos = Video::all();
+        $videoBanner = VideoBanner::all(); // Ambil semua video banner
 
         // Jika ada video, ambil ID video dari URL
         foreach ($videos as $video) {
@@ -26,7 +28,7 @@ class FrontController extends Controller
         }
 
         // Mengirimkan data galeri dan video ke view 'fE.home'
-        return view('fE.home', compact('activityGalleries', 'videos', 'faqs'));
+        return view('fE.home', compact('activityGalleries', 'videos', 'faqs','videoBanner'));
     }
 
     public function kajian(Request $request)

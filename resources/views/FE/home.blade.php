@@ -45,6 +45,7 @@ body {
 .navbar-brand {
     display: flex;
     align-items: center;
+    flex: 1;
 }
 
 .navbar-brand img {
@@ -95,7 +96,9 @@ body {
 }
 
 .hero-text {
-    max-width: 500px;
+    max-width: 100%;
+    padding: 0 10px;
+    text-align: center;
 }
 
 .hero-image {
@@ -124,6 +127,7 @@ body {
     padding: 0;
     margin: 0;
     top: 0; /* Pastikan videonya sejajar dengan header */
+    
 }
 
 .hero-video video {
@@ -236,36 +240,6 @@ body {
         hue-rotate(166deg) brightness(120%) contrast(120%);
 }
 
-/* Responsiveness for smaller screens */
-@media (max-width: 768px) {
-    .features {
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: none; /* Hilangkan bayangan pada layar kecil */
-    }
-
-    .feature-item {
-        margin-bottom: 30px;
-    }
-
-    .feature-item::after {
-        display: none; /* Hilangkan panah pada layar kecil */
-    }
-
-    .feature-item::before {
-        display: none; /* Hilangkan garis pembatas pada layar kecil */
-    }
-
-    .feature-item img {
-        margin-bottom: 10px;
-        max-height: 40px; /* Ukuran gambar lebih kecil */
-    }
-
-    .feature-item span {
-        font-size: 12px; /* Ukuran teks lebih kecil */
-    }
-}
-
 .info-section {
     display: flex;
     justify-content: space-between;
@@ -373,6 +347,7 @@ body {
 .gallery-item {
     text-align: left;
     width: 350px; /* or a percentage for responsiveness */
+    align-items: center;     /* Menempatkan gambar di tengah secara vertikal */
 }
 
 
@@ -381,6 +356,7 @@ body {
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    margin: 0 auto;
     margin-bottom: 5px;
 }
 
@@ -479,18 +455,6 @@ h3 {
     background-color: #e43f5a;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .video-main img {
-        width: 80%; /* Full width on mobile */
-    }
-
-    .thumbnail-item img {
-        width: 100px; /* Adjust thumbnail size on mobile */
-        height: 70px;
-    }
-}
-
 .arrows {
     position: absolute;
     top: 50%;
@@ -524,24 +488,20 @@ h3 {
     color: #333;
 }
 
-
 .help-title {
     text-align: center;
     margin-bottom: 30px;
 }
-
 .help-title h2 {
     font-size: 20px;
     color: #2469a5;
     margin-bottom: 10px;
 }
-
 .help-title p {
     font-size: 16px;
     color: #666; /* Warna teks deskripsi */
     margin: 0; /* Menghilangkan margin default */
 }
-
 .help-section {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Membuat 4 kolom grid */
@@ -552,7 +512,7 @@ h3 {
 }
 
 .help-item {
-    background-color: #fff; /* Warna latar belakang putih */
+    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut untuk kotak */
     border-radius: 5px;
     padding: 20px;
@@ -591,21 +551,6 @@ h3 {
     color: #0056b3; /* Warna link saat hover */
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-    .help-section {
-        grid-template-columns: repeat(
-            2,
-            1fr
-        ); /* Menjadi 2 kolom pada layar kecil */
-    }
-}
-
-@media (max-width: 480px) {
-    .help-section {
-        grid-template-columns: 1fr; /* Menjadi 1 kolom pada layar sangat kecil */
-    }
-}
 .bottom-info {
     font-size: 16px;
     line-height: 1.5;
@@ -680,6 +625,7 @@ h3 {
     margin-top: 15px; /* Add margin for spacing from sub-message */
     transition: background-color 0.3s; /* Smooth transition for hover effect */
     text-decoration: none; /* Remove underline */
+    display: inline-block; /* Tampil normal pada desktop */
 }
 
 .action-button:hover {
@@ -740,28 +686,20 @@ h3 {
     color: #0056b3;
 }
 
-
-/* Default styles for desktop */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-}
-
-.navbar-brand img {
-    max-width: 100px; /* Sesuaikan ukuran logo */
-}
-
-.navbar-nav {
-    display: flex;
-    gap: 15px;
-}
-
+/* Hamburger Icon */
 .navbar-toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    right: 50px; /* Align it to the right of the navbar */
+    left : 50px;
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%);
 }
 
 .navbar-toggle span {
@@ -769,50 +707,377 @@ h3 {
     height: 3px;
     background-color: #333;
     margin: 4px 0;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Mobile styles */
+/* Top line (thicker) */
+.navbar-toggle span:nth-child(1) {
+    height: 6px;
+}
+
+/* Middle line (thinner) */
+.navbar-toggle span:nth-child(2) {
+    height: 2px;
+}
+
+/* Bottom line (thicker) */
+.navbar-toggle span:nth-child(3) {
+    height: 6px;
+}
+
+/* Add animation for toggle */
+.navbar-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Default global styles, these will apply to larger screens (desktops, tablets, etc.) */
+
+/* Responsive adjustments for mobile devices */
 @media (max-width: 768px) {
-    .navbar-nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px; /* Sesuaikan agar muncul di bawah header */
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    .navbar {
+        justify-content: space-between;
+        align-items: center;
     }
 
     .navbar-nav.show {
-        display: flex;
+        display: flex; /* Show when toggle is active */
     }
 
     .navbar-toggle {
         display: flex;
-        margin-right: 20px; /* Memberi jarak antara toggle dan tepi layar */
     }
+
+    .navbar-brand {
+        margin-left: 0.5px; /* Align to the left on mobile */
+        margin-right: 10px; /* Ensure space for toggle */
+    }
+
+    .navbar-nav.active {
+        display: flex;
+        flex-direction: column; /* Tampilkan item secara vertikal */
+        width: 100%; /* Lebar penuh pada tampilan mobile */
+        position: absolute;
+        top: 60px; /* Sesuaikan dengan posisi navbar */
+        left: 0;
+        background-color: #fff; /* Latar belakang navbar dropdown */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow untuk dropdown */
+        z-index: 1000;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        background-color: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: none; /* Hide navbar items by default */
+    }
+
+    .navbar-nav a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+        font-size: 50px; /* Ukuran font yang lebih besar */
+    }
+
+    .feature-item {
+        display: none; /* Sembunyikan feature-item pada tampilan mobile */
+    }
+
+    /* Tampilkan feature-item di dalam dropdown ketika toggle aktif */
+    .navbar-nav.active .feature-item {
+        display: block;
+    
+    }
+
+    .content {
+        padding-top: 60px; 
+    }
+
+    .hero-content {
+        flex-direction: column; /* Stack hero text and image vertically */
+    }
+
+    .hero-text {
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero-image img {
+        width: 100%;
+    }
+
+    .hero-video {
+        margin-top: 50px;
+        max-height: 300px;
+    }
+
+    .overlay-text {
+        left: 20px; /* Adjust position for smaller screens */
+        font-size: 15px;
+    }
+
+    /* .features {
+        flex-direction: column; 
+        width: 90%;
+        padding: 30px;
+        gap: 20px;
+    } */
+
+    /* .feature-item {
+        padding: 0 20px;
+        font-size: 14px;
+    } */
+
+    .info-section {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .info-left, .info-right {
+        width: 100%;
+        text-align: center; /* Center the text on mobile */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .info-left img {
+        max-width: 150px;
+    }
+
+    .info-right h2 {
+        font-size: 16px;
+    }
+
+    .gallery-container h2 {
+        font-size: 22px;
+    }
+
+    .gallery {
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .gallery-item {
+        width:500px;
+        justify-content: center;
+    }
+
+    .gallery-item img {
+        height: 250px;
+        width: 400px;
+        justify-content: center;
+    }
+
+    .video-main img {
+        width: 100%; /* Memastikan video tetap menyesuaikan lebar layar */
+        height: auto; /* Menjaga rasio aspek video */
+        padding: 10px; /* Mengurangi padding pada ukuran layar lebih kecil */
+        border-radius: 5px; /* Sudut yang lebih lembut pada layar kecil */
+    }
+
+    .video-tutorial h2 {
+        font-size: 20px;
+    }
+
+    .video-main iframe {
+        width: 100%; /* Video will take full width of its container */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 100%; /* Ensures the video doesn't overflow */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+        padding: 15px;
+    }
+
+    .video-thumbnails {
+        flex-direction: column; /* Ubah thumbnail menjadi satu kolom */
+        align-items: center; /* Pusatkan thumbnail */
+        margin-top: 10px; /* Kurangi margin di atas thumbnail */
+    }
+
+    .thumbnail-item {
+        margin: 10px 0; /* Tambahkan margin di atas dan bawah untuk spasi antar thumbnail */
+    }
+
+    .thumbnail-item img {
+        width: 100%; /* Buat gambar thumbnail mengisi lebar kontainer */
+        height: auto; /* Jaga proporsi gambar */
+        max-width: 250px; /* Tetapkan batas maksimum ukuran thumbnail */
+    }
+
+    .view-more {
+        margin-top: 15px; /* Kurangi margin pada tombol view-more */
+        font-size: 0.9rem; /* Sesuaikan ukuran teks untuk layar kecil */
+        padding: 8px 15px; /* Kurangi padding tombol untuk layar kecil */
+    }
+
+    .help-section {
+        grid-template-columns: 1fr; /* Make the help items stack vertically */
+        gap: 15px;
+    }
+
+    .help-item {
+        width: 90%;
+    }
+
+    .action-button {
+        display: none; /* Menyembunyikan elemen saat ukuran layar <= 768px */
+    }
+
+    .greeting-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .greeting-text, .greeting-image {
+        margin-top: 20px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .greeting-text {
+        text-align: justify;
+        font-size: 14px;
+    }
+
+    .greeting-text h2 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .greeting-image {
+        display: none; /* Hide the image */
+    }
+
+    .footer {
+        font-size: 8px; /* Mengurangi ukuran font untuk lebih kecil */
+        padding: 2px; /* Mengurangi padding untuk footer */
+        text-align: center; /* Optional: Untuk memastikan footer tetap rata tengah */
+    }
+
+    .bottom-info {
+        font-size: 14px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .help-title h2 {
+        font-size: 18px;
+    }
+
+    .welcome-message {
+        font-size: 28px; /* Mengurangi ukuran font pada layar kecil */
+        padding: 0 10px; /* Tambahkan sedikit padding untuk tampilan lebih rapi */
+    }
+
+    .sub-message {
+        font-size: 16px; /* Ukuran font yang lebih kecil di layar mobile */
+        padding: 0 10px; /* Tambahkan padding agar tidak terlalu rapat di sisi */
+    }
+
+
 }
 
-
-/* Styling umum untuk logo */
-.navbar-brand img {
-    max-width: 100%; /* Pastikan logo tidak melebihi area kontainernya */
-    height: auto; /* Menjaga proporsi gambar */
-    width: 150px; /* Sesuaikan ukuran logo */
-}
-
-@media (max-width: 768px) {
+/* Responsive adjustments for very small screens (phones, narrow devices) */
+@media (max-width: 480px) {
     .navbar-brand img {
-        width: 120px; /* Ukuran lebih kecil untuk layar mobile */
+        height: 60px;
+    }
+
+    .navbar-nav {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .navbar-nav a {
+        font-size: 17px;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .overlay-text {
+        font-size: 20px;
+    }
+
+    .features {
+        padding: 1px;
+    }
+
+    .info-section {
+        padding: 15px;
+    }
+
+    .welcome-message {
+        font-size: 24px; /* Ukuran font lebih kecil untuk layar sangat kecil */
+    }
+
+    .sub-message {
+        font-size: 14px; /* Ukuran font lebih kecil pada layar kecil */
+    }
+
+    .info-left img {
+        max-width: 100px;
+    }
+
+    .gallery-item img {
+        height: 200px;
+    }
+
+    .video-main img {
+        width: 100%; /* Video memenuhi layar penuh */
+        height: auto; /* Menjaga rasio video */
+        padding: 5px; /* Kurangi padding lebih lanjut */
+        border-radius: 5px; /* Lebih lembut di perangkat yang lebih kecil */
+    }
+
+    .video-main iframe {
+        width: 90%; /* Full width on mobile */
+        height: 150px; /* Auto height to keep aspect ratio */
+        margin-right: 10px;
+    }
+
+    .video-thumbnails {
+        flex-direction: column; /* Atur thumbnail secara vertikal */
+        align-items: center; /* Pusatkan thumbnail */
+        margin-top: 5px; /* Kurangi jarak di atas thumbnail */
+    }
+
+    .thumbnail-item img {
+        width: 100%; /* Buat thumbnail memenuhi lebar kontainer */
+        height: auto; /* Jaga rasio aspek gambar */
+        max-width: 200px; /* Maksimum ukuran thumbnail di ponsel */
+    }
+
+    .view-more {
+        margin-top: 10px; /* Kurangi margin di atas tombol */
+        font-size: 0.8rem; /* Kurangi ukuran teks untuk layar kecil */
+        padding: 6px 12px; /* Kurangi padding tombol lebih lanjut */
+    }
+
+    .footer {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .help-title h2 {
+        font-size: 16px;
     }
 }
-
-
-
-
-
 
     </style>
 
@@ -846,9 +1111,12 @@ h3 {
     <section class="hero">
     <div class="container hero-content">
         <div class="hero-video">
+            @foreach ($videoBanner as $videoBanner)
             <video autoplay muted loop>
-                <source src="{{ asset('player/Kabupaten_pati.mp4') }}" type="video/mp4">
+                <source src="{{ asset('storage/' . $videoBanner->file_name) }}" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
+        @endforeach
             <div class="overlay"></div> <!-- Layer transparan di atas video -->
             <div class="overlay-text">
                 <div class="welcome-message" id="greeting-text">SELAMAT DATANG</div>

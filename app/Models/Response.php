@@ -18,4 +18,5 @@ class Response extends Model
     {
         return $this->hasMany(ResponseAnswer::class);
     }
+    
 }

@@ -22,7 +22,7 @@
                         <h4>Daftar Pertanyaan</h4>
                         <div class="card-header-action">
                             <a href="{{ route('questions.create', $questionnaire->id) }}" class="btn btn-primary">Tambah Pertanyaan</a>
-                            <a href="{{ route('questionnaires.show', $questionnaire->id) }}" class="btn btn-sm btn-info">kerjakan</a>
+                            <a href="{{ route('questionnaires.show', $questionnaire->id) }}" class="btn btn-sm btn-info">Kerjakan</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -39,17 +39,18 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus pertanyaan ini?')">Hapus</button>
                                                 </form>
-                                                <!-- Tombol Show -->
-                                                
                                             </div>
                                         </div>
                                         <!-- Tampilkan opsi jika tipe pertanyaan multiple_choice atau checkbox -->
                                         @if($question->type === 'multiple_choice' || $question->type === 'checkbox')
-                                            <ul>
+                                            <div class="mt-2">
                                                 @foreach($question->options as $option)
-                                                    <li>{{ $option->option_text }}</li>
+                                                    <div class="custom-option">
+                                                        <input type="radio" id="option-{{ $option->id }}" name="question-{{ $question->id }}" value="{{ $option->id }}" />
+                                                        <label for="option-{{ $option->id }}">{{ $option->option_text }}</label>
+                                                    </div>
                                                 @endforeach
-                                            </ul>
+                                            </div>
                                         @endif
                                     </li>
                                 @endforeach

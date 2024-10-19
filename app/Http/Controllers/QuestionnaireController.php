@@ -95,4 +95,26 @@ class QuestionnaireController extends Controller
         // return $responses;
         return view('questionnaires.responses', compact('questionnaire', 'responses'));
     }
+    public function showResponses($id)
+    {
+        $questionnaire = Questionnaire::findOrFail($id);
+        $responses = $questionnaire->responses()
+            ->when(request('search'), function($query) {
+                $query->where('respondent_email', 'like', '%'.request('search').'%');
+            })
+            ->paginate(10);
+        
+        // Data untuk navigasi
+        $nextQuestionnaire = Questionnaire::where('id', '>', $id)->orderBy('id')->first();
+        $prevQuestionnaire = Questionnaire::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        
+        return view('questionnaires.responses', compact(
+            'questionnaire', 
+            'responses', 
+            'nextQuestionnaire', 
+            'prevQuestionnaire'
+        ));
+    }
+
+
 }
