@@ -43,7 +43,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-   
+
 
     // Route::get('/questionnaires/{questionnaire}/thankyou', [QuestionnaireController::class, 'thankyou'])
     //      ->name('questionnaires.thankyou');
@@ -54,12 +54,12 @@ Route::middleware('auth')->group(function () {
 
     // Route::resource('faqs', FaqController::class);
     // Route::resource('documents', DocumentController::class);
-    
+
 });
 
 Route::middleware(['auth', 'can:manage banner'])->group(function () {
     Route::resource('banner', BannerController::class);
-});  
+});
 
 Route::middleware(['auth', 'can:manage gallery'])->group(function () {
     Route::resource('activity-galleries', ActivityGalleryController::class);
@@ -83,7 +83,7 @@ Route::middleware(['auth', 'can:manage faq'])->group(function () {
 
 Route::middleware(['auth', 'can:manage documents'])->group(function () {
     Route::resource('documents', DocumentController::class);
-});   
+});
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/kajian', [FrontController::class, 'kajian'])->name('kajian');
@@ -92,13 +92,16 @@ Route::get('/bantuan', [FrontController::class, 'bantuan'])->name('bantuan');
 Route::get('/infografis', [FrontController::class, 'infografis'])->name('infografis');
 Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
 Route::get('/questionnaires/{questionnaire}/thankyou', [QuestionnaireController::class, 'thankyou'])
-->name('questionnaires.thankyou');
+    ->name('questionnaires.thankyou');
 Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::class, 'store'])->name('responses.store');
 Route::get('/questionnaires/{questionnaire}/responses', [QuestionnaireController::class, 'responses'])
     ->name('questionnaires.responses');
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');
+Route::get('chart', function () {
+    return view('chart.chart');
+});
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
