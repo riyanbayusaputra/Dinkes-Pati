@@ -96,6 +96,13 @@
 </li>
 @endcan
 
+<li class="nav-item">
+    <a href="" class="nav-link" title="Analitic">
+        <i class="fas fa-chart-line"></i><span>Analitic</span>
+    </a>
+</li>
+
+
             
         </ul>
     </aside>

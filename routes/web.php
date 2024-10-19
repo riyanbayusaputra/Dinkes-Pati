@@ -97,5 +97,8 @@ Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::cl
 Route::get('/questionnaires/{questionnaire}/responses', [QuestionnaireController::class, 'responses'])
     ->name('questionnaires.responses');
 
+Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');
+
+
 
 require __DIR__.'/auth.php';

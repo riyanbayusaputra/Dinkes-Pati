@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Response;
 use Illuminate\Http\Request;
 use App\Models\Questionnaire;
 
@@ -63,10 +64,12 @@ class ResponseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $response = Response::with('answers.question')->findOrFail($id);
+        return view('responses.show', compact('response'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
