@@ -28,7 +28,7 @@ class FrontController extends Controller
         }
 
         // Mengirimkan data galeri dan video ke view 'fE.home'
-        return view('fE.home', compact('activityGalleries', 'videos', 'faqs','videoBanner'));
+        return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner'));
     }
 
     public function kajian(Request $request)
@@ -36,27 +36,27 @@ class FrontController extends Controller
         // Ambil filter dan keyword dari input
         $filter = $request->input('filter');
         $search = $request->input('search');
-        
+
         // Query dasar untuk mendapatkan semua dokumen
         $query = Document::query();
-    
+
         // Jika ada filter, tambahkan ke query
         if ($filter) {
             $query->where('category', $filter); // 'category' adalah field yang sesuai dengan filter
         }
-    
+
         // Jika ada pencarian, tambahkan ke query
         if ($search) {
-            $query->where(function($q) use ($search) {
+            $query->where(function ($q) use ($search) {
                 $q->where('title', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%")
-                  ->orWhere('penyusun', 'like', "%{$search}%");
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('penyusun', 'like', "%{$search}%");
             });
         }
-    
+
         // Ambil data setelah difilter dan/atau dicari dengan pagination
         $documents = $query->paginate(10); // Menampilkan 10 dokumen per halaman
-    
+
         // Kembalikan data ke view
         return view('FE.kajian', compact('documents'));
     }
@@ -80,8 +80,4 @@ class FrontController extends Controller
     {
         return view('FE.welcome');
     }
-
-
-    
-
 }
