@@ -40,7 +40,7 @@
                           </a>
                       </li>
                       @endcan
-                      
+
                     <!-- E-Library -->
                     @can('manage documents')
                     <li class="nav-item">
@@ -104,6 +104,8 @@
           
 
             <!-- Kuesioner -->
+            
+        
             <li class="nav-item">
                 <a href="{{ route('questionnaires.index') }}" class="nav-link" title="Daftar Kuisioner">
                     <i class="fas fa-list-alt"></i><span>Daftar Kuisioner</span>
@@ -117,10 +119,21 @@
             </li>
 
             <li class="nav-item">
-                <a href="/questionnaires/{{ $questionnaire->id }}/responses" class="nav-link" title="Analitik">
-                    <i class="fas fa-chart-line"></i><span>Responden</span>
-                </a>
+                <div class="d-flex align-items-center">
+                    @if($questionnaire)
+                        <a href="/questionnaires/{{ $questionnaire->id }}/responses" class="nav-link" title="Analitik">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="ms-2">Responden</span>
+                        </a>
+                    @else
+                      
+                    @endif
+                </div>
             </li>
+            
+          
+            
+            
         </ul>
     </aside>
 </div>

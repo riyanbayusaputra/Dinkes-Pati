@@ -110,4 +110,6 @@ Route::get('chart', function () {
 
 
 
+
+
 require __DIR__ . '/auth.php';

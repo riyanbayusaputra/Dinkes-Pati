@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Response;
 use Illuminate\Http\Request;
 use App\Models\Questionnaire;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class QuestionnaireController extends Controller
@@ -115,6 +117,5 @@ class QuestionnaireController extends Controller
             'prevQuestionnaire'
         ));
     }
-
 
 }

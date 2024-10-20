@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
                         <!-- Tombol Previous -->
-                        @if($prevQuestionnaire = App\Models\Questionnaire::where('id', '<', $questionnaire->id)->orderBy('id', 'desc')->first())
+                        @if($prevQuestionnaire)
                             <a href="/questionnaires/{{ $prevQuestionnaire->id }}/responses" class="btn btn-sm btn-outline-primary me-2">
                                 <i class="fas fa-chevron-left"></i> Prev
                             </a>
@@ -17,7 +17,7 @@
                         <h4 class="text-primary mb-0">{{ $questionnaire->title }}</h4>
 
                         <!-- Tombol Next -->
-                        @if($nextQuestionnaire = App\Models\Questionnaire::where('id', '>', $questionnaire->id)->orderBy('id')->first())
+                        @if($nextQuestionnaire)
                             <a href="/questionnaires/{{ $nextQuestionnaire->id }}/responses" class="btn btn-sm btn-outline-primary ms-2">
                                 Next <i class="fas fa-chevron-right"></i>
                             </a>
@@ -55,14 +55,11 @@
                             <tbody>
                                 @forelse($responses as $key => $response)
                                 <tr>
-                                    <td class="text-center">{{ ($responses->currentpage()-1) * $responses->perpage() +
-                                        $key + 1 }}</td>
-                                    <td>{!! $response->respondent_email ?? '<span
-                                            class="text-secondary">Anonymous</span>' !!}</td>
+                                    <td class="text-center">{{ ($responses->currentpage()-1) * $responses->perpage() + $key + 1 }}</td>
+                                    <td>{!! $response->respondent_email ?? '<span class="text-secondary">Anonymous</span>' !!}</td>
                                     <td>{{ $response->created_at->format('d M Y H:i') }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('responses.show', $response->id) }}"
-                                            class="btn btn-info btn-sm">
+                                        <a href="{{ route('responses.show', $response->id) }}" class="btn btn-info btn-sm">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </td>
