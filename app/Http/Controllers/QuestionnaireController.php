@@ -60,25 +60,40 @@ class QuestionnaireController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    // Menampilkan form edit
+    public function edit(Questionnaire $questionnaire)
     {
-        //
+        return view('questionnaires.edit', compact('questionnaire'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Memproses update kuesioner
+    public function update(Request $request, Questionnaire $questionnaire)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'nullable'
+        ]);
+
+        $questionnaire->update($validatedData);
+
+        return redirect()
+            ->route('questionnaires.index')
+            ->with('success', 'Kuesioner berhasil diperbarui!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    // Menghapus kuesioner
+    public function destroy(Questionnaire $questionnaire)
     {
-        //
+        try {
+            $questionnaire->delete();
+            return redirect()
+                ->route('questionnaires.index')
+                ->with('success', 'Kuesioner berhasil dihapus!');
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('questionnaires.index')
+                ->with('error', 'Gagal menghapus kuesioner!');
+        }
     }
     public function thankyou(Questionnaire $questionnaire)
     {

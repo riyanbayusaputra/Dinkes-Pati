@@ -23,6 +23,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 Route::resource('/questionnaires', QuestionnaireController::class);
+Route::delete('/questionnaires/{questionnaire}', [QuestionnaireController::class, 'destroy'])->name('questionnaires.destroy');
+
 Route::get('/questionnaires/{questionnaire}/questions/create', [QuestionController::class, 'create'])->name('questions.create');
 Route::post('/questionnaires/{questionnaire}/questions', [QuestionController::class, 'store']);
 Route::get('/questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
@@ -37,6 +39,7 @@ Route::get('/questionnaires/{id}/responses', [QuestionnaireController::class, 's
 Route::get('/questionnaires/{questionnaire}/fill', [ResponseController::class, 'create']);
 
 Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::class, 'store'])->name('responses.store');
+
 
 
 Route::get('/dashboard', function () {
