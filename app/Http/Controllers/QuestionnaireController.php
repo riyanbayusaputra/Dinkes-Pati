@@ -15,7 +15,11 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        $questionnaires = Questionnaire::where('user_id', Auth::user()->id)->get();
+    
+    $user = Auth::user();
+
+    // Ambil semua kuis tanpa memfilter berdasarkan user_id, sehingga semua role dapat melihatnya
+    $questionnaires = Questionnaire::all();
 
         // Kirim data ke view
         return view('questionnaires.index', compact('questionnaires'));

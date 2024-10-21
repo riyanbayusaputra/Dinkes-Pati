@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone_number')->nullable(); // Kolom untuk nomor telepon
             $table->text('address')->nullable(); // Kolom untuk alamat
-            $table->unsignedBigInteger('merchant_id')->nullable(); // Kolom untuk merchant ID
+            // $table->unsignedBigInteger('merchant_id')->nullable(); // Kolom untuk merchant ID
 
             $table->rememberToken();
             $table->timestamps();
