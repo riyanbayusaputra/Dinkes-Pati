@@ -11,7 +11,7 @@ use App\Models\Video; // Pastikan untuk mengimpor model Video
 
 class FrontController extends Controller
 {
-    public function index()
+    public function index2()
     {
         $faqs = Faq::with('answers')->get();
         // Mengambil semua data galeri
@@ -30,7 +30,7 @@ class FrontController extends Controller
         // Mengirimkan data galeri dan video ke view 'fE.home'
         return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner'));
     }
-    public function index2()
+    public function index()
     {
         $faqs = Faq::with('answers')->get();
         // Mengambil semua data galeri
