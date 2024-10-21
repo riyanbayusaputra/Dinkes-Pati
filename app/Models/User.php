@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'phone_number',
         'address',
+        'merchant_id',
     ];
 
     /**
@@ -42,5 +43,14 @@ class User extends Authenticatable
     public function questionnaires()
     {
         return $this->hasMany(Questionnaire::class);
+    }
+    public function isSuperAdmin()
+    {
+        return $this->hasRole('super admin');
+    }
+
+    public function isMerchant()
+    {
+        return $this->hasRole('merchant');
     }
 }
