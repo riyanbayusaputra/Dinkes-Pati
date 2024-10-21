@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'can:manage video banner'])->group(function () {
-Route::resource('video_banners', VideoBannerController::class);
+    Route::resource('video_banners', VideoBannerController::class);
 });
 Route::middleware(['auth', 'can:manage banner'])->group(function () {
     Route::resource('banner', BannerController::class);
@@ -90,6 +90,7 @@ Route::middleware(['auth', 'can:manage documents'])->group(function () {
 });
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/index2', [FrontController::class, 'index2'])->name('home2');
 Route::get('/kajian', [FrontController::class, 'kajian'])->name('kajian');
 Route::get('/petasebaran', [FrontController::class, 'petasebaran'])->name('petasebaran');
 Route::get('/bantuan', [FrontController::class, 'bantuan'])->name('bantuan');

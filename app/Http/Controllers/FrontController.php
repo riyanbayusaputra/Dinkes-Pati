@@ -30,6 +30,25 @@ class FrontController extends Controller
         // Mengirimkan data galeri dan video ke view 'fE.home'
         return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner'));
     }
+    public function index2()
+    {
+        $faqs = Faq::with('answers')->get();
+        // Mengambil semua data galeri
+        $activityGalleries = ActivityGallery::all(); // Mengambil semua galeri kegiatan
+
+        // Mengambil semua video untuk slider
+        $videos = Video::all();
+        $videoBanner = VideoBanner::all(); // Ambil semua video banner
+
+        // Jika ada video, ambil ID video dari URL
+        foreach ($videos as $video) {
+            $urlParts = explode('/', $video->youtube_url);
+            $video->youtube_url = !empty($urlParts) ? end($urlParts) : null; // Mengubah URL menjadi ID video
+        }
+
+        // Mengirimkan data galeri dan video ke view 'fE.home'
+        return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner'));
+    }
 
     public function kajian(Request $request)
     {
