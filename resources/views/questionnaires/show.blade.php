@@ -34,17 +34,17 @@
                                             <div class="row">
 
                                                 <!-- Optional: Field untuk email responden -->
-                                                <div class="form-group col-lg-4" hidden>
+                                                <div class="form-group col-lg-2" hidden>
                                                     <label>Email Responden (Opsionals)</label>
                                                     <input type="email" name="respondent_email" class="form-control"
                                                         value="{{ old('respondent_email') }}">
                                                 </div>
-                                                <div class="form-group col-lg-4">
+                                                <div class="form-group col-lg-2">
                                                     <label for="propinsi" class="text-capitalize">Propinsi</label>
                                                     <input type="text" name="propinsi" id="propinsi"
                                                         class="form-control" value="Jawa Tengah" readonly>
                                                 </div>
-                                                <div class="form-group col-lg-4">
+                                                <div class="form-group col-lg-2">
                                                     <label for="kabupaten" class="text-capitalize">kabupaten /
                                                         kota</label>
                                                     <input type="text" name="kabupaten" id="kabupaten"
@@ -91,13 +91,13 @@
                                                     <input type="text" name="stratakelurahan" id="stratakelurahan"
                                                         class="form-control" value="{{ old('stratakelurahan') }}">
                                                 </div>
-                                                <div class="form-group col-lg-4">
+                                                <div class="form-group col-lg-2">
                                                     <label for="rtrw" class="text-capitalize">banjar atau rt /
                                                         rw</label>
                                                     <input type="text" name="rtrw" id="rtrw" class="form-control"
                                                         value="{{ old('rtrw') }}">
                                                 </div>
-                                                <div class="form-group col-lg-4">
+                                                <div class="form-group col-lg-2">
                                                     <label for="nourutresponden" class="text-capitalize">no urut
                                                         responden</label>
                                                     <input type="text" name="nourutresponden" id="nourutresponden"
@@ -113,65 +113,103 @@
                                         </div>
                                     </div>
                                     <div class="accordion">
-                                        <div class="accordion-header text-uppercase" role="button"
-                                            data-toggle="collapse" data-target="#panel-body-2" aria-expanded="false">
+                                        <div class="accordion-header text-uppercase collapsed" role="button"
+                                            data-toggle="collapse" data-target="#panel-body-2">
                                             <h4>A. Informasi Umum</h4>
                                         </div>
-                                        <div class="accordion-body" id="panel-body-2" data-parent="#accordion">
+                                        <div class="accordion-body collapse" id="panel-body-2" data-parent="#accordion">
                                             <div class="row">
-
-                                                <!-- Optional: Field untuk email responden -->
-                                                <div class="form-group col-lg-4" hidden>
-                                                    <label>Email Responden (Opsionals)</label>
-                                                    <input type="email" name="respondent_email" class="form-control"
-                                                        value="{{ old('respondent_email') }}">
+                                                <div class="form-group col-lg-2">
+                                                    <label for="tanggal_survei">Tanggal Survei</label>
+                                                    <input type="date" name="tanggal_survei" id="tanggal_survei"
+                                                        class="form-control">
+                                                </div>
+                                                <div class="form-group col-lg-3">
+                                                    <label for="jam_mulai_wawancara">Jam Mulai Wawancara</label>
+                                                    <input type="time" name="jam_mulai_wawancara"
+                                                        id="jam_mulai_wawancara" class="form-control">
+                                                </div>
+                                                <div class="form-group col-lg-3">
+                                                    <label for="jam_selesai_wawancara">Jam Selesai Wawancara</label>
+                                                    <input type="time" name="jam_selesai_wawancara"
+                                                        id="jam_selesai_wawancara" class="form-control">
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="propinsi" class="text-capitalize">Propinsi</label>
-                                                    <input type="text" name="propinsi" id="propinsi"
-                                                        class="form-control" value="{{ old('propinsi') }}">
+                                                    <label for="nama_wawancara">Nama Pewawancara / Enumerator</label>
+                                                    <input type="text" name="nama_wawancara" id="nama_wawancara"
+                                                        class="form-control">
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="kabupaten" class="text-capitalize">kabupaten /
-                                                        kota</label>
-                                                    <input type="text" name="kabupaten" id="kabupaten"
-                                                        class="form-control" value="{{ old('kabupaten') }}">
+                                                    <label for="nama_supervisor">Nama Supervisor</label>
+                                                    <input type="text" name="nama_supervisor" id="nama_supervisor"
+                                                        class="form-control">
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="kecamatan" class="text-capitalize">kecamatan</label>
-                                                    <input type="text" name="kecamatan" id="kecamatan"
-                                                        class="form-control" value="{{ old('kecamatan') }}">
+                                                    <label for="nama_koordinator_kecamatan">Nama Koordinator
+                                                        Kecamatan</label>
+                                                    <input type="text" name="nama_koordinator_kecamatan"
+                                                        id="nama_koordinator_kecamatan" class="form-control">
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="kelurahan" class="text-capitalize">desa /
-                                                        kelurahan</label>
-                                                    <input type="text" name="kelurahan" id="kelurahan"
-                                                        class="form-control" value="{{ old('kelurahan') }}">
+                                                    <label for="nama_kepala_rumah_tangga">Nama Kepala Rumah
+                                                        Tangga</label>
+                                                    <input type="text" name="nama_kepala_rumah_tangga"
+                                                        id="nama_kepala_rumah_tangga" class="form-control">
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="stratakelurahan" class="text-capitalize">strata
-                                                        desa
-                                                        / kelurahan</label>
-                                                    <input type="text" name="stratakelurahan" id="stratakelurahan"
-                                                        class="form-control" value="{{ old('stratakelurahan') }}">
+                                                    <label for="jumlah_keluarga_rumah_tangga">Jumlah Keluarga Dalam
+                                                        Rumah Tangga</label>
+                                                    <input type="text" name="jumlah_keluarga_rumah_tangga"
+                                                        id="jumlah_keluarga_rumah_tangga" class="form-control">
+                                                </div>
+                                                <div class="form-group col-lg-8">
+                                                    <label for="">Jumlah Jiwa Dalam Rumah</label>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for="" class="">Laki-laki</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" name="jumlah_jiwa_laki_laki"
+                                                                            id="jumlah_jiwa_laki_laki"
+                                                                            class="form-control">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <table width="100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for="" class="">Perempuan</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" name="jumlah_jiwa_perempuan"
+                                                                            id="jumlah_jiwa_perempuan"
+                                                                            class="form-control">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="rtrw" class="text-capitalize">banjar atau rt /
-                                                        rw</label>
-                                                    <input type="text" name="rtrw" id="rtrw" class="form-control"
-                                                        value="{{ old('rtrw') }}">
+                                                    <label for="nama_responden">Nama Responden</label>
+                                                    <input type="text" name="nama_responden" id="nama_responden"
+                                                        class="form-control">
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="nourutresponden" class="text-capitalize">no urut
-                                                        responden</label>
-                                                    <input type="text" name="nourutresponden" id="nourutresponden"
-                                                        class="form-control" value="{{ old('nourutresponden') }}">
+                                                    <label for="hubungan_dengan_kepala_rumah_tangga">Hubungan Responden
+                                                        Dg Kepala Rumah Tangga</label>
+                                                    <input type="text" name="hubungan_dengan_kepala_rumah_tangga"
+                                                        id="hubungan_dengan_kepala_rumah_tangga" class="form-control">
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="nokuesioner" class="text-capitalize">no
-                                                        kuesioner</label>
-                                                    <input type="text" name="nokuesioner" id="nokuesioner"
-                                                        class="form-control" value="{{ old('nokuesioner') }}">
+                                                    <label for="alamat_telepon">Alamat / Telepon</label>
+                                                    <input type="text" name="alamat_telepon" id="alamat_telepon"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                         </div>

@@ -599,7 +599,8 @@
             /* Memusatkan item di tengah grid */
             align-items: center;
             /* Memusatkan konten secara vertikal */
-            padding: 20px;
+            padding-left: 5vw;
+            padding-right: 5vw;
         }
 
         .help-item {
