@@ -23,6 +23,12 @@
                         @csrf
                         <div class="card">
                             <div class="card-body p-0">
+                                <!-- Optional: Field untuk email responden -->
+                                <div class="form-group">
+                                    <label>Email Responden (Opsionals)</label>
+                                    <input type="email" name="respondent_email" class="form-control"
+                                        value="{{ old('respondent_email') }}">
+                                </div>
                                 <div id="accordion">
                                     <div class="accordion">
                                         <div class="accordion-header text-uppercase" role="button"
@@ -32,13 +38,6 @@
                                         <div class="accordion-body collapse show" id="panel-body-1"
                                             data-parent="#accordion">
                                             <div class="row">
-
-                                                <!-- Optional: Field untuk email responden -->
-                                                <div class="form-group col-lg-2" hidden>
-                                                    <label>Email Responden (Opsionals)</label>
-                                                    <input type="email" name="respondent_email" class="form-control"
-                                                        value="{{ old('respondent_email') }}">
-                                                </div>
                                                 <div class="form-group col-lg-2">
                                                     <label for="propinsi" class="text-capitalize">Propinsi</label>
                                                     <input type="text" name="propinsi" id="propinsi"
@@ -222,6 +221,12 @@
                             @foreach($questionnaire->questions as $question)
                             <div class="form-group col-lg-12">
                                 <label>{{ $loop->iteration }}. {{ $question->question_text }}</label>
+                                @if($question->type == 'text')
+                                <div class="form-group">
+                                    <input type="text" name="answers[{{ $question->id }}]"
+                                        id="answers[{{ $question->id }}]" class="form-control">
+                                </div>
+                                @else
                                 @foreach($question->options as $option)
                                 <div class="form-check">
                                     <!-- Perubahan name field dari responses menjadi answers -->
@@ -233,6 +238,7 @@
                                     </label>
                                 </div>
                                 @endforeach
+                                @endif
 
                                 @error("answers.{$question->id}")
                                 <div class="text-danger mt-1">{{ $message }}</div>
