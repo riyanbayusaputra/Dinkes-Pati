@@ -137,7 +137,7 @@
 
         .hero-video {
             width: 100%;
-            max-height: 500px;
+            max-height: 600px;
             /* Sesuaikan dengan tinggi yang diinginkan */
             display: flex;
             justify-content: center;
@@ -334,8 +334,8 @@
         }
 
         .info-left img {
-            max-width: 200px;
-            margin-bottom: 20px;
+            max-width: 100%;
+            margin-bottom: 0px;
         }
 
         .info-title {
@@ -348,14 +348,18 @@
         .info-right {
             flex: 2;
             padding-left: 30px;
-            padding-right: 3vw;
+            padding-right: 12vw;
         }
 
-        .info-right h2 {
+        .info-right h3 {
             color: #1e73be;
             font-weight: bold;
             margin-bottom: 20px;
-            font-size: 14px;
+            font-size: 18px;
+        }
+
+        .info-right h5 {
+            font-size: 16px;
         }
 
         .info-right p {
@@ -1290,7 +1294,7 @@
             <div class="navbar-nav">
                 <a href="{{ route('home') }}" class="home">Home</a>
                 <a href="{{ route('profile') }}">Profile</a>
-                <a href="" class="kuesioner">Kuesioner</a>
+                <a href="/login" class="kuesioner">Kuesioner</a>
                 <a href="{{ route('infografis') }}">Info Grafis</a>
                 <a href="{{ route('bantuan') }}" class="bantuan-button">Bantuan</a>
             </div>
@@ -1352,7 +1356,7 @@
         <div class="container">
             <!-- Features Section -->
             <section class="features">
-                <a href="#" class="feature-item">
+                <a href="/login" class="feature-item">
                     <img src="{{ asset('images/ehra.png') }}" alt="">
                     <span class="">EHRA</span>
                     <div class="arrow"></div>
@@ -1429,20 +1433,18 @@
                         <img src="{{ asset('images/logodin.png') }}" alt="Logo Kabupaten Pati">
                     </div>
                     <div class="info-right">
-                        <h2>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</h2>
-                        <p>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI Merupakan aplikasi digital
+                        <h3>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</h3>
+                        <h5>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI Merupakan aplikasi digital
                             untuk memantau dan melakukan monitoring sanitasi dan pengolahan limbah rumah tangga. Kami
                             terus berkomitmen untuk memberikan pelayanan dan informasi yang akurat untuk mendorong
-                            sebaran dan analisa yang kredibel.</p>
+                            sebaran dan analisa yang kredibel.</h5>
                         <a href="#">SELENGKAPNYA</a>
                     </div>
                 </div>
             </section>
 
-            <br>
-
             <section class="video-tutorial"
-                style="background-image: url('{{ asset('images/BackgroundVid.png') }}'); background-size: cover; background-position: center; padding: 40px 20px; color: white;">
+                style="background-image: url('{{ asset('images/BackgroundVid.png') }}'); background-size: cover; background-position: center; color: white;">
                 <div class="container">
                     <section class="video-section">
                         <h2>Video Tutorial</h2>

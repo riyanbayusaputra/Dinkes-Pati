@@ -54,18 +54,22 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            margin-left: 0; /* Pastikan tidak ada margin kiri */
-            padding-left: 0; /* Hilangkan padding */
-            position: relative; /* Memungkinkan pengaturan posisi relatif terhadap elemen lain */
-            left: -120px; /* Atur posisi lebih ke kiri */
+            margin-left: 0;
+            /* Pastikan tidak ada margin kiri */
+            padding-left: 0;
+            /* Hilangkan padding */
+            position: relative;
+            /* Memungkinkan pengaturan posisi relatif terhadap elemen lain */
+            left: -120px;
+            /* Atur posisi lebih ke kiri */
         }
 
         .navbar-nav a {
-            margin: 0 20px; 
+            margin: 0 20px;
             color: #333;
             font-size: 18px;
             text-decoration: none;
-            font-weight: bold; 
+            font-weight: bold;
         }
 
         .navbar-nav a.infografis {
@@ -74,33 +78,47 @@
 
         /* Untuk tombol "Bantuan" khusus */
         .navbar-nav a.bantuan-button {
-            background-color: orange; /* Warna tombol oranye */
-            color: white !important; /* Warna teks putih, dengan !important untuk memaksa */
-            padding: 10px 20px; /* Padding tombol */
-            border-radius: 5px; /* Membuat tombol melengkung */
-            text-decoration: none; /* Menghilangkan garis bawah */
+            background-color: orange;
+            /* Warna tombol oranye */
+            color: white !important;
+            /* Warna teks putih, dengan !important untuk memaksa */
+            padding: 10px 20px;
+            /* Padding tombol */
+            border-radius: 5px;
+            /* Membuat tombol melengkung */
+            text-decoration: none;
+            /* Menghilangkan garis bawah */
             display: inline-block;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Animasi transisi untuk smooth effect */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Animasi transisi untuk smooth effect */
         }
 
         /* Hover effect untuk tombol "Bantuan" */
         .navbar-nav a.bantuan-button:hover {
-            background-color: rgb(255, 214, 164); /* Warna oranye lebih gelap saat dihover */
-            color: white !important; /* Warna teks tetap putih saat hover */
+            background-color: rgb(255, 214, 164);
+            /* Warna oranye lebih gelap saat dihover */
+            color: white !important;
+            /* Warna teks tetap putih saat hover */
         }
 
         /* Active state: warna tombol saat di klik */
         .navbar-nav a.bantuan-button:active {
-            background-color: #ffd6a4; /* Warna oranye terang saat tombol di klik */
-            color: white !important; /* Warna teks tetap putih saat tombol di klik */
-            transition: background-color 0.1s ease; /* Transisi cepat saat klik */
+            background-color: #ffd6a4;
+            /* Warna oranye terang saat tombol di klik */
+            color: white !important;
+            /* Warna teks tetap putih saat tombol di klik */
+            transition: background-color 0.1s ease;
+            /* Transisi cepat saat klik */
         }
 
         /* Menangani focus state saat tombol di klik (misalnya dari keyboard) */
         .navbar-nav a.bantuan-button:focus {
-            background-color: #FF8C00; /* Warna oranye terang saat tombol mendapat fokus */
-            color: white !important; /* Warna teks tetap putih saat fokus */
-            outline: none; /* Menghilangkan outline */
+            background-color: #FF8C00;
+            /* Warna oranye terang saat tombol mendapat fokus */
+            color: white !important;
+            /* Warna teks tetap putih saat fokus */
+            outline: none;
+            /* Menghilangkan outline */
         }
 
         .bottom-info {
@@ -211,9 +229,11 @@
             justify-content: space-between;
             align-items: center;
             position: absolute;
-            right: 50px; /* Align it to the right of the navbar */
+            right: 50px;
+            /* Align it to the right of the navbar */
             left: 50px;
-            top: 50%; /* Center it vertically */
+            top: 50%;
+            /* Center it vertically */
             transform: translateY(-50%);
         }
 
@@ -298,6 +318,7 @@
                 margin: auto;
                 margin-top: 50px;
             }
+
             .search-bar {
                 display: none;
             }
@@ -325,19 +346,19 @@
             <div class="navbar-nav">
                 <a href="{{ route('home') }}" class="home">Home</a>
                 <a href="{{ route('profile') }}">Profile</a>
-                <a href="" class="kuesioner">Kuesioner</a>
+                <a href="/login" class="kuesioner">Kuesioner</a>
                 <a href="{{ route('infografis') }}">Info Grafis</a>
                 <a href="{{ route('bantuan') }}" class="bantuan-button">Bantuan</a>
             </div>
-            
+
             <!-- Hamburger Icon -->
             <div class="navbar-toggle" id="navbar-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-    </div>
-    </nav>
+        </div>
+        </nav>
 
 
         <!-- Content risiko sanitasi -->

@@ -30,27 +30,34 @@
 
         .map-container {
             flex: 1;
-            height: 600px;
-            position: relative; /* To position the title */
+            height: 20vw;
+            position: relative;
+            /* To position the title */
         }
 
         .map-title {
             position: absolute;
             top: 10px;
             left: 10px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent background */
             padding: 10px;
             border-radius: 5px;
             font-size: 20px;
             font-weight: bold;
-            z-index: 1000; /* Ensure it appears above the map */
+            z-index: 1000;
+            /* Ensure it appears above the map */
         }
 
         .leaflet-control-zoom {
-            bottom: 10px; /* Positioning at the bottom */
-            right: 10px; /* Positioning to the right */
-            position: absolute; /* Absolute positioning */
-            z-index: 1000; /* Ensure it appears above other elements */
+            bottom: 10px;
+            /* Positioning at the bottom */
+            right: 10px;
+            /* Positioning to the right */
+            position: absolute;
+            /* Absolute positioning */
+            z-index: 1000;
+            /* Ensure it appears above other elements */
         }
 
         .navbar {
@@ -136,9 +143,11 @@
             justify-content: space-between;
             align-items: center;
             position: absolute;
-            right: 50px; /* Align it to the right of the navbar */
-            left : 50px;
-            top: 50%; /* Center it vertically */
+            right: 50px;
+            /* Align it to the right of the navbar */
+            left: 50px;
+            top: 50%;
+            /* Center it vertically */
             transform: translateY(-50%);
         }
 
@@ -179,6 +188,8 @@
         }
 
         .footer {
+            position: fixed;
+            bottom: 0;
             text-align: center;
             padding: 10px;
             background-color: #2469A5;
@@ -227,8 +238,10 @@
 
         @media (max-width: 768px) {
             .map-title {
-        display: none; /* Hide the map title on mobile devices */
+                display: none;
+                /* Hide the map title on mobile devices */
             }
+
             .navbar {
                 justify-content: space-between;
                 align-items: center;
@@ -266,8 +279,10 @@
 
             /* Navbar Brand (Logo) */
             .navbar-brand {
-                margin-left: 0.5px; /* Align to the left on mobile */
-                margin-right: 10px; /* Ensure space for toggle */
+                margin-left: 0.5px;
+                /* Align to the left on mobile */
+                margin-right: 10px;
+                /* Ensure space for toggle */
             }
         }
 
@@ -299,25 +314,27 @@
             <div class="navbar-nav">
                 <a href="{{ route('home') }}" class="home">Home</a>
                 <a href="{{ route('profile') }}">Profile</a>
-                <a href="" class="kuesioner">Kuesioner</a>
+                <a href="/login" class="kuesioner">Kuesioner</a>
                 <a href="{{ route('infografis') }}">Info Grafis</a>
                 <a href="{{ route('bantuan') }}" class="bantuan-button">Bantuan</a>
             </div>
         </div>
 
-        <div class="map-container" id="map">
+        <div class="map-container">
+
+            <div id="map" style="height: 30vw; margin-top: 10px"></div>
+            <div class="bottom-info">
+                <span class="sipalingsapa">Sipalingsapa.com All rights reserved.</span><br>
+                Informasi dan pelayanan dapat dilakukan melalui:<br>
+                Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
+                Telepon: 0295 381351<br>
+                Fax: 0295 381375<br>
+                Kode Pos: 59163<br>
+                Email: <a href="mailto:bappeda@patikab.go.id">bappeda@patikab.go.id</a><br>
+                Website: <a href="http://bappeda.patikab.go.id" target="_blank">bappeda.patikab.go.id</a>
+            </div>
         </div>
 
-        <div class="bottom-info">
-            <span class="sipalingsapa">Sipalingsapa.com All rights reserved.</span><br>
-            Informasi dan pelayanan dapat dilakukan melalui:<br>
-            Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
-            Telepon: 0295 381351<br>
-            Fax: 0295 381375<br>
-            Kode Pos: 59163<br>
-            Email: <a href="mailto:bappeda@patikab.go.id">bappeda@patikab.go.id</a><br>
-            Website: <a href="http://bappeda.patikab.go.id" target="_blank">bappeda.patikab.go.id</a>
-        </div>
 
         <div class="footer">
             &copy; 2024 Kabupaten Pati
