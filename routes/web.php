@@ -16,6 +16,7 @@ use App\Http\Controllers\VideoBannerController;
 use App\Http\Controllers\QuestionnaireController;
 use App\Http\Controllers\ActivityGalleryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\GrafischartController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -59,6 +60,7 @@ Route::middleware('auth')->group(function () {
     // Route::resource('faqs', FaqController::class);
     // Route::resource('documents', DocumentController::class);
 
+    Route::resource('import-data', GrafischartController::class);
 });
 
 Route::middleware(['auth', 'can:manage video banner'])->group(function () {

@@ -7,20 +7,10 @@
     <title>Dinas Kesehatan - Kabupaten Pati</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    </script>
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
         .content {
-            display: flex;
+            display: block;
             flex-direction: column;
             justify-content: flex-start;
             height: 100%;
@@ -28,9 +18,21 @@
             overflow-x: hidden;
         }
 
+        .container {
+            display: inline;
+            padding-left: 2vw;
+            padding-right: 2vw;
+        }
+
+        .option-map {
+            margin-top: 100px;
+            margin-right: 90px;
+            margin-left: 90px;
+        }
+
         .map-container {
             flex: 1;
-            height: 20vw;
+            height: 100%;
             position: relative;
             /* To position the title */
         }
@@ -60,7 +62,7 @@
             /* Ensure it appears above other elements */
         }
 
-        .navbar {
+        .navbar-custom {
             background-color: #fff;
             padding: 15px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -74,20 +76,20 @@
             left: 0;
         }
 
-        .navbar-brand {
+        .navbar-custom-brand {
             display: flex;
             align-items: center;
             flex: 1;
         }
 
-        .navbar-brand img {
+        .navbar-custom-brand img {
             height: 60px;
             margin-right: 90px;
             margin-left: 90px;
         }
 
-        /* Adjust the vertical position of navbar items */
-        .navbar-nav {
+        /* Adjust the vertical position of navbar-custom items */
+        .navbar-custom-nav {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
@@ -97,8 +99,8 @@
             left: -137px;
         }
 
-        /* Navbar links */
-        .navbar-nav a {
+        /* navbar-custom links */
+        .navbar-custom-nav a {
             margin: 0 20px;
             color: #333;
             font-size: 18px;
@@ -107,7 +109,7 @@
         }
 
         /* Bantuan button */
-        .navbar-nav a.bantuan-button {
+        .navbar-custom-nav a.bantuan-button {
             background-color: orange;
             color: white !important;
             padding: 10px 20px;
@@ -117,24 +119,24 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .navbar-nav a.bantuan-button:hover {
+        .navbar-custom-nav a.bantuan-button:hover {
             background-color: rgb(255, 214, 164);
             color: white !important;
         }
 
-        .navbar-nav a.bantuan-button:active {
+        .navbar-custom-nav a.bantuan-button:active {
             background-color: #ffd6a4;
             color: white !important;
         }
 
-        .navbar-nav a.bantuan-button:focus {
+        .navbar-custom-nav a.bantuan-button:focus {
             background-color: #FF8C00;
             color: white !important;
             outline: none;
         }
 
         /* Hamburger Icon */
-        .navbar-toggle {
+        .navbar-custom-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
@@ -144,14 +146,14 @@
             align-items: center;
             position: absolute;
             right: 50px;
-            /* Align it to the right of the navbar */
+            /* Align it to the right of the navbar-custom */
             left: 50px;
             top: 50%;
             /* Center it vertically */
             transform: translateY(-50%);
         }
 
-        .navbar-toggle span {
+        .navbar-custom-toggle span {
             width: 25px;
             height: 3px;
             background-color: #333;
@@ -160,30 +162,30 @@
         }
 
         /* Top line (thicker) */
-        .navbar-toggle span:nth-child(1) {
+        .navbar-custom-toggle span:nth-child(1) {
             height: 6px;
         }
 
         /* Middle line (thinner) */
-        .navbar-toggle span:nth-child(2) {
+        .navbar-custom-toggle span:nth-child(2) {
             height: 2px;
         }
 
         /* Bottom line (thicker) */
-        .navbar-toggle span:nth-child(3) {
+        .navbar-custom-toggle span:nth-child(3) {
             height: 6px;
         }
 
         /* Add animation for toggle */
-        .navbar-toggle.active span:nth-child(1) {
+        .navbar-custom-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
 
-        .navbar-toggle.active span:nth-child(2) {
+        .navbar-custom-toggle.active span:nth-child(2) {
             opacity: 0;
         }
 
-        .navbar-toggle.active span:nth-child(3) {
+        .navbar-custom-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
@@ -209,6 +211,7 @@
             padding-left: 60px;
             padding-right: 40px;
             padding-top: 50px;
+            padding-bottom: 50px;
         }
 
         .sipalingsapa {
@@ -221,14 +224,14 @@
             text-decoration: underline;
         }
 
-        .navbar-toggle {
+        .navbar-custom-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             margin-right: 20px;
         }
 
-        .navbar-toggle span {
+        .navbar-custom-toggle span {
             width: 25px;
             height: 3px;
             background-color: #333;
@@ -242,12 +245,12 @@
                 /* Hide the map title on mobile devices */
             }
 
-            .navbar {
+            .navbar-custom {
                 justify-content: space-between;
                 align-items: center;
             }
 
-            .navbar-nav {
+            .navbar-custom-nav {
                 display: none;
                 flex-direction: column;
                 width: 100%;
@@ -259,17 +262,17 @@
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             }
 
-            .navbar-nav a {
+            .navbar-custom-nav a {
                 padding: 10px 20px;
                 width: 100%;
                 text-align: left;
             }
 
-            .navbar-toggle {
+            .navbar-custom-toggle {
                 display: flex;
             }
 
-            .navbar-nav.show {
+            .navbar-custom-nav.show {
                 display: flex;
             }
 
@@ -277,8 +280,8 @@
                 display: none;
             }
 
-            /* Navbar Brand (Logo) */
-            .navbar-brand {
+            /* navbar-custom Brand (Logo) */
+            .navbar-custom-brand {
                 margin-left: 0.5px;
                 /* Align to the left on mobile */
                 margin-right: 10px;
@@ -287,7 +290,7 @@
         }
 
         @media (max-width: 480px) {
-            .navbar-brand img {
+            .navbar-custom-brand img {
                 height: 60px;
             }
 
@@ -295,23 +298,75 @@
                 width: 100%;
             }
         }
+
+        input[type=radio] {
+            --s: 1em;
+            /* control the size */
+            --c: #009688;
+            /* the active color */
+
+            height: var(--s);
+            aspect-ratio: 1;
+            border: calc(var(--s)/8) solid #939393;
+            padding: calc(var(--s)/8);
+            background:
+                radial-gradient(farthest-side, var(--c) 94%, #0000) 50%/0 0 no-repeat content-box;
+            border-radius: 50%;
+            outline-offset: calc(var(--s)/10);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            font-size: inherit;
+            transition: .3s;
+        }
+
+        input[type=radio]:checked {
+            border-color: var(--c);
+            background-size: 100% 100%;
+        }
+
+        input[type=radio]:disabled {
+            background:
+                linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        @media print {
+            input[type=radio] {
+                -webkit-appearance: auto;
+                -moz-appearance: auto;
+                appearance: auto;
+                background: none;
+            }
+        }
+
+        label {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            margin: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div class="content">
-        <div class="navbar">
-            <div class="navbar-brand">
+        <div class="navbar-custom">
+            <div class="navbar-custom-brand">
                 <img src="{{ asset('images/logodin.png') }}" alt="logo">
             </div>
 
-            <div class="navbar-toggle" id="navbar-toggle">
+            <div class="navbar-custom-toggle" id="navbar-custom-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
 
-            <div class="navbar-nav">
+            <div class="navbar-custom-nav">
                 <a href="{{ route('home') }}" class="home">Home</a>
                 <a href="{{ route('profile') }}">Profile</a>
                 <a href="/login" class="kuesioner">Kuesioner</a>
@@ -320,25 +375,37 @@
             </div>
         </div>
 
-        <div class="map-container">
 
-            <div id="map" style="height: 30vw; margin-top: 10px"></div>
-            <div class="bottom-info">
-                <span class="sipalingsapa">Sipalingsapa.com All rights reserved.</span><br>
-                Informasi dan pelayanan dapat dilakukan melalui:<br>
-                Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
-                Telepon: 0295 381351<br>
-                Fax: 0295 381375<br>
-                Kode Pos: 59163<br>
-                Email: <a href="mailto:bappeda@patikab.go.id">bappeda@patikab.go.id</a><br>
-                Website: <a href="http://bappeda.patikab.go.id" target="_blank">bappeda.patikab.go.id</a>
+    </div>
+    <div class="container-fluid mt-4">
+        <div class="option-map">
+            <h2>Filter Peta :</h2>
+            <div class="d-flex">
+                <label><input type="radio" id="Basemap" name="e" checked>Basemap</label>
+                <label><input type="radio" id="JaringanAirMinum" name="e">Jaringan Air Minum</label>
+                <label><input type="radio" id="DaerahIrigasi" name="e">Daerah Irigasi</label>
+                <label><input type="radio" id="KawasanKumuh" name="e">Kawasan Kumuh</label>
+                <label><input type="radio" id="SaranaDanPrasarana" name="e">Sarana Dan Prasarana</label>
+                <label><input type="radio" id="RumahTidakLayakHuni" name="e">Rumah Tidak Layak Huni</label>
+                <label><input type="radio" id="Monev" name="e">Monev</label>
             </div>
         </div>
-
-
-        <div class="footer">
-            &copy; 2024 Kabupaten Pati
+        <div class="map-container">
+            <div id="map" style="height: 30vw; margin-top: 10px"></div>
         </div>
+        <div class="bottom-info">
+            <span class="sipalingsapa">Sipalingsapa.com All rights reserved.</span><br>
+            Informasi dan pelayanan dapat dilakukan melalui:<br>
+            Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
+            Telepon: 0295 381351<br>
+            Fax: 0295 381375<br>
+            Kode Pos: 59163<br>
+            Email: <a href="mailto:bappeda@patikab.go.id">bappeda@patikab.go.id</a><br>
+            Website: <a href="http://bappeda.patikab.go.id" target="_blank">bappeda.patikab.go.id</a>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Kabupaten Pati
     </div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -459,13 +526,13 @@
             }
         }).addTo(map);
 
-        // Navbar toggle functionality
-        const navbarToggle = document.getElementById('navbar-toggle');
-        const navbarNav = document.getElementById('navbarNav');
+        // navbar-custom toggle functionality
+        const navbarcustomToggle = document.getElementById('navbar-custom-toggle');
+        const navbarcustomNav = document.getElementById('navbar-customNav');
 
-        navbarToggle.addEventListener('click', () => {
-            navbarToggle.classList.toggle('active');
-            navbarNav.classList.toggle('show');
+        navbarcustomToggle.addEventListener('click', () => {
+            navbarcustomToggle.classList.toggle('active');
+            navbarcustomNav.classList.toggle('show');
         });
     </script>
 </body>
