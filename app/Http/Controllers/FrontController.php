@@ -8,10 +8,24 @@ use App\Models\VideoBanner;
 use Illuminate\Http\Request;
 use App\Models\ActivityGallery;
 use App\Models\BeritaModel;
+use App\Models\KritikdansaranModel;
 use App\Models\Video; // Pastikan untuk mengimpor model Video
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class FrontController extends Controller
 {
+    function __construct(Request $request)
+    {
+        $visitor = DB::table('shetabit_visits')
+            ->where('ip', $request->visitor()->ip())
+            ->count();
+        if ($visitor < 4) {
+            $request->visitor()->visit();
+        }
+    }
+
     public function index2()
     {
         $faqs = Faq::with('answers')->get();
@@ -32,7 +46,7 @@ class FrontController extends Controller
         // Mengirimkan data galeri dan video ke view 'fE.home'
         return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita'));
     }
-    public function index()
+    public function index(Request $request)
     {
         $faqs = Faq::with('answers')->get();
         // Mengambil semua data galeri
@@ -101,5 +115,29 @@ class FrontController extends Controller
     public function profile()
     {
         return view('FE.welcome');
+    }
+
+    public function kritikdansaran(Request $request)
+    {
+        // return $request->all();
+        // Validasi input
+        $validated = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
+            'email' => 'required',
+            'pesan' => 'required',
+        ]);
+        if ($validated->fails()) {
+            return Redirect::back()->withErrors($validated)->withInput($request->all())->with('info', 'Data tidak sesuai');
+        }
+
+        $k = KritikdansaranModel::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'pesan' => $request->pesan,
+        ]);
+        if ($k) {
+            return Redirect::back()->with('info', 'Terima kasih atas kritik dan sarannya');
+        }
+        return Redirect::back()->with('info', 'kritik dan saran gagal tersimpan');
     }
 }

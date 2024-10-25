@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bantuan - Dinas Kesehatan Kabupaten Pati</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             width: 100%;
@@ -102,9 +107,11 @@
             justify-content: space-between;
             align-items: center;
             position: absolute;
-            right: 50px; /* Align it to the right of the navbar */
+            right: 50px;
+            /* Align it to the right of the navbar */
             left: 50px;
-            top: 50%; /* Center it vertically */
+            top: 50%;
+            /* Center it vertically */
             transform: translateY(-50%);
         }
 
@@ -217,7 +224,8 @@
                 align-items: center;
             }
 
-            .contact-container iframe, .contact-info {
+            .contact-container iframe,
+            .contact-info {
                 width: 100%;
             }
 
@@ -236,7 +244,8 @@
                 left: 0;
                 padding: 10px 0;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                display: none; /* Hide navbar items by default */
+                display: none;
+                /* Hide navbar items by default */
             }
 
             .navbar-nav.show {
@@ -260,9 +269,9 @@
                 height: 40px;
             }
         }
-
     </style>
 </head>
+
 <body>
 
     <div class="content">
@@ -295,7 +304,8 @@
 
         <!-- Contact Section -->
         <div class="contact-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4121744803957!2d111.04365!3d-6.7487441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d2538f64a577%3A0xc5900941f4d3b89f!2sDinas%20Kesehatan%20Kabupaten%20Pati!5e0!3m2!1sid!2sid!4v1578581465204!5m2!1sid!2sid"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4121744803957!2d111.04365!3d-6.7487441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d2538f64a577%3A0xc5900941f4d3b89f!2sDinas%20Kesehatan%20Kabupaten%20Pati!5e0!3m2!1sid!2sid!4v1578581465204!5m2!1sid!2sid"></iframe>
 
             <div class="contact-info">
                 <h3>Dinas Kesehatan Kabupaten Pati</h3>
@@ -303,7 +313,33 @@
                 <p><strong>Telepon:</strong> (0295) 381351</p>
                 <p><strong>Fax:</strong> (0295) 381375</p>
                 <p><strong>Email:</strong> <a href="mailto:bappeda@patikab.go.id">bappeda@patikab.go.id</a></p>
+
+                <h3 style="margin-bottom: 5px">Kritik dan saran</h3>
+                @if (Session::has('info'))
+                <div class="alert alert-info">
+                    {{ Session::get('info') }}
+                </div>
+                @endif
+                <form action="/kritikdansaran" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label for="">Nama</label>
+                            <input type="text" name="nama" id="nama" class="form-control" required>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="">Pesan</label>
+                            <textarea name="pesan" id="pesan" rows="3" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-prinary" style="background-color: orange; color: white">Kirim</button>
+                </form>
             </div>
+
         </div>
 
         <!-- Informasi Kontak -->
@@ -336,4 +372,5 @@
     </script>
 
 </body>
+
 </html>

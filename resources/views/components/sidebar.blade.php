@@ -23,6 +23,12 @@
             </li>
             @endcan
 
+            <li class="nav-item">
+                <a href="/import-data" class="nav-link" title="Import Data">
+                    <i class="fas fa-store"></i><span>Import Data</span>
+                </a>
+            </li>
+
             @can('manage users')
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link" title="Manage Users">
@@ -39,6 +45,14 @@
             </li>
             @endcan
 
+            @can('manage berita')
+            <li class="nav-item">
+                <a href="{{ route('berita.index') }}" class="nav-link" title="Berita">
+                    <i class="fas fa-book-reader"></i><span>Berita</span>
+                </a>
+            </li>
+            @endcan
+
             @can('manage faq')
             <li class="nav-item">
                 <a href="{{ route('faqs.index') }}" class="nav-link" title="FAQs">
@@ -47,37 +61,46 @@
             </li>
             @endcan
 
-            @can('manage banner')
-            <li class="nav-item">
-                <a href="{{ route('banner.index') }}" class="nav-link" title="Management Banner">
-                    <i class="fas fa-image"></i><span>Management Banner</span>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-columns"></i>
+                    <span>Manage</span>
                 </a>
-            </li>
-            @endcan
+                <ul class="dropdown-menu">
+                    @can('manage banner')
+                    <li class="nav-item">
+                        <a href="{{ route('banner.index') }}" class="nav-link" title="Banner">
+                            <i class="fas fa-image"></i><span>Banner</span>
+                        </a>
+                    </li>
+                    @endcan
 
-            @can('manage gallery')
-            <li class="nav-item">
-                <a href="{{ route('activity-galleries.index') }}" class="nav-link" title="Management Gallery">
-                    <i class="fas fa-photo-video"></i><span>Management Gallery</span>
-                </a>
-            </li>
-            @endcan
+                    @can('manage gallery')
+                    <li class="nav-item">
+                        <a href="{{ route('activity-galleries.index') }}" class="nav-link" title="Gallery">
+                            <i class="fas fa-photo-video"></i><span>Gallery</span>
+                        </a>
+                    </li>
+                    @endcan
 
-            @can('manage video banner')
-            <li class="nav-item">
-                <a href="{{ route('video_banners.index') }}" class="nav-link" title="Management Video Banner">
-                    <i class="fas fa-video"></i><span>Management Video Banner</span>
-                </a>
-            </li>
-            @endcan
+                    @can('manage video banner')
+                    <li class="nav-item">
+                        <a href="{{ route('video_banners.index') }}" class="nav-link" title="Video Banner">
+                            <i class="fas fa-video"></i><span>Video Banner</span>
+                        </a>
+                    </li>
+                    @endcan
 
-            @can('manage videos')
-            <li class="nav-item">
-                <a href="{{ route('videos.index') }}" class="nav-link" title="Management Videos">
-                    <i class="fas fa-video"></i><span>Management Videos</span>
-                </a>
+                    @can('manage videos')
+                    <li class="nav-item">
+                        <a href="{{ route('videos.index') }}" class="nav-link" title="Videos">
+                            <i class="fas fa-video"></i><span>Videos</span>
+                        </a>
+                    </li>
+                    @endcan
+                </ul>
             </li>
-            @endcan
+
 
             <!-- Kuesioner Section -->
             <li class="nav-item">
@@ -94,10 +117,10 @@
 
             <li class="nav-item">
                 @if($questionnaire)
-                    <a href="/questionnaires/{{ $questionnaire->id }}/responses" class="nav-link" title="Analitik">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Responden</span>
-                    </a>
+                <a href="/questionnaires/{{ $questionnaire->id }}/responses" class="nav-link" title="Analitik">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Responden</span>
+                </a>
                 @endif
             </li>
         </ul>

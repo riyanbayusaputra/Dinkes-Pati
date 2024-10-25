@@ -111,7 +111,7 @@ Route::get('/questionnaires/{questionnaire}/thankyou', [QuestionnaireController:
 Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::class, 'store'])->name('responses.store');
 // Route::get('/questionnaires/{questionnaire}/responses', [QuestionnaireController::class, 'responses'])
 //     ->name('questionnaires.responses');
-
+Route::post('/kritikdansaran', [FrontController::class, 'kritikdansaran']);
 
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');

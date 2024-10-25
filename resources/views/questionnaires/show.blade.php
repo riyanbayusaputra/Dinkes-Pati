@@ -31,9 +31,16 @@
                                 </div>
                                 <div id="accordion">
                                     <div class="accordion">
-                                        <div class="accordion-header text-uppercase" role="button"
+                                        <div class="accordion-header d-flex text-uppercase" role="button"
                                             data-toggle="collapse" data-target="#panel-body-1" aria-expanded="true">
-                                            <h4>Data Wilayah</h4>
+                                            <h4 class="mr-auto">Data Wilayah</h4>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 24 24"
+                                                style="fill: rgb(255, 255, 255);transform: ;msFilter:;">
+                                                <path
+                                                    d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
+                                                </path>
+                                            </svg>
                                         </div>
                                         <div class="accordion-body collapse show" id="panel-body-1"
                                             data-parent="#accordion">
@@ -112,9 +119,16 @@
                                         </div>
                                     </div>
                                     <div class="accordion">
-                                        <div class="accordion-header text-uppercase collapsed" role="button"
-                                            data-toggle="collapse" data-target="#panel-body-2">
-                                            <h4>A. Informasi Umum</h4>
+                                        <div class="accordion-header text-uppercase collapsed d-flex" role="button"
+                                            data-toggle="collapse" data-target="#panel-body-2" aria-expanded="true">
+                                            <h4 class="mr-auto">A. Informasi Umum</h4>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 24 24"
+                                                style="fill: rgb(255, 255, 255);transform: ;msFilter:;">
+                                                <path
+                                                    d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
+                                                </path>
+                                            </svg>
                                         </div>
                                         <div class="accordion-body collapse" id="panel-body-2" data-parent="#accordion">
                                             <div class="row">

@@ -67,6 +67,22 @@
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            sendbyajax();
+        })
+        function sendbyajax() {
+            // $.ajax({
+            //     url: "setpengunjung",
+            //     data : {
+
+            //     }
+            //     success: function(data) {
+            //         // 
+            //     }
+            // });
+        }
+    </script>
 </body>
 
 </html>
