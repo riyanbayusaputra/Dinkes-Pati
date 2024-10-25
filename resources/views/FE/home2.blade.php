@@ -1395,6 +1395,50 @@
                     <span class="right-arrow" onclick="moveGallery(1)">&gt;</span>
                 </div> --}}
             </section>
+            <!-- Gallery Section -->
+            <section class="gallery-container">
+                <h2>Berita</h2>
+                <div class="underline"></div>
+                <br>
+                <div class="gallery-wrapper">
+                    <div class="gallery" style="flex-wrap: initial;">
+                        @foreach ($berita as $activity)
+                        <div class="gallery-item">
+                            <img src="{{ asset('images/berita/' . $activity->image) }}"
+                                alt="{{ $activity->activity_title }}">
+                            <p class="date">{{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</p>
+                            <h3>{{ $activity->activity_title }}</h3>
+                            <p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="{{ asset('images/berita/' . $activity->image) }}"
+                                alt="{{ $activity->activity_title }}">
+                            <p class="date">{{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</p>
+                            <h3>{{ $activity->activity_title }}</h3>
+                            <p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="{{ asset('images/berita/' . $activity->image) }}"
+                                alt="{{ $activity->activity_title }}">
+                            <p class="date">{{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</p>
+                            <h3>{{ $activity->activity_title }}</h3>
+                            <p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="{{ asset('images/berita/' . $activity->image) }}"
+                                alt="{{ $activity->activity_title }}">
+                            <p class="date">{{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</p>
+                            <h3>{{ $activity->activity_title }}</h3>
+                            <p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                {{-- <div class="arrows">
+                    <span class="left-arrow" onclick="moveGallery(-1)">&lt;</span>
+                    <span class="right-arrow" onclick="moveGallery(1)">&gt;</span>
+                </div> --}}
+            </section>
 
 
             <!-- Kata Sambutan Section -->

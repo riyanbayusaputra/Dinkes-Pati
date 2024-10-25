@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\VideoBanner;
 use Illuminate\Http\Request;
 use App\Models\ActivityGallery;
+use App\Models\BeritaModel;
 use App\Models\Video; // Pastikan untuk mengimpor model Video
 
 class FrontController extends Controller
@@ -15,7 +16,8 @@ class FrontController extends Controller
     {
         $faqs = Faq::with('answers')->get();
         // Mengambil semua data galeri
-        $activityGalleries = ActivityGallery::all(); // Mengambil semua galeri kegiatan
+        $activityGalleries = ActivityGallery::limit(3)->get(); // Mengambil semua galeri kegiatan
+        $berita = BeritaModel::limit(4)->get(); // Mengambil semua galeri kegiatan
 
         // Mengambil semua video untuk slider
         $videos = Video::all();
@@ -28,13 +30,14 @@ class FrontController extends Controller
         }
 
         // Mengirimkan data galeri dan video ke view 'fE.home'
-        return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner'));
+        return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita'));
     }
     public function index()
     {
         $faqs = Faq::with('answers')->get();
         // Mengambil semua data galeri
-        $activityGalleries = ActivityGallery::all(); // Mengambil semua galeri kegiatan
+        $activityGalleries = ActivityGallery::limit(3)->get(); // Mengambil semua galeri kegiatan
+        $berita = BeritaModel::limit(4)->get(); // Mengambil semua galeri kegiatan
 
         // Mengambil semua video untuk slider
         $videos = Video::all();
@@ -47,7 +50,7 @@ class FrontController extends Controller
         }
 
         // Mengirimkan data galeri dan video ke view 'fE.home'
-        return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner'));
+        return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita'));
     }
 
     public function kajian(Request $request)

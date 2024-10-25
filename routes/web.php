@@ -16,6 +16,7 @@ use App\Http\Controllers\VideoBannerController;
 use App\Http\Controllers\QuestionnaireController;
 use App\Http\Controllers\ActivityGalleryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GrafischartController;
 
 // Route::get('/', function () {
@@ -72,6 +73,10 @@ Route::middleware(['auth', 'can:manage banner'])->group(function () {
 
 Route::middleware(['auth', 'can:manage gallery'])->group(function () {
     Route::resource('activity-galleries', ActivityGalleryController::class);
+});
+
+Route::middleware(['auth', 'can:manage berita'])->group(function () {
+    Route::resource('berita', BeritaController::class);
 });
 
 Route::middleware(['auth', 'can:manage videos'])->group(function () {
