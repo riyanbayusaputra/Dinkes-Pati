@@ -95,6 +95,8 @@ Route::middleware(['auth', 'can:manage faq'])->group(function () {
     Route::resource('faqs', FaqController::class);
 });
 
+Route::get('/kritikdansaran', [FaqController::class, 'indexkritikdansaran']);
+
 Route::middleware(['auth', 'can:manage documents'])->group(function () {
     Route::resource('documents', DocumentController::class);
 });
@@ -112,6 +114,7 @@ Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::cl
 // Route::get('/questionnaires/{questionnaire}/responses', [QuestionnaireController::class, 'responses'])
 //     ->name('questionnaires.responses');
 Route::post('/kritikdansaran', [FrontController::class, 'kritikdansaran']);
+Route::post('/setratingus', [FrontController::class, 'setratingus']);
 
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');

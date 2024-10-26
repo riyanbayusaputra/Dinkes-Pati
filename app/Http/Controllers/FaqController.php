@@ -4,20 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Faq;
 use App\Models\Answer;
+use App\Models\KritikdansaranModel;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
-    public function index() {
+    public function indexkritikdansaran()
+    {
+        $x['faqs'] = KritikdansaranModel::get();
+        return view('faqs.kritikdansaran', $x);
+    }
+    public function index()
+    {
         $faqs = Faq::with('answers')->get();
         return view('faqs.index', compact('faqs'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('faqs.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         // Validasi input
         $validated = $request->validate([
             'title' => 'required|string|max:255', // Validasi untuk title
@@ -40,11 +49,13 @@ class FaqController extends Controller
         return redirect()->route('faqs.index')->with('success', 'FAQ berhasil ditambahkan.');
     }
 
-    public function edit(Faq $faq) {
+    public function edit(Faq $faq)
+    {
         return view('faqs.edit', compact('faq'));
     }
 
-    public function update(Request $request, Faq $faq) {
+    public function update(Request $request, Faq $faq)
+    {
         // Validasi input
         $validated = $request->validate([
             'title' => 'required|string|max:255', // Validasi untuk title
@@ -70,7 +81,8 @@ class FaqController extends Controller
         return redirect()->route('faqs.index')->with('success', 'FAQ berhasil diperbarui.');
     }
 
-    public function destroy(Faq $faq) {
+    public function destroy(Faq $faq)
+    {
         // Hapus pertanyaan dan jawaban yang terkait
         $faq->delete();
         return redirect()->route('faqs.index')->with('success', 'FAQ berhasil dihapus.');

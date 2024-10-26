@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dinas Kesehatan - Kabupaten Pati</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{--
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <style>
         html,
         body {
@@ -27,7 +33,7 @@
             overflow-x: hidden;
         }
 
-        .navbar {
+        .navbarc {
             background-color: #fff;
             padding: 15px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -39,18 +45,18 @@
             top: 0;
         }
 
-        .navbar-brand {
+        .navbarc-brand {
             display: flex;
             align-items: center;
         }
 
-        .navbar-brand img {
+        .navbarc-brand img {
             height: 60px;
             margin-right: 90px;
             margin-left: 90px;
         }
 
-        .navbar-nav {
+        .navbarc-nav {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
@@ -64,7 +70,7 @@
             /* Atur posisi lebih ke kiri */
         }
 
-        .navbar-nav a {
+        .navbarc-nav a {
             margin: 0 20px;
             color: #333;
             font-size: 18px;
@@ -72,12 +78,12 @@
             font-weight: bold;
         }
 
-        .navbar-nav a.infografis {
+        .navbarc-nav a.infografis {
             color: #2469A5;
         }
 
         /* Untuk tombol "Bantuan" khusus */
-        .navbar-nav a.bantuan-button {
+        .navbarc-nav a.bantuan-button {
             background-color: orange;
             /* Warna tombol oranye */
             color: white !important;
@@ -94,7 +100,7 @@
         }
 
         /* Hover effect untuk tombol "Bantuan" */
-        .navbar-nav a.bantuan-button:hover {
+        .navbarc-nav a.bantuan-button:hover {
             background-color: rgb(255, 214, 164);
             /* Warna oranye lebih gelap saat dihover */
             color: white !important;
@@ -102,7 +108,7 @@
         }
 
         /* Active state: warna tombol saat di klik */
-        .navbar-nav a.bantuan-button:active {
+        .navbarc-nav a.bantuan-button:active {
             background-color: #ffd6a4;
             /* Warna oranye terang saat tombol di klik */
             color: white !important;
@@ -112,7 +118,7 @@
         }
 
         /* Menangani focus state saat tombol di klik (misalnya dari keyboard) */
-        .navbar-nav a.bantuan-button:focus {
+        .navbarc-nav a.bantuan-button:focus {
             background-color: #FF8C00;
             /* Warna oranye terang saat tombol mendapat fokus */
             color: white !important;
@@ -199,6 +205,7 @@
         .legend {
             list-style: none;
             margin-left: 40px;
+            margin-right: 15px;
             padding: 0;
         }
 
@@ -220,7 +227,7 @@
             margin-top: 50px;
         }
 
-        .navbar-toggle {
+        .navbarc-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
@@ -230,14 +237,14 @@
             align-items: center;
             position: absolute;
             right: 50px;
-            /* Align it to the right of the navbar */
+            /* Align it to the right of the navbarc */
             left: 50px;
             top: 50%;
             /* Center it vertically */
             transform: translateY(-50%);
         }
 
-        .navbar-toggle span {
+        .navbarc-toggle span {
             width: 25px;
             height: 3px;
             background-color: #333;
@@ -246,35 +253,35 @@
         }
 
         /* Top line (thicker) */
-        .navbar-toggle span:nth-child(1) {
+        .navbarc-toggle span:nth-child(1) {
             height: 6px;
         }
 
         /* Middle line (thinner) */
-        .navbar-toggle span:nth-child(2) {
+        .navbarc-toggle span:nth-child(2) {
             height: 2px;
         }
 
         /* Bottom line (thicker) */
-        .navbar-toggle span:nth-child(3) {
+        .navbarc-toggle span:nth-child(3) {
             height: 6px;
         }
 
         /* Add animation for toggle */
-        .navbar-toggle.active span:nth-child(1) {
+        .navbarc-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
 
-        .navbar-toggle.active span:nth-child(2) {
+        .navbarc-toggle.active span:nth-child(2) {
             opacity: 0;
         }
 
-        .navbar-toggle.active span:nth-child(3) {
+        .navbarc-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
         @media (max-width: 768px) {
-            .navbar-nav {
+            .navbarc-nav {
                 display: none;
                 /* Hide the navigation links by default */
                 flex-direction: column;
@@ -287,18 +294,18 @@
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             }
 
-            .navbar-nav a {
+            .navbarc-nav a {
                 padding: 10px 20px;
                 width: 100%;
                 text-align: left;
             }
 
-            .navbar-toggle {
+            .navbarc-toggle {
                 display: flex;
                 /* Show the hamburger icon */
             }
 
-            .navbar-nav.show {
+            .navbarc-nav.show {
                 display: flex;
                 /* Show the navigation links when hamburger is clicked */
             }
@@ -325,7 +332,7 @@
         }
 
         @media (max-width: 400px) {
-            .navbar-brand img {
+            .navbarc-brand img {
                 height: 40px;
             }
 
@@ -338,12 +345,12 @@
 
 <body>
     <div class="content">
-        <div class="navbar">
-            <div class="navbar-brand">
+        <div class="navbarc">
+            <div class="navbarc-brand">
                 <img src="{{ asset('images/logodin.png') }}" alt="logo">
             </div>
 
-            <div class="navbar-nav">
+            <div class="navbarc-nav">
                 <a href="{{ route('home') }}" class="home">Home</a>
                 <a href="{{ route('profile') }}">Profile</a>
                 <a href="/login" class="kuesioner">Kuesioner</a>
@@ -352,82 +359,100 @@
             </div>
 
             <!-- Hamburger Icon -->
-            <div class="navbar-toggle" id="navbar-toggle">
+            <div class="navbarc-toggle" id="navbarc-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
-        </nav>
 
 
-        <!-- Content risiko sanitasi -->
-        <div class="sanitation-risk">
-            <div class="title-container">
-                <hr class="blue-line">
-                <h2 class="section-title">INDEKS RISIKO SANITASI</h2>
-                <hr class="blue-line">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- Content risiko sanitasi -->
+                    <div class="sanitation-risk m-0">
+                        <div class="title-containerc">
+                            <h2 class="title text-center">INDEKS RISIKO SANITASI</h2>
+                        </div>
+                        <div class="chart-container">
+                            <ul class="legend">
+                                <li><span class="color-box" style="background-color: #F89B45;"></span> Sumber Air</li>
+                                <li><span class="color-box" style="background-color: #998CEB;"></span> Air Limbah
+                                    Domestik</li>
+                                <li><span class="color-box" style="background-color: #F48989;"></span> Persampahan</li>
+                                <li><span class="color-box" style="background-color: #4BC0C0;"></span> Genangan Air</li>
+                                <li><span class="color-box" style="background-color: #5A87EB;"></span> Perilaku STBM
+                                    Pilar</li>
+                            </ul>
+                            <canvas id="riskChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <!-- Content kondisi sampah -->
+                    <div class="title-containerc">
+                        <h2 class="text-center">KONDISI SAMPAH</h2>
+                    </div>
+                    <div class="kondisi-sampah">
+                        <canvas id="kondisiSampahChart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="chart-container">
-                <canvas id="riskChart"></canvas>
-                <ul class="legend">
-                    <li><span class="color-box" style="background-color: #F89B45;"></span> Sumber Air</li>
-                    <li><span class="color-box" style="background-color: #998CEB;"></span> Air Limbah Domestik</li>
-                    <li><span class="color-box" style="background-color: #F48989;"></span> Persampahan</li>
-                    <li><span class="color-box" style="background-color: #4BC0C0;"></span> Genangan Air</li>
-                    <li><span class="color-box" style="background-color: #5A87EB;"></span> Perilaku STBM Pilar</li>
-                </ul>
+
+
+            <!-- Content nilai indeks risiko sanitasi -->
+            <div class="nilai-indeks">
+                <div class="title-container">
+                    <hr class="blue-line">
+                    {{-- <h2 class="section-title">RESUME NILAI INDEKS RISIKO SANITASI KABUPATEN PATI</h2> --}}
+                    <hr class="blue-line">
+                </div>
+            </div>
+
+            <div class="area-berisiko">
+                <div class="title-container">
+                    <hr class="blue-line">
+                    {{-- <h2 class="section-title">AREA BERISIKO KABUPATEN PATI</h2> --}}
+                    <hr class="blue-line">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="hasil-pengolahan">
+                        <div class="title-containerc">
+                            <h2 class="text-center">HASIL PENGOLAHAN AIR MINUM</h2>
+                        </div>
+                        <div class="container" style="height: 300px;">
+                            <canvas id="chartline"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hasil-pengolahan">
+                        <div class="title-containerc">
+                            <h2 class="text-center">AREA BERISIKO KABUPATEN PATI</h2>
+                        </div>
+                        <div class="container" style="height: 300px;">
+                            <canvas id="chartbatang"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer -->
+            <div class="bottom-info">
+                <span class="sipalingsapa">Sipalingsapa.com All rights reserved.</span><br>
+                Informasi dan pelayanan dapat dilakukan melalui:<br>
+                Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
+                Telepon: 0295 381351<br>
+                Fax: 0295 381375<br>
+                Kode Pos: 59163<br>
+                Email: <a href="mailto:bappeda@patikab.go.id">bappeda@patikab.go.id</a><br>
+                Website: <a href="http://bappeda.patikab.go.id" target="_blank">bappeda.patikab.go.id</a>
             </div>
         </div>
-
-        <!-- Content kondisi sampah -->
-        <div class="title-container">
-            <hr class="blue-line">
-            <h2 class="section-title">KONDISI SAMPAH</h2>
-            <hr class="blue-line">
-        </div>
-        <div class="kondisi-sampah">
-            <canvas id="kondisiSampahChart"></canvas>
-        </div>
-
-
-        <!-- Content nilai indeks risiko sanitasi -->
-        <div class="nilai-indeks">
-            <div class="title-container">
-                <hr class="blue-line">
-                <h2 class="section-title">RESUME NILAI INDEKS RISIKO SANITASI KABUPATEN PATI</h2>
-                <hr class="blue-line">
-            </div>
-        </div>
-
-        <div class="area-berisiko">
-            <div class="title-container">
-                <hr class="blue-line">
-                <h2 class="section-title">AREA BERISIKO KABUPATEN PATI</h2>
-                <hr class="blue-line">
-            </div>
-        </div>
-
-        <div class="hasil-pengolahan">
-            <div class="title-container">
-                <hr class="blue-line">
-                <h2 class="section-title">HASIL PENGOLAHAN AIR MINUM, DRAINASE, DAN SANITASI</h2>
-                <hr class="blue-line">
-            </div>
-        </div>
-
-        <!-- footer -->
-        <div class="bottom-info">
-            <span class="sipalingsapa">Sipalingsapa.com All rights reserved.</span><br>
-            Informasi dan pelayanan dapat dilakukan melalui:<br>
-            Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
-            Telepon: 0295 381351<br>
-            Fax: 0295 381375<br>
-            Kode Pos: 59163<br>
-            Email: <a href="mailto:bappeda@patikab.go.id">bappeda@patikab.go.id</a><br>
-            Website: <a href="http://bappeda.patikab.go.id" target="_blank">bappeda.patikab.go.id</a>
-        </div>
-
         <div class="footer">
             &copy; 2024 Kabupaten Pati
         </div>
@@ -527,16 +552,81 @@
                 }
             }
         });
+
+        const ctx3 = document.getElementById('chartline').getContext('2d');
+        const configline = new Chart(ctx3,{
+            type: 'line',
+            data: {
+                labels: ['2020','2021','2023','2024'],
+                datasets: [{
+                    label: 'RTCH',
+                    data: [10,12,15,17],
+                },
+                {
+                    label: 'Air Minum',
+                    data: [20,22,25,27]
+                },
+                {
+                    label: 'Drainase',
+                    data: [30,32,35,37]
+                },
+                {
+                    label: 'Kawasan Kumuh',
+                    data: [40,42,45,47]
+                },
+                {
+                    label: 'Sanitasi',
+                    data: [50,52,55,57]
+                },
+            ]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+
+        const ctx4 = document.getElementById('chartbatang').getContext('2d');
+        const configbar = new Chart(ctx4,{
+            type: 'bar',
+            data: {
+                labels: ['Batangan','Cluwak','Dukuh Seti','Gabus'],
+                datasets: [{
+                    label: 'Kecamatan',
+                    data: [10,12,15,17],
+                },
+                // {
+                //     // label: 'Air Minum',
+                //     data: [20,22,25,27]
+                // },
+                // {
+                //     // label: 'Drainase',
+                //     data: [30,32,35,37]
+                // },
+                // {
+                //     // label: 'Kawasan Kumuh',
+                //     data: [40,42,45,47]
+                // },
+                // {
+                //     // label: 'Sanitasi',
+                //     data: [50,52,55,57]
+                // },
+            ]
+            },
+            options: {
+                responsive: true,
+                borderRadius: 12,
+            }
+        });
     </script>
 
-    <!-- JavaScript for Navbar Toggle -->
+    <!-- JavaScript for navbarc Toggle -->
     <script>
-        const navbarToggle = document.getElementById('navbar-toggle');
-        const navbarNav = document.getElementById('navbarNav');
+        const navbarcToggle = document.getElementById('navbarc-toggle');
+        const navbarcNav = document.getElementById('navbarcNav');
 
-        navbarToggle.addEventListener('click', () => {
-            navbarToggle.classList.toggle('active');
-            navbarNav.classList.toggle('show');
+        navbarcToggle.addEventListener('click', () => {
+            navbarcToggle.classList.toggle('active');
+            navbarcNav.classList.toggle('show');
         });
     </script>
 

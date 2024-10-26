@@ -60,6 +60,11 @@
                 </a>
             </li>
             @endcan
+            <li class="nav-item">
+                <a href="/kritikdansaran" class="nav-link" title="Kritik dan Saran">
+                    <i class="fas fa-question"></i><span>Kritik dan Saran</span>
+                </a>
+            </li>
 
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">

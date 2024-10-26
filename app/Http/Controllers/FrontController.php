@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\ActivityGallery;
 use App\Models\BeritaModel;
 use App\Models\KritikdansaranModel;
+use App\Models\RatingUsModel;
 use App\Models\Video; // Pastikan untuk mengimpor model Video
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -43,8 +44,9 @@ class FrontController extends Controller
             $video->youtube_url = !empty($urlParts) ? end($urlParts) : null; // Mengubah URL menjadi ID video
         }
 
+        $visit = DB::table('shetabit_visits')->count();
         // Mengirimkan data galeri dan video ke view 'fE.home'
-        return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita'));
+        return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
     }
     public function index(Request $request)
     {
@@ -63,8 +65,9 @@ class FrontController extends Controller
             $video->youtube_url = !empty($urlParts) ? end($urlParts) : null; // Mengubah URL menjadi ID video
         }
 
+        $visit = DB::table('shetabit_visits')->count();
         // Mengirimkan data galeri dan video ke view 'fE.home'
-        return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita'));
+        return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
     }
 
     public function kajian(Request $request)
@@ -134,6 +137,28 @@ class FrontController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'pesan' => $request->pesan,
+        ]);
+        if ($k) {
+            return Redirect::back()->with('info', 'Terima kasih atas kritik dan sarannya');
+        }
+        return Redirect::back()->with('info', 'kritik dan saran gagal tersimpan');
+    }
+    public function setratingus(Request $request)
+    {
+        // Validasi input
+        $validated = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
+            'email' => 'required',
+            'rate' => 'required',
+        ]);
+        if ($validated->fails()) {
+            return Redirect::back()->withErrors($validated)->withInput($request->all())->with('info', 'Pastikan data sudah terisi semua');
+        }
+
+        $k = RatingUsModel::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'rate' => $request->rate,
         ]);
         if ($k) {
             return Redirect::back()->with('info', 'Terima kasih atas kritik dan sarannya');

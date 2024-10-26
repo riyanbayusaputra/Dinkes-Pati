@@ -1280,6 +1280,68 @@
                 font-size: 16px;
             }
         }
+
+        .star {
+            font-size: 10vh;
+            cursor: pointer;
+        }
+
+        .one {
+            color: rgb(255, 0, 0);
+        }
+
+        .two {
+            color: rgb(255, 106, 0);
+        }
+
+        .three {
+            color: rgb(251, 255, 120);
+        }
+
+        .four {
+            color: rgb(255, 255, 0);
+        }
+
+        .five {
+            color: rgb(24, 159, 14);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .butonnih {
+            display: block;
+            width: 92%;
+            height: 34px;
+            background-color: orange;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .form-control {
+            display: block;
+            width: 80%;
+            height: 34px;
+            /* padding: 6px 12px; */
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        }
     </style>
 
 </head>
@@ -1403,27 +1465,6 @@
                 <div class="gallery-wrapper">
                     <div class="gallery" style="flex-wrap: initial;">
                         @foreach ($berita as $activity)
-                        <div class="gallery-item">
-                            <img src="{{ asset('images/berita/' . $activity->image) }}"
-                                alt="{{ $activity->activity_title }}">
-                            <p class="date">{{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</p>
-                            <h3>{{ $activity->activity_title }}</h3>
-                            <p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ asset('images/berita/' . $activity->image) }}"
-                                alt="{{ $activity->activity_title }}">
-                            <p class="date">{{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</p>
-                            <h3>{{ $activity->activity_title }}</h3>
-                            <p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ asset('images/berita/' . $activity->image) }}"
-                                alt="{{ $activity->activity_title }}">
-                            <p class="date">{{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</p>
-                            <h3>{{ $activity->activity_title }}</h3>
-                            <p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
-                        </div>
                         <div class="gallery-item">
                             <img src="{{ asset('images/berita/' . $activity->image) }}"
                                 alt="{{ $activity->activity_title }}">
@@ -1574,22 +1615,97 @@
         </div>
     </main>
 
-    <!-- Bottom Info Section -->
-    <div class="bottom-info">
-        <span class="sipalingsapa bold-text">Sipalingsapa.com All rights reserved.</span><br>
-        Informasi dan pelayanan dapat dilakukan melalui:<br>
-        Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
-        Telepon: 0295 381351<br>
-        Fax: 0295 381375<br>
-        Kode Pos: 59163<br>
-        Email: <a href="mailto:bappeda@patikab.go.id" class="bold-text">bappeda@patikab.go.id</a><br>
-        Website: <a href="http://bappeda.patikab.go.id" target="_blank" class="bold-text">bappeda.patikab.go.id</a>
+    <div style="display: flex; justify-content: space-between">
+        <!-- Bottom Info Section -->
+        <div class="bottom-info">
+            <span class="sipalingsapa bold-text">Sipalingsapa.com All rights reserved.</span><br>
+            Informasi dan pelayanan dapat dilakukan melalui:<br>
+            Alamat: Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
+            Telepon: 0295 381351<br>
+            Fax: 0295 381375<br>
+            Kode Pos: 59163<br>
+            Email: <a href="mailto:bappeda@patikab.go.id" class="bold-text">bappeda@patikab.go.id</a><br>
+            Website: <a href="http://bappeda.patikab.go.id" target="_blank" class="bold-text">bappeda.patikab.go.id</a>
+        </div>
+        <div class="bottom-info">
+            <span class="sipalingsapa bold-text">Jumlah pengunjung : {{$visit}}</span><br>
+            <h4 style="margin-bottom: 0px">Silahkan nilai website kami</h4>
+            @if (Session::has('info'))
+            <div class="alert alert-info">
+                {{ Session::get('info') }}
+            </div>
+            @endif
+            <form action="/setratingus" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="text" name="rate" id="rate" hidden>
+                    <h5 id="output" style="margin: 0px">
+                        Rating is: 0/5
+                    </h5>
+                    <span onclick="gfg(1)" class="star">★
+                    </span>
+                    <span onclick="gfg(2)" class="star">★
+                    </span>
+                    <span onclick="gfg(3)" class="star">★
+                    </span>
+                    <span onclick="gfg(4)" class="star">★
+                    </span>
+                    <span onclick="gfg(5)" class="star">★
+                    </span>
+                </div>
+                <div style="display: flex">
+                    <div class="form-group" style="justify-content: start">
+                        <label for="">Nama</label>
+                        <input type="text" name="nama" id="nama" class="form-control" required>
+                    </div>
+                    <div class="form-group" style="justify-content: end">
+                        <label for="">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+                <button class="butonnih" type="submit">Simpan</button>
+            </form>
+        </div>
     </div>
 
     <!-- Footer Section -->
     <div class="footer">
         &copy; 2024 Kabupaten Pati
     </div>
+    <script>
+        // script.js
+
+// To access the stars
+        let stars = 
+            document.getElementsByClassName("star");
+        let output = 
+            document.getElementById("output");
+
+        // Funtion to update rating
+        function gfg(n) {
+            remove();
+            for (let i = 0; i < n; i++) {
+                if (n == 1) cls = "one";
+                else if (n == 2) cls = "two";
+                else if (n == 3) cls = "three";
+                else if (n == 4) cls = "four";
+                else if (n == 5) cls = "five";
+                stars[i].className = "star " + cls;
+            }
+            output.innerText = "Rating is: " + n + "/5";
+            document.getElementById('rate').value = n;
+        }
+
+        // To remove the pre-applied styling
+        function remove() {
+            let i = 0;
+            while (i < 5) {
+                stars[i].className = "star";
+                i++;
+            }
+        }
+
+    </script>
 </body>
 
 
