@@ -7,7 +7,7 @@
 /vendor
 /public
 htaccess
-.zip
+*.zip
 .env
 .env.backup
 .env.production
