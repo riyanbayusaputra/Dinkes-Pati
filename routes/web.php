@@ -115,6 +115,7 @@ Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::cl
 //     ->name('questionnaires.responses');
 Route::post('/kritikdansaran', [FrontController::class, 'kritikdansaran']);
 Route::post('/setratingus', [FrontController::class, 'setratingus']);
+Route::get('/getkoordinatpdam', [FrontController::class, 'getkoordinatpdam']);
 
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');

@@ -13,6 +13,7 @@ use App\Models\RatingUsModel;
 use App\Models\Video; // Pastikan untuk mengimpor model Video
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class FrontController extends Controller
@@ -102,7 +103,31 @@ class FrontController extends Controller
 
     public function petasebaran()
     {
-        return view('FE.petasebaran');
+        $data['koorpdam'] = [];
+        $jsonpdam = Storage::disk('public')->get('Jaringan_pipa_FeaturesToJSON.json');
+        $json = json_decode($jsonpdam, true);
+        // return $json['fields'];
+        foreach ($json['features'] as $y => $value) {
+            // return $value['geometry'];
+            foreach ($value['geometry'] as $key => $val) {
+                // return $val[0];
+                $data['koorpdam'][] = $val[0];
+            }
+        }
+        // return $data;
+        return view('FE.petasebaran', $data);
+    }
+
+    public function getkoordinatpdam()
+    {
+        $data['koorpdam'] = [];
+        $jsonpdam = Storage::disk('public')->get('Jaringan_pipa_FeaturesToJSON1.json');
+        $json = json_decode($jsonpdam, true);
+
+        return response()->json([
+            'data' => $json['features'],
+            'success' => true
+        ], 200);
     }
 
     public function bantuan()

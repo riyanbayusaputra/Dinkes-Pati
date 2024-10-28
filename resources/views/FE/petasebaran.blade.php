@@ -382,7 +382,7 @@
             <h2>Filter Peta :</h2>
             <div class="d-flex">
                 <label><input type="radio" id="Basemap" name="e" checked>Basemap</label>
-                <label><input type="radio" id="JaringanAirMinum" name="e">Jaringan Air Minum</label>
+                <label><input type="radio" id="JaringanAirMinum" onclick="jaringanpdam()" name="e">Jaringan Air Minum</label>
                 <label><input type="radio" id="DaerahIrigasi" name="e">Daerah Irigasi</label>
                 <label><input type="radio" id="KawasanKumuh" name="e">Kawasan Kumuh</label>
                 <label><input type="radio" id="SaranaDanPrasarana" name="e">Sarana Dan Prasarana</label>
@@ -409,131 +409,164 @@
     </div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        const map = L.map('map').setView([-6.748821786341696, 111.0437742143056], 13);
-
+        const map = L.map('map').setView([-6.748821786341696, 111.0437742143056], 10);
         // Add OpenStreetMap tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Function to add a marker with a popup
-        function addMarker(lat, lng, name, description) {
-            const marker = L.marker([lat, lng]).addTo(map);
-            marker.bindPopup(`<b>${name}</b><br>${description}`).openPopup();
+        function jaringanpdam() {
+            $("#JaringanAirMinum").prop("checked", true)
+            if ($("#JaringanAirMinum").prop("checked") == true) {
+                console.log($("#JaringanAirMinum").prop("checked"));
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                jQuery.ajax({
+                    url: "/getkoordinatpdam",
+                    method: 'get',
+                    success: function(result) {
+                        var myLines = result.data;
+                        var myStyle = {
+                            "color": "#fa0202",
+                            "weight": 2,
+                            "opacity": 0.65
+                        };
+
+                        L.geoJSON(myLines, {
+                            style: myStyle
+                        }).addTo(map);
+                    },
+
+                })
+            }
         }
+        // console.log($("#JaringanAirMinum").prop("checked", true));
+        $(document).ready(function() {
 
-        // Example data for sanitation facilities
-        const sanitationFacilities = [
-            { lat: -6.750, lng: 111.045, name: "Desa A", description: "Sanitasi: 5 Toilet Umum, 2 Tempat Sampah.<br>Informasi: Fasilitas sanitasi di Desa A cukup memadai." },
-            { lat: -6.749, lng: 111.042, name: "Desa B", description: "Sanitasi: 3 Toilet Umum, 1 Tempat Sampah.<br>Informasi: Ketersediaan tempat sampah masih kurang." },
-            { lat: -6.748, lng: 111.040, name: "Desa C", description: "Sanitasi: 4 Toilet Umum, 2 Tempat Sampah.<br>Informasi: Fasilitas perlu ditingkatkan untuk kenyamanan warga." }
-        ];
 
-        // Add markers for sanitation facilities
-        sanitationFacilities.forEach(facility => {
-            addMarker(facility.lat, facility.lng, facility.name, facility.description);
-        });
+        })
+        // Function to add a marker with a popup
+        // function addMarker(lat, lng, name, description) {
+        //     const marker = L.marker([lat, lng]).addTo(map);
+        //     marker.bindPopup(`<b>${name}</b><br>${description}`).openPopup();
+        // }
 
-        // Example data for Rumah Tidak Layak Huni (RTLH)
-        const rtlhData = [
-            { lat: -6.751, lng: 111.041, name: "Desa A", description: "RTLH: 10 Rumah Tidak Layak Huni.<br>Informasi: Perlu program perbaikan." },
-            { lat: -6.748, lng: 111.043, name: "Desa B", description: "RTLH: 5 Rumah Tidak Layak Huni.<br>Informasi: Dukungan pemerintah sangat diperlukan." },
-            { lat: -6.749, lng: 111.039, name: "Desa C", description: "RTLH: 7 Rumah Tidak Layak Huni.<br>Informasi: Aksesibilitas terhadap layanan dasar perlu ditingkatkan." }
-        ];
+        // // Example data for sanitation facilities
+        // const sanitationFacilities = [
+        //     { lat: -6.750, lng: 111.045, name: "Desa A", description: "Sanitasi: 5 Toilet Umum, 2 Tempat Sampah.<br>Informasi: Fasilitas sanitasi di Desa A cukup memadai." },
+        //     { lat: -6.749, lng: 111.042, name: "Desa B", description: "Sanitasi: 3 Toilet Umum, 1 Tempat Sampah.<br>Informasi: Ketersediaan tempat sampah masih kurang." },
+        //     { lat: -6.748, lng: 111.040, name: "Desa C", description: "Sanitasi: 4 Toilet Umum, 2 Tempat Sampah.<br>Informasi: Fasilitas perlu ditingkatkan untuk kenyamanan warga." }
+        // ];
 
-        // Add markers for RTLH
-        rtlhData.forEach(rtlh => {
-            addMarker(rtlh.lat, rtlh.lng, rtlh.name, rtlh.description);
-        });
+        // // Add markers for sanitation facilities
+        // sanitationFacilities.forEach(facility => {
+        //     addMarker(facility.lat, facility.lng, facility.name, facility.description);
+        // });
 
-        // Example polygon for the irrigation area
-        const irrigationAreaCoords = [
-            [-6.748, 111.039],
-            [-6.748, 111.045],
-            [-6.744, 111.045],
-            [-6.744, 111.039]
-        ];
+        // // Example data for Rumah Tidak Layak Huni (RTLH)
+        // const rtlhData = [
+        //     { lat: -6.751, lng: 111.041, name: "Desa A", description: "RTLH: 10 Rumah Tidak Layak Huni.<br>Informasi: Perlu program perbaikan." },
+        //     { lat: -6.748, lng: 111.043, name: "Desa B", description: "RTLH: 5 Rumah Tidak Layak Huni.<br>Informasi: Dukungan pemerintah sangat diperlukan." },
+        //     { lat: -6.749, lng: 111.039, name: "Desa C", description: "RTLH: 7 Rumah Tidak Layak Huni.<br>Informasi: Aksesibilitas terhadap layanan dasar perlu ditingkatkan." }
+        // ];
 
-        const irrigationArea = L.polygon(irrigationAreaCoords, { color: 'orange', weight: 2 })
-            .addTo(map)
-            .bindPopup("Daerah Irigasi<br>Informasi: Area ini digunakan untuk pertanian dan irigasi.").openPopup();
+        // // Add markers for RTLH
+        // rtlhData.forEach(rtlh => {
+        //     addMarker(rtlh.lat, rtlh.lng, rtlh.name, rtlh.description);
+        // });
 
-        // Example polygon for a slum area
-        const slumArea = L.polygon([
-            [-6.752, 111.040],
-            [-6.752, 111.046],
-            [-6.746, 111.046],
-            [-6.746, 111.040]
-        ]).addTo(map).bindPopup("Kawasan Kumuh<br>Informasi: Memerlukan perhatian lebih untuk pengembangan infrastruktur.").openPopup();
+        // // Example polygon for the irrigation area
+        // const irrigationAreaCoords = [
+        //     [-6.748, 111.039],
+        //     [-6.748, 111.045],
+        //     [-6.744, 111.045],
+        //     [-6.744, 111.039]
+        // ];
 
-        // Example of loading a GeoJSON layer for drinking water networks
-        const drinkingWaterGeoJSON = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": { "name": "Jaringan Air Minum" },
-                    "geometry": {
-                        "type": "LineString",
-                        "coordinates": [
-                            [111.042, -6.750],
-                            [111.044, -6.748],
-                            [111.046, -6.749]
-                        ]
-                    }
-                }
-            ]
-        };
+        // const irrigationArea = L.polygon(irrigationAreaCoords, { color: 'orange', weight: 2 })
+        //     .addTo(map)
+        //     .bindPopup("Daerah Irigasi<br>Informasi: Area ini digunakan untuk pertanian dan irigasi.").openPopup();
 
-        // Add drinking water network GeoJSON layer
-        L.geoJSON(drinkingWaterGeoJSON, {
-            style: function (feature) {
-                return { color: 'blue', weight: 3 };
-            },
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(`${feature.properties.name}<br>Informasi: Jaringan air minum yang melayani area sekitar.`);
-            }
-        }).addTo(map);
+        // // Example polygon for a slum area
+        // const slumArea = L.polygon([
+        //     [-6.752, 111.040],
+        //     [-6.752, 111.046],
+        //     [-6.746, 111.046],
+        //     [-6.746, 111.040]
+        // ]).addTo(map).bindPopup("Kawasan Kumuh<br>Informasi: Memerlukan perhatian lebih untuk pengembangan infrastruktur.").openPopup();
 
-        // Example of loading a GeoJSON layer for roads
-        const roadsGeoJSON = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": { "name": "Jaringan Jalan" },
-                    "geometry": {
-                        "type": "LineString",
-                        "coordinates": [
-                            [111.040, -6.753],
-                            [111.048, -6.754],
-                            [111.050, -6.751]
-                        ]
-                    }
-                }
-            ]
-        };
+        // // Example of loading a GeoJSON layer for drinking water networks
+        // const drinkingWaterGeoJSON = {
+        //     "type": "FeatureCollection",
+        //     "features": [
+        //         {
+        //             "type": "Feature",
+        //             "properties": { "name": "Jaringan Air Minum" },
+        //             "geometry": {
+        //                 "type": "LineString",
+        //                 "coordinates": [
+        //                     [111.042, -6.750],
+        //                     [111.044, -6.748],
+        //                     [111.046, -6.749]
+        //                 ]
+        //             }
+        //         }
+        //     ]
+        // };
 
-        // Add roads GeoJSON layer
-        L.geoJSON(roadsGeoJSON, {
-            style: function (feature) {
-                return { color: 'green', weight: 2 };
-            },
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(`${feature.properties.name}<br>Informasi: Jalan ini merupakan akses utama untuk transportasi.`);
-            }
-        }).addTo(map);
+        // // Add drinking water network GeoJSON layer
+        // L.geoJSON(drinkingWaterGeoJSON, {
+        //     style: function (feature) {
+        //         return { color: 'blue', weight: 3 };
+        //     },
+        //     onEachFeature: function (feature, layer) {
+        //         layer.bindPopup(`${feature.properties.name}<br>Informasi: Jaringan air minum yang melayani area sekitar.`);
+        //     }
+        // }).addTo(map);
 
-        // navbar-custom toggle functionality
-        const navbarcustomToggle = document.getElementById('navbar-custom-toggle');
-        const navbarcustomNav = document.getElementById('navbar-customNav');
+        // // Example of loading a GeoJSON layer for roads
+        // const roadsGeoJSON = {
+        //     "type": "FeatureCollection",
+        //     "features": [
+        //         {
+        //             "type": "Feature",
+        //             "properties": { "name": "Jaringan Jalan" },
+        //             "geometry": {
+        //                 "type": "LineString",
+        //                 "coordinates": [
+        //                     [111.040, -6.753],
+        //                     [111.048, -6.754],
+        //                     [111.050, -6.751]
+        //                 ]
+        //             }
+        //         }
+        //     ]
+        // };
 
-        navbarcustomToggle.addEventListener('click', () => {
-            navbarcustomToggle.classList.toggle('active');
-            navbarcustomNav.classList.toggle('show');
-        });
+        // // Add roads GeoJSON layer
+        // L.geoJSON(roadsGeoJSON, {
+        //     style: function (feature) {
+        //         return { color: 'green', weight: 2 };
+        //     },
+        //     onEachFeature: function (feature, layer) {
+        //         layer.bindPopup(`${feature.properties.name}<br>Informasi: Jalan ini merupakan akses utama untuk transportasi.`);
+        //     }
+        // }).addTo(map);
+
+        // // navbar-custom toggle functionality
+        // const navbarcustomToggle = document.getElementById('navbar-custom-toggle');
+        // const navbarcustomNav = document.getElementById('navbar-customNav');
+
+        // navbarcustomToggle.addEventListener('click', () => {
+        //     navbarcustomToggle.classList.toggle('active');
+        //     navbarcustomNav.classList.toggle('show');
+        // });
     </script>
 </body>
 
