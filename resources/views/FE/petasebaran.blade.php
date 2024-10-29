@@ -383,11 +383,11 @@
             <div class="d-flex">
                 <label><input type="radio" id="Basemap" name="e" checked>Basemap</label>
                 <label><input type="radio" id="JaringanAirMinum" onclick="jaringanpdam()" name="e">Jaringan Air Minum</label>
-                <label><input type="radio" id="DaerahIrigasi" name="e">Daerah Irigasi</label>
-                <label><input type="radio" id="KawasanKumuh" name="e">Kawasan Kumuh</label>
-                <label><input type="radio" id="SaranaDanPrasarana" name="e">Sarana Dan Prasarana</label>
-                <label><input type="radio" id="RumahTidakLayakHuni" name="e">Rumah Tidak Layak Huni</label>
-                <label><input type="radio" id="Monev" name="e">Monev</label>
+                <label><input type="radio" id="DaerahIrigasi" onclick="irigasi()" name="e">Daerah Irigasi</label>
+                <label><input type="radio" id="KawasanKumuh" onclick="kawansankumuh()" name="e">Kawasan Kumuh</label>
+                <label><input type="radio" id="SaranaDanPrasarana" onclick="transportsarana()" name="e">Sarana Dan Prasarana</label>
+                <label><input type="radio" id="RumahTidakLayakHuni" onclick="taklayakhuni()" name="e">Rumah Tidak Layak Huni</label>
+                <!-- <label><input type="radio" id="Monev" name="e">Monev</label> -->
             </div>
         </div>
         <div class="map-container">
@@ -417,10 +417,140 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
+        function taklayakhuni() {
+            $("#RumahTidakLayakHuni").prop("checked", true)
+            if ($("#RumahTidakLayakHuni").prop("checked") == true) {
+                // console.log($("#RumahTidakLayakHuni").prop("checked"));
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                jQuery.ajax({
+                    url: "/getkoordinattaklayakhuni",
+                    method: 'get',
+                    success: function(result) {
+                        // L.geoJSON().clearLayers()
+                        // var myLines = result.data;
+                        // var myStyle = {
+                        //     "color": "#0a1df5",
+                        //     "weight": 2,
+                        //     "opacity": 0.65
+                        // };
+
+                        // L.geoJSON(myLines, {
+                        //     style: myStyle
+                        // }).addTo(map);
+                    },
+
+                })
+            }
+        }
+
+        function irigasi() {
+            cleargeojson()
+            $("#DaerahIrigasi").prop("checked", true)
+            if ($("#DaerahIrigasi").prop("checked") == true) {
+                // console.log($("#DaerahIrigasi").prop("checked"));
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                jQuery.ajax({
+                    url: "/getkoordinatirigasi",
+                    method: 'get',
+                    success: function(result) {
+                        L.geoJSON().clearLayers()
+                        var myLines = result.data;
+                        var myStyle = {
+                            "color": "#0a1df5",
+                            "weight": 2,
+                            "opacity": 0.65
+                        };
+
+                        L.geoJSON(myLines, {
+                            style: myStyle
+                        }).addTo(map);
+                    },
+
+                })
+            }
+        }
+
+        function transportsarana() {
+            cleargeojson()
+            $("#SaranaDanPrasarana").prop("checked", true)
+            if ($("#SaranaDanPrasarana").prop("checked") == true) {
+                // console.log($("#SaranaDanPrasarana").prop("checked"));
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                jQuery.ajax({
+                    url: "/getkoordinattransport",
+                    method: 'get',
+                    success: function(result) {
+                        L.geoJSON().clearLayers()
+                        var myLines = result.data;
+                        var myStyle = {
+                            "color": "#0a1df5",
+                            "weight": 2,
+                            "opacity": 0.65
+                        };
+
+                        L.geoJSON(myLines, {
+                            style: myStyle
+                        }).addTo(map);
+                    },
+
+                })
+            }
+        }
+
+        function kawansankumuh() {
+            cleargeojson()
+            $("#KawasanKumuh").prop("checked", true)
+            if ($("#KawasanKumuh").prop("checked") == true) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                jQuery.ajax({
+                    url: "/getkoordinatkawankumuh",
+                    method: 'get',
+                    success: function(result) {
+                        var states = [];
+
+                        L.geoJSON(states, {
+                            style: function(feature) {
+                                console.log(feature)
+                                switch (feature.properties.party) {
+                                    case 'Jawa Tengah':
+                                        return {
+                                            color: "#ff0000"
+                                        };
+                                }
+                            }
+                        }).addTo(map);
+
+                    },
+
+                })
+
+            }
+        }
+
         function jaringanpdam() {
             $("#JaringanAirMinum").prop("checked", true)
+
             if ($("#JaringanAirMinum").prop("checked") == true) {
-                console.log($("#JaringanAirMinum").prop("checked"));
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -431,6 +561,7 @@
                     url: "/getkoordinatpdam",
                     method: 'get',
                     success: function(result) {
+                        L.geoJSON().clearLayers()
                         var myLines = result.data;
                         var myStyle = {
                             "color": "#fa0202",
@@ -445,6 +576,10 @@
 
                 })
             }
+        }
+
+        function cleargeojson() {
+            L.geoJSON().clearLayers();
         }
         // console.log($("#JaringanAirMinum").prop("checked", true));
         $(document).ready(function() {

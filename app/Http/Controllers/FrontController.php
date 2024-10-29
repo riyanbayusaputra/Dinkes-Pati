@@ -120,6 +120,50 @@ class FrontController extends Controller
             'success' => true
         ], 200);
     }
+    public function getkoordinatkawankumuh()
+    {
+        $jsonpdam = Storage::disk('public_uploads')->get('Revisi_SHP_Kawasan_Permukima2.json');
+        // return $jsonpdam;
+        $json = json_decode($jsonpdam, true);
+
+        return response()->json([
+            'data' => $json['features'],
+            'success' => true
+        ], 200);
+    }
+    public function getkoordinattransport()
+    {
+        $jsonpdam = Storage::disk('public_uploads')->get('_3318_50KB_LN_SR_SDA_PATI_202.json');
+        // return $jsonpdam;
+        $json = json_decode($jsonpdam, true);
+
+        return response()->json([
+            'data' => $json['features'],
+            'success' => true
+        ], 200);
+    }
+    public function getkoordinatirigasi()
+    {
+        $jsonpdam = Storage::disk('public_uploads')->get('_3318_50KB_PT_SR_SDA_PATI_203.json');
+        // return $jsonpdam;
+        $json = json_decode($jsonpdam, true);
+
+        return response()->json([
+            'data' => $json['features'],
+            'success' => true
+        ], 200);
+    }
+    public function getkoordinattaklayakhuni()
+    {
+        $jsonpdam = Storage::disk('public_uploads')->get('_3318_50KB_PT_SR_SDA_PATI_204.json');
+        // return $jsonpdam;
+        $json = json_decode($jsonpdam, true);
+
+        return response()->json([
+            'data' => $json['features'],
+            'success' => true
+        ], 200);
+    }
 
     public function bantuan()
     {

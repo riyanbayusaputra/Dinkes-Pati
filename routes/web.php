@@ -116,6 +116,10 @@ Route::post('/questionnaires/{questionnaire}/responses', [ResponseController::cl
 Route::post('/kritikdansaran', [FrontController::class, 'kritikdansaran']);
 Route::post('/setratingus', [FrontController::class, 'setratingus']);
 Route::get('/getkoordinatpdam', [FrontController::class, 'getkoordinatpdam']);
+Route::get('/getkoordinatkawankumuh', [FrontController::class, 'getkoordinatkawankumuh']);
+Route::get('/getkoordinattransport', [FrontController::class, 'getkoordinattransport']);
+Route::get('/getkoordinatirigasi', [FrontController::class, 'getkoordinatirigasi']);
+Route::get('/getkoordinattaklayakhuni', [FrontController::class, 'getkoordinattaklayakhuni']);
 
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');
