@@ -1395,24 +1395,24 @@
 
         <!-- JavaScript for smooth scrolling -->
         <script>
-            document.getElementById('scroll-button').addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default anchor click behavior
-        const targetId = this.getAttribute('href'); // Get the target section ID
-        const targetSection = document.querySelector(targetId); // Select the target section
+            document.getElementById('scroll-button').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default anchor click behavior
+                const targetId = this.getAttribute('href'); // Get the target section ID
+                const targetSection = document.querySelector(targetId); // Select the target section
 
-        // Scroll to the target section smoothly
-        targetSection.scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+                // Scroll to the target section smoothly
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
 
-    document.getElementById('navbar-toggle').addEventListener('click', function() {
-    const navbarNav = document.querySelector('.navbar-nav');
-    navbarNav.classList.toggle('show');
-});
-
-
+            document.getElementById('navbar-toggle').addEventListener('click', function() {
+                const navbarNav = document.querySelector('.navbar-nav');
+                navbarNav.classList.toggle('show');
+            });
         </script>
+
+
 
 
         <div class="container">
@@ -1675,10 +1675,10 @@
     <script>
         // script.js
 
-// To access the stars
-        let stars = 
+        // To access the stars
+        let stars =
             document.getElementsByClassName("star");
-        let output = 
+        let output =
             document.getElementById("output");
 
         // Funtion to update rating
@@ -1704,7 +1704,6 @@
                 i++;
             }
         }
-
     </script>
 </body>
 

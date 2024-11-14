@@ -68,7 +68,8 @@ class FrontController extends Controller
 
         $visit = DB::table('shetabit_visits')->count();
         // Mengirimkan data galeri dan video ke view 'fE.home'
-        return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
+        // return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
+        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
     }
 
     public function kajian(Request $request)
