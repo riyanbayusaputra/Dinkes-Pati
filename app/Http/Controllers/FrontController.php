@@ -56,7 +56,7 @@ class FrontController extends Controller
         // Mengambil semua data galeri
         $activityGalleries = ActivityGallery::limit(6)->get(); // Mengambil semua galeri kegiatan
         $berita = BeritaModel::limit(4)->get(); // Mengambil semua galeri kegiatan
-        $banners = Banner::all(); 
+        $banners = Banner::all();
         // Mengambil semua video untuk slider
         $videos = Video::limit(6)->get();
         $videoBanner = VideoBanner::all(); // Ambil semua video banner
@@ -70,7 +70,7 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->count();
         // Mengirimkan data galeri dan video ke view 'fE.home'
         // return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
-        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit','banners'));
+        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit', 'banners'));
     }
 
     public function kajian(Request $request)
@@ -95,19 +95,21 @@ class FrontController extends Controller
                     ->orWhere('penyusun', 'like', "%{$search}%");
             });
         }
+        $visit = DB::table('shetabit_visits')->count();
 
         // Ambil data setelah difilter dan/atau dicari dengan pagination
         $documents = $query->paginate(10); // Menampilkan 10 dokumen per halaman
 
         // Kembalikan data ke view
-        return view('FE.kajian', compact('documents'));
+        return view('FE.kajian', compact('documents', 'visit'));
     }
 
     public function petasebaran()
     {
+        $visit = DB::table('shetabit_visits')->count();
 
         // return $data;
-        return view('FE.petasebaran');
+        return view('FE.petasebaran', compact('visit',));
     }
 
     public function getkoordinatpdam()
@@ -170,18 +172,19 @@ class FrontController extends Controller
     public function bantuan()
     {
         $visit = DB::table('shetabit_visits')->count();
-        return view('FE.bantuan' ,compact('visit'));
+        return view('FE.bantuan', compact('visit'));
     }
 
     public function infografis()
     {
         $visit = DB::table('shetabit_visits')->count();
-        return view('FE.infografis',compact('visit'));
+        return view('FE.infografis', compact('visit'));
     }
 
     public function profile()
     {
-        return view('FE.welcome');
+        $visit = DB::table('shetabit_visits')->count();
+        return view('FE.welcome', compact('visit',));
     }
 
     public function kritikdansaran(Request $request)
@@ -208,31 +211,30 @@ class FrontController extends Controller
         return Redirect::back()->with('info', 'kritik dan saran gagal tersimpan');
     }
     public function setratingus(Request $request)
-{
-    // Validasi input
-    $validated = Validator::make($request->all(), [
-        'nama' => 'required|string|max:255',
-        'email' => 'required|email',
-        'rate' => 'required|integer|min:1|max:5', // Pastikan rating antara 1 dan 5
-    ]);
+    {
+        // Validasi input
+        $validated = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email',
+            'rate' => 'required|integer|min:1|max:5', // Pastikan rating antara 1 dan 5
+        ]);
 
-    if ($validated->fails()) {
-        return Redirect::back()->withErrors($validated)->withInput()->with('info', 'Pastikan data sudah terisi semua');
+        if ($validated->fails()) {
+            return Redirect::back()->withErrors($validated)->withInput()->with('info', 'Pastikan data sudah terisi semua');
+        }
+
+        // Menyimpan data
+        $k = RatingUsModel::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'rate' => $request->rate,
+        ]);
+
+        if ($k) {
+            // Jika sukses, beri pesan sukses dan kosongkan form
+            return Redirect::back()->with('info', 'Terima kasih atas kritik dan sarannya')->withInput();
+        }
+
+        return Redirect::back()->with('info', 'Kritik dan saran gagal tersimpan')->withInput();
     }
-
-    // Menyimpan data
-    $k = RatingUsModel::create([
-        'nama' => $request->nama,
-        'email' => $request->email,
-        'rate' => $request->rate,
-    ]);
-
-    if ($k) {
-        // Jika sukses, beri pesan sukses dan kosongkan form
-        return Redirect::back()->with('info', 'Terima kasih atas kritik dan sarannya')->withInput();
-    }
-
-    return Redirect::back()->with('info', 'Kritik dan saran gagal tersimpan')->withInput();
-}
-
 }

@@ -43,7 +43,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 
-	@vite(['resources/js/app.js'])
+	{{--@vite(['resources/js/app.js'])--}}
 	<!-- Document Title
 	============================================= -->
 	<title>DINAS KESEHATAN KOTA PATI</title>
