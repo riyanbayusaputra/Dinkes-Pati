@@ -46,8 +46,8 @@
 
 								<div class="row">
 									<div class="col-lg-6 bottommargin-sm">
-										<div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-										<h5 class="mb-0">Jumlah Pengunjung</h5>
+										<div class="counter counter-small"><span data-from="50" data-to="{{$visit}}" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+										<h5 class="mb-0">Jumlah pengunjung </h5>
 									</div>
 
 									<!-- <div class="col-lg-6 bottommargin-sm">
@@ -59,24 +59,104 @@
 							</div>
 						</div>
 
-						<div class="col-md-5 col-lg-12">
-							<div class="widget subscribe-widget clearfix">
-								<h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
-								<div class="widget-subscribe-form-result"></div>
-								<form id="widget-subscribe-form" action="include/subscribe.php" method="post" class="mb-0">
-									<input id="input-1" type="number" class="rating" max="5" data-step="1" data-size="lg">
-									<div class="input-group mx-auto">
-										<div class="input-group-prepend">
-											<div class="input-group-text"><i class="icon-email2"></i></div>
-										</div>
-										<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
-										<div class="input-group-append">
-											<button class="btn btn-success" type="submit">Simpan</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
+<div class="col-md-5 col-lg-12">
+    <div class="widget subscribe-widget clearfix">
+        <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers & Inside Scoops:</h5>
+        
+        <!-- Alert Messages -->
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        @if(session('info'))
+        <div class="alert alert-info alert-dismissible fade show" role="alert" id="infoAlert">
+            {{ session('info') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        <!-- Form Errors -->
+        @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="validationAlert">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        <div class="widget-subscribe-form-result"></div>
+        
+        <!-- Rating Form -->
+        <form id="widget-subscribe-form" action="/setratingus" method="POST" class="mb-0">
+            @csrf
+            <div class="mb-3">
+                <label class="form-label">Rating</label>
+                <input id="input-1" 
+                       type="number" 
+                       class="rating form-control" 
+                       name="rate" 
+                       max="5" 
+                       min="1" 
+                       data-step="1" 
+                       data-size="lg" 
+                       value="{{ old('rate') }}" 
+                       required>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="icon-user"></i></span>
+                <input type="text" 
+                       id="widget-subscribe-form-nama" 
+                       name="nama" 
+                       class="form-control @error('nama') is-invalid @enderror" 
+                       placeholder="Enter your Name" 
+                       value="{{ old('nama') }}" 
+                       required>
+                @error('nama')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="icon-email2"></i></span>
+                <input type="email" 
+                       id="widget-subscribe-form-email" 
+                       name="email" 
+                       class="form-control @error('email') is-invalid @enderror" 
+                       placeholder="Enter your Email" 
+                       value="{{ old('email') }}" 
+                       required>
+                @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">Simpan</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+						
+						
+						
+						
+						
+						
 
 						<!-- <div class="col-md-3 col-lg-12">
 							<div class="widget clearfix" style="margin-bottom: -20px;">

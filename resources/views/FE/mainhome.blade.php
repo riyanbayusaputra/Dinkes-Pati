@@ -3,80 +3,40 @@
 @section('content')
 
 <section id="slider" class="slider-element slider-parallax revslider-wrap min-vh-0">
-
-	<div class="slider-inner">
-		<div id="rev_slider_k_fullwidth_wrapper" class="rev_slider_wrapper fullwidth-container" style="padding:0px;">
-			<div id="rev_slider_k_fullwidth" class="rev_slider fullwidthbanner" style="display:none;" data-version="5.1.4">
-				<ul>
-					<li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="{{asset('FE/rev/ken-2-thumb.jpg')}}" data-delay="15000" data-saveperformance="off" data-title="Unlimited Possibilities">
-						<img src="{{asset('FE/rev/ken-2.jpg')}}" alt="kenburns6" data-bgposition="center bottom" data-bgpositionend="center top" data-kenburns="on" data-duration="25000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="140" data-rotatestart="0" data-rotateend="0" data-blurstart="0" data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
-						<!-- <div class="tp-caption ltl tp-resizeme revo-slider-caps-text text-uppercase"
-							data-x="middle" data-hoffset="0"
-							data-y="top" data-voffset="170"
-							data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
-							data-speed="800"
-							data-start="1000"
-							data-easing="easeOutQuad"
-							data-splitin="none"
-							data-splitout="none"
-							data-elementdelay="0.01"
-							data-endelementdelay="0.1"
-							data-endspeed="1000"
-							data-endeasing="Power4.easeIn" style="z-index: 3; color: #333; white-space: nowrap;">Why Choose Canvas?</div>
-
-						<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0"
-							data-x="middle" data-hoffset="0"
-							data-y="top" data-voffset="185"
-							data-fontsize="['60','50','50','40']"
-							data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
-							data-speed="800"
-							data-start="1200"
-							data-easing="easeOutQuad"
-							data-splitin="none"
-							data-splitout="none"
-							data-elementdelay="0.01"
-							data-endelementdelay="0.1"
-							data-endspeed="1000"
-							data-endeasing="Power4.easeIn" style="z-index: 3; color: #333; white-space: nowrap;">Unlimited Possibilities</div>
-
-						<div class="tp-caption ltl tp-resizeme revo-slider-desc-text"
-							data-x="middle" data-hoffset="0"
-							data-y="top" data-voffset="295"
-							data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
-							data-speed="800"
-							data-lineheight="['30','30','34','26']"
-							data-width="['750','750','480','360']"
-							data-start="1400"
-							data-easing="easeOutQuad"
-							data-splitin="none"
-							data-splitout="none"
-							data-elementdelay="0.01"
-							data-endelementdelay="0.1"
-							data-endspeed="1000"
-							data-textAlign="center"
-							data-endeasing="Power4.easeIn" style="z-index: 3; color: #333; max-width: 650px; white-space: normal;">Create whatever you require for your Business to bloom with Tons of Customization Possibilities.</div>
-
-						<div class="tp-caption ltl tp-resizeme"
-							data-x="middle" data-hoffset="0"
-							data-y="top" data-voffset="405"
-							data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;e:Power4.easeOutQuad;"
-							data-speed="800"
-							data-start="1550"
-							data-easing="easeOutQuad"
-							data-splitin="none"
-							data-splitout="none"
-							data-elementdelay="0.01"
-							data-endelementdelay="0.1"
-							data-endspeed="1000"
-							data-endeasing="Power4.easeIn" style="z-index: 3;"><a href="#" class="button button-border button-large button-rounded text-right m-0"><span>Browse</span><i class="icon-angle-right"></i></a></div> -->
-					</li>
-				</ul>
-			</div>
-		</div>
-
-	</div>
-
+    <div class="slider-inner">
+        <div id="rev_slider_k_fullwidth_wrapper" class="rev_slider_wrapper fullwidth-container" style="padding:0px;">
+            <div id="rev_slider_k_fullwidth" class="rev_slider fullwidthbanner" style="display:none;" data-version="5.1.4">
+                <ul>
+                    @foreach ($banners as $banner)
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" 
+                            data-thumb="{{ asset('images/' . $banner->image) }}" 
+                            data-delay="15000" data-saveperformance="off" 
+                            data-title="{{ $banner->title }}">
+                            <img src="{{ asset('images/' . $banner->image) }}" 
+                                alt="{{ $banner->title }}" 
+                                data-bgposition="center bottom" 
+                                data-bgpositionend="center top" 
+                                data-kenburns="on" 
+                                data-duration="25000" 
+                                data-ease="Linear.easeNone" 
+                                data-scalestart="100" 
+                                data-scaleend="140" 
+                                data-rotatestart="0" 
+                                data-rotateend="0" 
+                                data-blurstart="0" 
+                                data-blurend="0" 
+                                data-offsetstart="0 0" 
+                                data-offsetend="0 0" 
+                                class="rev-slidebg" 
+                                data-no-retina>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
 </section><!-- #slider end -->
+
 
 <section id="content">
 	<div class="content-wrap py-0">
@@ -88,19 +48,19 @@
 						<div class="flex-container">
 
 							<div class="item1">
-								<a href="" class="text-center text-uppercase text-white">
+								<a href="/login" class="text-center text-uppercase text-white">
 									<img src="{{ asset('images/ehra.png') }}" class="rounded-0 bg-transparent text-left" alt="Image">
 									EHRA
 								</a>
 							</div>
 							<div class="item2">
-								<a href="" class="text-center text-uppercase text-white">
+								<a href="{{ route('kajian') }}" class="text-center text-uppercase text-white">
 									<img src="{{ asset('images/kajian.png') }}" class="rounded-0 bg-transparent text-left" alt="Image">
 									Kajian Rumpun
 								</a>
 							</div>
 							<div class="item3">
-								<a href="" class="text-center text-uppercase text-white">
+								<a href="{{ route('petasebaran') }}" class="text-center text-uppercase text-white">
 									<img src="{{ asset('images/peta.png') }}" class="rounded-0 bg-transparent text-left" alt="Image">
 									Peta sebaran
 								</a>
@@ -150,27 +110,41 @@
 </section>
 
 <!-- GALLERY -->
+@if (count($activityGalleries) == 6)
 <section id="content">
+
 	<div class="content-wrap">
 		<div class="container clearfix">
 			<div class="row justify-content-center">
 				<div class="col-md-7 text-center">
-					<h6 class="display-4 color font-weight-bold font-display">Gallery</h6>
+					<h6 class="display-4 text-primary font-weight-bold font-display">Gallery</h6>
 				</div>
 			</div>
 
+			@if($activityGalleries->isNotEmpty())
 			<div class="masonry-thumbs grid-container grid-3" data-big="1" data-lightbox="gallery">
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item"><img src="{{asset('FE/rev/ken-2.jpg')}}" alt="Gallery Thumb 1"></a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item"><img src="{{asset('FE/rev/ken-2.jpg')}}" alt="Gallery Thumb 1"></a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item"><img src="{{asset('FE/rev/ken-2.jpg')}}" alt="Gallery Thumb 1"></a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item"><img src="{{asset('FE/rev/ken-2.jpg')}}" alt="Gallery Thumb 1"></a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item"><img src="{{asset('FE/rev/ken-2.jpg')}}" alt="Gallery Thumb 1"></a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item"><img src="{{asset('FE/rev/ken-2.jpg')}}" alt="Gallery Thumb 1"></a>
-
+				@foreach ($activityGalleries as $activity)
+					@if(!empty($activity->image))
+					<a class="grid-item" href="{{ asset('images/activity-galleries/' . $activity->image) }}" data-lightbox="gallery-item">
+						<img src="{{ asset('images/activity-galleries/' . $activity->image) }}" alt="Gallery Image">
+					</a>
+					@endif
+				@endforeach
 			</div>
+			@else
+			<div class="row justify-content-center">
+				<div class="col-md-7 text-center">
+					<p class="text-muted">No gallery images available at the moment.</p>
+				</div>
+			</div>
+			@endif
+
 		</div>
 	</div>
+
 </section>
+@endif
+
 <!-- END GALLERY -->
 <!-- BERITA -->
 <section id="content">
@@ -182,74 +156,36 @@
 				</div>
 			</div>
 			<div id="posts" class="post-grid row grid-container gutter-40 clearfix" data-layout="fitRows">
-
+				<!-- Loop Dynamic Content -->
+				@foreach ($berita as $activity)
 				<div class="entry col-md-4 col-sm-6 col-12">
 					<div class="grid-inner">
 						<div class="entry-image">
-							<a href="{{asset('FE/17.jpg')}}" data-lightbox="image"><img src="{{asset('FE/17.jpg')}}" alt="Standard Post with Image"></a>
+							<a href="{{ asset('images/berita/' . $activity->image) }}" data-lightbox="image">
+								<img src="{{ asset('images/berita/' . $activity->image) }}" alt="{{ $activity->activity_title }}">
+							</a>
 						</div>
 						<div class="entry-title">
-							<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
+							<h2><a href="blog-single.html">{{ $activity->activity_title }}</a></h2>
 						</div>
 						<div class="entry-meta">
 							<ul>
-								<li><i class="icon-calendar3"></i> 10th Feb 2021</li>
-
+								<li><i class="icon-calendar3"></i> {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</li>
 							</ul>
 						</div>
 						<div class="entry-content">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
+							<p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
 							<a href="blog-single.html" class="more-link">Selengkapnya</a>
 						</div>
 					</div>
 				</div>
-				<div class="entry col-md-4 col-sm-6 col-12">
-					<div class="grid-inner">
-						<div class="entry-image">
-							<a href="{{asset('FE/17.jpg')}}" data-lightbox="image"><img src="{{asset('FE/17.jpg')}}" alt="Standard Post with Image"></a>
-						</div>
-						<div class="entry-title">
-							<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-						</div>
-						<div class="entry-meta">
-							<ul>
-								<li><i class="icon-calendar3"></i> 10th Feb 2021</li>
-
-							</ul>
-						</div>
-						<div class="entry-content">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-							<a href="blog-single.html" class="more-link">Selengkapnya</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="entry col-md-4 col-sm-6 col-12">
-					<div class="grid-inner">
-						<div class="entry-image">
-							<a href="{{asset('FE/17.jpg')}}" data-lightbox="image"><img src="{{asset('FE/17.jpg')}}" alt="Standard Post with Image"></a>
-						</div>
-						<div class="entry-title">
-							<h2><a href="blog-single-full.html">This is a Standard post with a Vimeo Video</a></h2>
-						</div>
-						<div class="entry-meta">
-							<ul>
-								<li><i class="icon-calendar3"></i> 16th Feb 2021</li>
-
-							</ul>
-						</div>
-						<div class="entry-content">
-							<p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem consectetur pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt!</p>
-							<a href="blog-single-full.html" class="more-link">Selengkapnya</a>
-						</div>
-					</div>
-				</div>
-
-
+				@endforeach
+				<!-- End Loop Dynamic Content -->
 			</div>
 		</div>
 	</div>
 </section>
+
 <!-- END BERITA -->
 
 <section id="content">
@@ -273,7 +209,7 @@
 	</div>
 </section>
 
-
+@if (count($videos) == 6)
 <section id="content">
 	<div class="section m-0 border-0 bg-color dark" style="padding: 10px 0;">
 		<div class="container center clearfix">
@@ -282,29 +218,33 @@
 			</div>
 
 			<div class="masonry-thumbs grid-container grid-3" data-big="1" data-lightbox="gallery">
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item">
-					<iframe width="1903" height="822" src="https://www.youtube.com/embed/3_O8QNOSMSc" title="TOP 15 MONSTERS || FITO HillClimb 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				@foreach ($videos as $video)
+				@php
+					// Mendapatkan ID video YouTube dari URL
+					parse_str(parse_url($video->youtube_url, PHP_URL_QUERY), $urlParams);
+					$videoId = $urlParams['v'] ?? basename(parse_url($video->youtube_url, PHP_URL_PATH));
+				@endphp
+				@if ($videoId)
+				<a class="grid-item" href="{{ asset('FE/rev/ken-2.jpg') }}" data-lightbox="gallery-item">
+					<iframe 
+						width="1903" 
+						height="822" 
+						src="https://www.youtube.com/embed/{{ $videoId }}" 
+						title="{{ $video->title }}" 
+						frameborder="0" 
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+						referrerpolicy="strict-origin-when-cross-origin" 
+						allowfullscreen>
+					</iframe>
 				</a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item">
-					<iframe width="1903" height="822" src="https://www.youtube.com/embed/3_O8QNOSMSc" title="TOP 15 MONSTERS || FITO HillClimb 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item">
-					<iframe width="1903" height="822" src="https://www.youtube.com/embed/3_O8QNOSMSc" title="TOP 15 MONSTERS || FITO HillClimb 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item">
-					<iframe width="1903" height="822" src="https://www.youtube.com/embed/3_O8QNOSMSc" title="TOP 15 MONSTERS || FITO HillClimb 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item">
-					<iframe width="1903" height="822" src="https://www.youtube.com/embed/3_O8QNOSMSc" title="TOP 15 MONSTERS || FITO HillClimb 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</a>
-				<a class="grid-item" href="{{asset('FE/rev/ken-2.jpg')}}" data-lightbox="gallery-item">
-					<iframe width="1903" height="822" src="https://www.youtube.com/embed/3_O8QNOSMSc" title="TOP 15 MONSTERS || FITO HillClimb 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				</a>
-
+				@endif
+				@endforeach
 			</div>
 		</div>
 	</div>
 </section>
+@endif
+
 <!-- <section id="content">
 	<div class="content-wrap">
 

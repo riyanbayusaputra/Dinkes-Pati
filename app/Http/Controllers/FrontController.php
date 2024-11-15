@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\Banner;
 use App\Models\Document;
+use App\Models\BeritaModel;
 use App\Models\VideoBanner;
 use Illuminate\Http\Request;
-use App\Models\ActivityGallery;
-use App\Models\BeritaModel;
-use App\Models\KritikdansaranModel;
 use App\Models\RatingUsModel;
-use App\Models\Video; // Pastikan untuk mengimpor model Video
+use App\Models\ActivityGallery;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\KritikdansaranModel;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Video; // Pastikan untuk mengimpor model Video
 
 class FrontController extends Controller
 {
@@ -53,11 +54,11 @@ class FrontController extends Controller
     {
         $faqs = Faq::with('answers')->get();
         // Mengambil semua data galeri
-        $activityGalleries = ActivityGallery::limit(3)->get(); // Mengambil semua galeri kegiatan
+        $activityGalleries = ActivityGallery::limit(6)->get(); // Mengambil semua galeri kegiatan
         $berita = BeritaModel::limit(4)->get(); // Mengambil semua galeri kegiatan
-
+        $banners = Banner::all(); 
         // Mengambil semua video untuk slider
-        $videos = Video::all();
+        $videos = Video::limit(6)->get();
         $videoBanner = VideoBanner::all(); // Ambil semua video banner
 
         // Jika ada video, ambil ID video dari URL
@@ -69,7 +70,7 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->count();
         // Mengirimkan data galeri dan video ke view 'fE.home'
         // return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
-        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
+        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit','banners'));
     }
 
     public function kajian(Request $request)
@@ -205,25 +206,31 @@ class FrontController extends Controller
         return Redirect::back()->with('info', 'kritik dan saran gagal tersimpan');
     }
     public function setratingus(Request $request)
-    {
-        // Validasi input
-        $validated = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'email' => 'required',
-            'rate' => 'required',
-        ]);
-        if ($validated->fails()) {
-            return Redirect::back()->withErrors($validated)->withInput($request->all())->with('info', 'Pastikan data sudah terisi semua');
-        }
+{
+    // Validasi input
+    $validated = Validator::make($request->all(), [
+        'nama' => 'required|string|max:255',
+        'email' => 'required|email',
+        'rate' => 'required|integer|min:1|max:5', // Pastikan rating antara 1 dan 5
+    ]);
 
-        $k = RatingUsModel::create([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'rate' => $request->rate,
-        ]);
-        if ($k) {
-            return Redirect::back()->with('info', 'Terima kasih atas kritik dan sarannya');
-        }
-        return Redirect::back()->with('info', 'kritik dan saran gagal tersimpan');
+    if ($validated->fails()) {
+        return Redirect::back()->withErrors($validated)->withInput()->with('info', 'Pastikan data sudah terisi semua');
     }
+
+    // Menyimpan data
+    $k = RatingUsModel::create([
+        'nama' => $request->nama,
+        'email' => $request->email,
+        'rate' => $request->rate,
+    ]);
+
+    if ($k) {
+        // Jika sukses, beri pesan sukses dan kosongkan form
+        return Redirect::back()->with('info', 'Terima kasih atas kritik dan sarannya')->withInput();
+    }
+
+    return Redirect::back()->with('info', 'Kritik dan saran gagal tersimpan')->withInput();
+}
+
 }
