@@ -169,12 +169,14 @@ class FrontController extends Controller
 
     public function bantuan()
     {
-        return view('FE.bantuan');
+        $visit = DB::table('shetabit_visits')->count();
+        return view('FE.bantuan' ,compact('visit'));
     }
 
     public function infografis()
     {
-        return view('FE.infografis');
+        $visit = DB::table('shetabit_visits')->count();
+        return view('FE.infografis',compact('visit'));
     }
 
     public function profile()
