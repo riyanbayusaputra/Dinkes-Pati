@@ -36,6 +36,11 @@
 	<link rel="stylesheet" href="{{asset('FE/base2/css/fonts.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('FE/base2/hosting.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('FE/css/components/bs-rating.css')}}" type="text/css" />
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+
+
 	@vite(['resources/js/app.js'])
 	<!-- Document Title
 	============================================= -->
