@@ -24,13 +24,9 @@
 <script src="{{asset('FE/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js')}}"></script>
 <script src="{{asset('FE/js/components/star-rating.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
-	var tpj = jQuery;
-	tpj.noConflict();
-	var $ = jQuery.noConflict();
-
-
-	tpj(document).ready(function() {
+	$(document).ready(function() {
 		const ctx = document.getElementById('riskChart').getContext('2d');
 		const riskChart = new Chart(ctx, {
 			type: 'pie',
@@ -187,6 +183,17 @@
 				borderRadius: 12,
 			}
 		});
+
+	})
+</script>
+<script>
+	var tpj = jQuery;
+	tpj.noConflict();
+	var $ = jQuery.noConflict();
+
+
+	tpj(document).ready(function() {
+
 		var apiRevoSlider = tpj('#rev_slider_k_fullwidth').show().revolution({
 			sliderType: "standard",
 			sliderLayout: "fullwidth",
