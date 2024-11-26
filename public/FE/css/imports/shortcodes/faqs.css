@@ -10,9 +10,11 @@
   margin-bottom: 5px;
   font-size: 15px;
 }
+
 .faqlist li a {
   color: #444;
 }
+
 .faqlist li a:hover {
-  color: #1ABC9C !important;
+  color: #006FCF !important;
 }

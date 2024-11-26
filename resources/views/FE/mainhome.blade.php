@@ -3,38 +3,38 @@
 @section('content')
 
 <section id="slider" class="slider-element slider-parallax revslider-wrap min-vh-0">
-    <div class="slider-inner">
-        <div id="rev_slider_k_fullwidth_wrapper" class="rev_slider_wrapper fullwidth-container" style="padding:0px;">
-            <div id="rev_slider_k_fullwidth" class="rev_slider fullwidthbanner" style="display:none;" data-version="5.1.4">
-                <ul>
-                    @foreach ($banners as $banner)
-                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1500" 
-                            data-thumb="{{ asset('images/' . $banner->image) }}" 
-                            data-delay="15000" data-saveperformance="off" 
-                            data-title="{{ $banner->title }}">
-                            <img src="{{ asset('images/' . $banner->image) }}" 
-                                alt="{{ $banner->title }}" 
-                                data-bgposition="center bottom" 
-                                data-bgpositionend="center top" 
-                                data-kenburns="on" 
-                                data-duration="25000" 
-                                data-ease="Linear.easeNone" 
-                                data-scalestart="100" 
-                                data-scaleend="140" 
-                                data-rotatestart="0" 
-                                data-rotateend="0" 
-                                data-blurstart="0" 
-                                data-blurend="0" 
-                                data-offsetstart="0 0" 
-                                data-offsetend="0 0" 
-                                class="rev-slidebg" 
-                                data-no-retina>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
+	<div class="slider-inner">
+		<div id="rev_slider_k_fullwidth_wrapper" class="rev_slider_wrapper fullwidth-container" style="padding:0px;">
+			<div id="rev_slider_k_fullwidth" class="rev_slider fullwidthbanner" style="display:none;" data-version="5.1.4">
+				<ul>
+					@foreach ($banners as $banner)
+					<li data-transition="fade" data-slotamount="1" data-masterspeed="1500"
+						data-thumb="{{ asset('images/' . $banner->image) }}"
+						data-delay="15000" data-saveperformance="off"
+						data-title="{{ $banner->title }}">
+						<img src="{{ asset('images/' . $banner->image) }}"
+							alt="{{ $banner->title }}"
+							data-bgposition="center bottom"
+							data-bgpositionend="center top"
+							data-kenburns="on"
+							data-duration="25000"
+							data-ease="Linear.easeNone"
+							data-scalestart="100"
+							data-scaleend="140"
+							data-rotatestart="0"
+							data-rotateend="0"
+							data-blurstart="0"
+							data-blurend="0"
+							data-offsetstart="0 0"
+							data-offsetend="0 0"
+							class="rev-slidebg"
+							data-no-retina>
+					</li>
+					@endforeach
+				</ul>
+			</div>
+		</div>
+	</div>
 </section><!-- #slider end -->
 
 
@@ -110,40 +110,36 @@
 </section>
 
 <!-- GALLERY -->
-@if (count($activityGalleries) == 6)
 <section id="content">
-
 	<div class="content-wrap">
 		<div class="container clearfix">
 			<div class="row justify-content-center">
-				<div class="col-md-7 text-center">
-					<h6 class="display-4 text-primary font-weight-bold font-display">Gallery</h6>
+				<div class="fancy-title title-bottom-border">
+					<h3>Gallery</h3>
 				</div>
 			</div>
+			<!-- Flex Thumbs Slider
+								============================================= -->
+			<div class="fslider flex-thumb-grid grid-6 mt-4" data-pagi="false" data-speed="650" data-pause="3500" data-animation="fade" data-arrows="true" data-thumbs="true">
+				<div class="flexslider">
+					<div class="slider-wrap">
+						@foreach ($activityGalleries as $activity)
+						@if(!empty($activity->image))
+						<div class="slide" data-thumb="{{ asset('images/activity-galleries/' . $activity->image) }}">
+							<!-- Post Article -->
+							<div class="entry mb-0">
+								<img src="{{ asset('images/activity-galleries/' . $activity->image) }}" alt="Image">
 
-			@if($activityGalleries->isNotEmpty())
-			<div class="masonry-thumbs grid-container grid-3" data-big="1" data-lightbox="gallery">
-				@foreach ($activityGalleries as $activity)
-					@if(!empty($activity->image))
-					<a class="grid-item" href="{{ asset('images/activity-galleries/' . $activity->image) }}" data-lightbox="gallery-item">
-						<img src="{{ asset('images/activity-galleries/' . $activity->image) }}" alt="Gallery Image">
-					</a>
-					@endif
-				@endforeach
-			</div>
-			@else
-			<div class="row justify-content-center">
-				<div class="col-md-7 text-center">
-					<p class="text-muted">No gallery images available at the moment.</p>
+							</div>
+						</div>
+						@endif
+						@endforeach
+					</div>
 				</div>
-			</div>
-			@endif
-
+			</div> <!-- Flex Slider End -->
 		</div>
 	</div>
-
 </section>
-@endif
 
 <!-- END GALLERY -->
 <!-- BERITA -->
@@ -151,12 +147,11 @@
 	<div class="content-wrap">
 		<div class="container clearfix">
 			<div class="row justify-content-center">
-				<div class="col-md-7 text-center">
-					<h6 class="display-4 color font-weight-bold font-display">Berita</h6>
+				<div class="fancy-title title-bottom-border">
+					<h3>Berita</h3>
 				</div>
 			</div>
 			<div id="posts" class="post-grid row grid-container gutter-40 clearfix" data-layout="fitRows">
-				<!-- Loop Dynamic Content -->
 				@foreach ($berita as $activity)
 				<div class="entry col-md-4 col-sm-6 col-12">
 					<div class="grid-inner">
@@ -180,7 +175,6 @@
 					</div>
 				</div>
 				@endforeach
-				<!-- End Loop Dynamic Content -->
 			</div>
 		</div>
 	</div>
@@ -213,27 +207,27 @@
 <section id="content">
 	<div class="section m-0 border-0 bg-color dark" style="padding: 10px 0;">
 		<div class="container center clearfix">
-			<div class="heading-block">
+			<div class="heading-block mt-3">
 				<h2>Video Tutorial</h2>
 			</div>
 
 			<div class="masonry-thumbs grid-container grid-3" data-big="1" data-lightbox="gallery">
 				@foreach ($videos as $video)
 				@php
-					// Mendapatkan ID video YouTube dari URL
-					parse_str(parse_url($video->youtube_url, PHP_URL_QUERY), $urlParams);
-					$videoId = $urlParams['v'] ?? basename(parse_url($video->youtube_url, PHP_URL_PATH));
+				// Mendapatkan ID video YouTube dari URL
+				parse_str(parse_url($video->youtube_url, PHP_URL_QUERY), $urlParams);
+				$videoId = $urlParams['v'] ?? basename(parse_url($video->youtube_url, PHP_URL_PATH));
 				@endphp
 				@if ($videoId)
 				<a class="grid-item" href="{{ asset('FE/rev/ken-2.jpg') }}" data-lightbox="gallery-item">
-					<iframe 
-						width="1903" 
-						height="822" 
-						src="https://www.youtube.com/embed/{{ $videoId }}" 
-						title="{{ $video->title }}" 
-						frameborder="0" 
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-						referrerpolicy="strict-origin-when-cross-origin" 
+					<iframe
+						width="1903"
+						height="822"
+						src="https://www.youtube.com/embed/{{ $videoId }}"
+						title="{{ $video->title }}"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
 						allowfullscreen>
 					</iframe>
 				</a>

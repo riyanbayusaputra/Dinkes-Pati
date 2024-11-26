@@ -14,9 +14,12 @@
   position: relative;
   margin-bottom: 50px;
 }
-.posts-md .entry, .posts-sm .entry {
+
+.posts-md .entry,
+.posts-sm .entry {
   margin-bottom: 0;
 }
+
 .entry::after {
   content: '';
   position: relative;
@@ -24,6 +27,7 @@
   margin-top: 50px;
   background-color: whitesmoke;
 }
+
 .entry-image {
   margin-bottom: 30px;
 }
@@ -34,7 +38,7 @@
 }
 
 .entry-image,
-.entry-image > a,
+.entry-image>a,
 .entry-image .slide a,
 .entry-image img {
   display: block;
@@ -50,15 +54,17 @@
 .entry-image iframe {
   display: block;
 }
+
 .entry-image video {
   display: block;
   width: 100%;
 }
+
 .entry-image img {
   border-radius: 3px;
 }
 
-.posts-md .entry-image + .entry-title {
+.posts-md .entry-image+.entry-title {
   margin-top: 0.875rem;
 }
 
@@ -71,34 +77,42 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 .entry-title h2 a,
 .entry-title h3 a,
 .entry-title h4 a {
   color: #333333;
 }
+
 .entry-title h2 a:hover,
 .entry-title h3 a:hover,
 .entry-title h4 a:hover {
-  color: #1ABC9C;
+  color: #006FCF;
 }
+
 .entry-title.title-sm h2,
 .entry-title.title-sm h3 {
   font-size: 1.25rem;
   letter-spacing: 0;
 }
+
 .entry-title.title-sm h3 {
   font-size: 1.125rem;
 }
+
 .entry-title.title-xs h2,
 .entry-title.title-xs h3 {
   font-size: 1rem;
   letter-spacing: 0;
 }
+
 .entry-title h4 {
   font-size: 0.875rem;
   letter-spacing: 0;
 }
-.entry-title.nott h2, .entry-title.nott h3,
+
+.entry-title.nott h2,
+.entry-title.nott h3,
 .entry-title h4 {
   text-transform: none;
 }
@@ -108,15 +122,20 @@
   overflow: hidden;
   margin-top: 10px;
 }
+
 .posts-sm .entry-meta {
   margin-top: 6px;
 }
+
 .single-post .entry-meta {
   margin-bottom: 20px;
 }
-.posts-md .entry-meta, .posts-sm .entry-meta {
+
+.posts-md .entry-meta,
+.posts-sm .entry-meta {
   margin-bottom: 0px;
 }
+
 .entry-meta ul {
   display: -ms-flexbox;
   display: flex;
@@ -220,7 +239,7 @@ body:not(.device-touch) .entry-link {
 
 .entry-link:hover {
   color: #FFF;
-  background-color: #1ABC9C;
+  background-color: #006FCF;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -357,10 +376,11 @@ body:not(.device-touch) .entry-link {
 
   .post-timeline .entry:hover .entry-timeline,
   .post-timeline .entry:hover .timeline-divider {
-    border-color: #1ABC9C;
-    color: #1ABC9C;
+    border-color: #006FCF;
+    color: #006FCF;
   }
 }
+
 .entry.entry-date-section {
   margin: 50px 0 80px;
   text-align: center;
@@ -384,6 +404,7 @@ body:not(.device-touch) .entry-link {
 }
 
 @media (min-width: 992px) {
+
   /* Blog - Timeline - Sidebar
   -----------------------------------------------------------------*/
   .postcontent .post-timeline::before {
@@ -423,18 +444,20 @@ body:not(.device-touch) .entry-link {
     width: 32px;
   }
 }
+
 .more-link {
   display: inline-block;
-  border-bottom: 1px solid #1ABC9C;
+  border-bottom: 1px solid #006FCF;
   padding: 0 2px;
   font-family: "PT Serif", serif;
   font-style: italic;
 }
+
 .more-link:hover {
   border-bottom-color: #555;
 }
 
-.post-navigation + .line {
+.post-navigation+.line {
   margin-top: 50px;
 }
 
@@ -447,10 +470,12 @@ body:not(.device-touch) .entry-link {
   height: 64px;
   margin-right: 15px;
 }
+
 .author-image img {
   width: 64px;
   height: 64px;
 }
+
 .author-desc {
   position: relative;
   overflow: hidden;
@@ -518,8 +543,8 @@ body:not(.device-touch) .entry-link {
   padding: 10px 0 0 35px;
 }
 
-.commentlist > li:first-child,
-#reviews .commentlist > li:first-child {
+.commentlist>li:first-child,
+#reviews .commentlist>li:first-child {
   padding-top: 0;
   margin-top: 0;
 }
@@ -585,7 +610,7 @@ body:not(.device-touch) .entry-link {
 }
 
 .comment-content .comment-author a:hover {
-  color: #1ABC9C;
+  color: #006FCF;
 }
 
 .comment-content .comment-author span {
@@ -665,10 +690,10 @@ body:not(.device-touch) .entry-link {
 
 .fb-comments,
 .fb_iframe_widget,
-.fb-comments > span,
-.fb_iframe_widget > span,
-.fb-comments > span > iframe,
-.fb_iframe_widget > span > iframe {
+.fb-comments>span,
+.fb_iframe_widget>span,
+.fb-comments>span>iframe,
+.fb_iframe_widget>span>iframe {
   display: block !important;
   width: 100% !important;
   margin: 0;
@@ -683,10 +708,10 @@ div.alignleft {
   max-width: 100%;
 }
 
-div.alignleft > img,
-div.alignnone > img,
-div.aligncenter > img,
-div.alignright > img {
+div.alignleft>img,
+div.alignnone>img,
+div.aligncenter>img,
+div.alignright>img {
   display: block;
   float: none;
 }

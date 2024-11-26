@@ -9,12 +9,15 @@
 .table .success {
   color: #3c763d;
 }
+
 .table .info {
   color: #31708f;
 }
+
 .table .warning {
   color: #8a6d3b;
 }
+
 .table .danger {
   color: #a94442;
 }
@@ -23,10 +26,11 @@
 .page-link,
 .page-link:hover,
 .page-link:focus {
-  color: #1ABC9C;
+  color: #006FCF;
 }
 
-.btn-link:hover, .btn-link:focus {
+.btn-link:hover,
+.btn-link:focus {
   color: #222;
 }
 
@@ -41,9 +45,11 @@
   z-index: 5;
   display: inline-block;
 }
+
 .carousel-control .icon-chevron-left {
   left: 50%;
 }
+
 .carousel-control .icon-chevron-right {
   right: 50%;
 }
@@ -69,21 +75,22 @@
 .page-link:hover,
 .page-link:focus {
   color: #FFF !important;
-  background-color: #1ABC9C !important;
-  border-color: #1ABC9C !important;
+  background-color: #006FCF !important;
+  border-color: #006FCF !important;
 }
 
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
-  background-color: #1ABC9C;
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus {
+  background-color: #006FCF;
 }
 
-label.radio, label.checkbox {
+label.radio,
+label.checkbox {
   padding-left: 20px;
 }
 
-.input-group-lg > .input-group-addon {
+.input-group-lg>.input-group-addon {
   line-height: 1;
 }
 
@@ -98,31 +105,39 @@ label.radio, label.checkbox {
   overflow: hidden;
   z-index: 1;
 }
+
 .shape-divider[data-position="bottom"] {
   top: auto;
   bottom: -1px;
 }
+
 .shape-divider[data-front="true"] {
   z-index: 4;
 }
+
 .shape-divider svg {
   position: relative;
   width: 100%;
-  width: calc( 100% + 1.3px );
+  width: calc(100% + 1.3px);
   height: 50px;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
 }
-.shape-divider[data-position="bottom"], .shape-divider[data-flip-vertical="true"] {
+
+.shape-divider[data-position="bottom"],
+.shape-divider[data-flip-vertical="true"] {
   transform: rotate(180deg);
 }
+
 .shape-divider[data-position="bottom"][data-flip-vertical="true"] {
   transform: rotate(0deg);
 }
+
 .shape-divider[data-flip="true"] svg {
   transform: translateX(-50%) rotateY(180deg);
 }
+
 .shape-divider-fill {
   fill: #FFF;
   transform-origin: center;
@@ -141,9 +156,11 @@ label.radio, label.checkbox {
   transform: translate3d(0, 0, 0);
   animation-timing-function: linear;
 }
+
 .mb_YTVPlayer:focus {
   outline: 0;
 }
+
 .mb_YTVPlayer.fullscreen {
   display: block !important;
   position: fixed !important;
@@ -154,6 +171,7 @@ label.radio, label.checkbox {
   margin: 0 !important;
   border: none !important;
 }
+
 .mb_YTVPlayer.fullscreen .mbYTP_wrapper {
   opacity: 1 !important;
 }
@@ -174,6 +192,7 @@ label.radio, label.checkbox {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   background: rgba(0, 0, 0, 0.5);
 }
+
 .inline_YTPlayer img {
   border: none !important;
   -moz-transform: none !important;
@@ -198,21 +217,27 @@ label.radio, label.checkbox {
 .rating-xl {
   font-size: 3rem !important;
 }
+
 .rating-lg {
   font-size: 2.5rem !important;
 }
+
 .rating-md {
   font-size: 2rem !important;
 }
+
 .rating-sm {
   font-size: 1.75rem !important;
 }
+
 .rating-xs {
   font-size: 1.25rem !important;
 }
+
 .rating-container .star {
   margin: 0 2px !important;
 }
+
 .rating-container .filled-stars {
   -webkit-text-stroke: 0px !important;
   text-shadow: none !important;
@@ -227,24 +252,28 @@ label.radio, label.checkbox {
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 @keyframes fadeInDownSmall {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 .fadeInDownSmall {
   -webkit-animation-name: fadeInDownSmall;
   animation-name: fadeInDownSmall;
@@ -256,24 +285,28 @@ label.radio, label.checkbox {
     -webkit-transform: translate3d(-50%, 0, 0);
     transform: translate3d(-50%, 0, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 @keyframes fadeInLeftSmall {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-50%, 0, 0);
     transform: translate3d(-50%, 0, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 .fadeInLeftSmall {
   -webkit-animation-name: fadeInLeftSmall;
   animation-name: fadeInLeftSmall;
@@ -285,24 +318,28 @@ label.radio, label.checkbox {
     -webkit-transform: translate3d(50%, 0, 0);
     transform: translate3d(50%, 0, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 @keyframes fadeInRightSmall {
   from {
     opacity: 0;
     -webkit-transform: translate3d(50%, 0, 0);
     transform: translate3d(50%, 0, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 .fadeInRightSmall {
   -webkit-animation-name: fadeInRightSmall;
   animation-name: fadeInRightSmall;
@@ -314,24 +351,28 @@ label.radio, label.checkbox {
     -webkit-transform: translate3d(0, 50%, 0);
     transform: translate3d(0, 50%, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 @keyframes fadeInUpSmall {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 50%, 0);
     transform: translate3d(0, 50%, 0);
   }
+
   to {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
+
 .fadeInUpSmall {
   -webkit-animation-name: fadeInUpSmall;
   animation-name: fadeInUpSmall;
@@ -341,22 +382,26 @@ label.radio, label.checkbox {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(0, 50%, 0);
     transform: translate3d(0, 50%, 0);
   }
 }
+
 @keyframes fadeOutDownSmall {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(0, 50%, 0);
     transform: translate3d(0, 50%, 0);
   }
 }
+
 .fadeOutDownSmall {
   -webkit-animation-name: fadeOutDownSmall;
   animation-name: fadeOutDownSmall;
@@ -366,22 +411,26 @@ label.radio, label.checkbox {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(-50%, 0, 0);
     transform: translate3d(-50%, 0, 0);
   }
 }
+
 @keyframes fadeOutLeftSmall {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(-50%, 0, 0);
     transform: translate3d(-50%, 0, 0);
   }
 }
+
 .fadeOutLeftSmall {
   -webkit-animation-name: fadeOutLeftSmall;
   animation-name: fadeOutLeftSmall;
@@ -391,22 +440,26 @@ label.radio, label.checkbox {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(50%, 0, 0);
     transform: translate3d(50%, 0, 0);
   }
 }
+
 @keyframes fadeOutRightSmall {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(50%, 0, 0);
     transform: translate3d(50%, 0, 0);
   }
 }
+
 .fadeOutRightSmall {
   -webkit-animation-name: fadeOutRightSmall;
   animation-name: fadeOutRightSmall;
@@ -416,22 +469,26 @@ label.radio, label.checkbox {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
   }
 }
+
 @keyframes fadeOutUpSmall {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
   }
 }
+
 .fadeOutUpSmall {
   -webkit-animation-name: fadeOutUpSmall;
   animation-name: fadeOutUpSmall;

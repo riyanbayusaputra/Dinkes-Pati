@@ -4,7 +4,12 @@
 /* ----------------------------------------------------------------
 	Basic
 -----------------------------------------------------------------*/
-dl, dt, dd, ol, ul, li {
+dl,
+dt,
+dd,
+ol,
+ul,
+li {
   margin: 0;
   padding: 0;
 }
@@ -24,19 +29,19 @@ em {
 }
 
 ::selection {
-  background: #1ABC9C;
+  background: #006FCF;
   color: #FFF;
   text-shadow: none;
 }
 
 ::-moz-selection {
-  background: #1ABC9C;
+  background: #006FCF;
   color: #FFF;
   text-shadow: none;
 }
 
 ::-webkit-selection {
-  background: #1ABC9C;
+  background: #006FCF;
   color: #FFF;
   text-shadow: none;
 }
@@ -57,11 +62,13 @@ body {
 
 a {
   text-decoration: none !important;
-  color: #1ABC9C;
+  color: #006FCF;
 }
+
 a:hover {
   color: #222;
 }
+
 a img {
   border: none;
 }
@@ -123,13 +130,13 @@ h6 {
   margin-bottom: 20px;
 }
 
-h1 > span:not(.nocolor):not(.badge),
-h2 > span:not(.nocolor):not(.badge),
-h3 > span:not(.nocolor):not(.badge),
-h4 > span:not(.nocolor):not(.badge),
-h5 > span:not(.nocolor):not(.badge),
-h6 > span:not(.nocolor):not(.badge) {
-  color: #1ABC9C;
+h1>span:not(.nocolor):not(.badge),
+h2>span:not(.nocolor):not(.badge),
+h3>span:not(.nocolor):not(.badge),
+h4>span:not(.nocolor):not(.badge),
+h5>span:not(.nocolor):not(.badge),
+h6>span:not(.nocolor):not(.badge) {
+  color: #006FCF;
 }
 
 p,
@@ -153,16 +160,18 @@ small {
 
 @media (max-width: 1200px) {
   .display-1 {
-    font-size: calc( 1.725rem + 5.7vw );
+    font-size: calc(1.725rem + 5.7vw);
   }
+
   .display-2 {
-    font-size: calc( 1.675rem + 5.1vw );
+    font-size: calc(1.675rem + 5.1vw);
   }
+
   .display-3 {
-    font-size: calc( 1.575rem + 3.9vw );
+    font-size: calc(1.575rem + 3.9vw);
   }
+
   .display-4 {
-    font-size: calc( 1.475rem + 2.7vw );
+    font-size: calc(1.475rem + 2.7vw);
   }
 }
-

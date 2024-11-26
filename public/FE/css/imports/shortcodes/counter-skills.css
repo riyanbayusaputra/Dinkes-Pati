@@ -11,29 +11,36 @@
   font-weight: 700;
   font-family: "Poppins", sans-serif;
 }
+
 .counter.counter-small {
   font-size: 28px;
 }
+
 .counter.counter-large {
   font-size: 56px;
 }
+
 .counter.counter-xlarge {
   font-size: 64px;
   font-weight: 400;
 }
+
 .counter.counter-inherit {
   font-size: inherit;
   font-weight: inherit;
 }
-.counter + h5 {
+
+.counter+h5 {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-.widget .counter + h5 {
+
+.widget .counter+h5 {
   opacity: 0.7;
 }
-.counter.counter-lined + h5::before {
+
+.counter.counter-lined+h5::before {
   display: block;
   position: relative;
   margin: 20px auto 25px auto;
@@ -42,10 +49,13 @@
   border-top: 2px solid #444;
   opacity: 0.9;
 }
-.counter.counter-small + h5 {
+
+.counter.counter-small+h5 {
   font-size: 0.875rem;
 }
-.counter.counter-large + h5, .counter.counter-xlarge + h5 {
+
+.counter.counter-large+h5,
+.counter.counter-xlarge+h5 {
   font-size: 15px;
   font-weight: 300;
 }
@@ -65,22 +75,27 @@
   /* News Carousel Overlays
   -----------------------------------------------------------------*/
 }
+
 body:not(.device-touch) .rounded-skill {
   -webkit-transition: opacity .4s ease;
   -o-transition: opacity .4s ease;
   transition: opacity .4s ease;
 }
-.rounded-skill + h5 {
+
+.rounded-skill+h5 {
   margin-bottom: 0;
 }
+
 .rounded-skill i {
   font-size: 42px;
 }
+
 .rounded-skill canvas {
   position: absolute;
   top: 0;
   left: 0;
 }
+
 .news-carousel .rounded-skill {
   position: absolute;
   margin: 0 !important;
@@ -98,6 +113,7 @@ body:not(.device-touch) .rounded-skill {
   list-style: none;
   padding-top: 25px;
 }
+
 .skills li {
   position: relative;
   margin-top: 38px;
@@ -106,22 +122,25 @@ body:not(.device-touch) .rounded-skill {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
+
 .skills li:first-child {
   margin-top: 0;
 }
+
 .skills li .progress {
   position: absolute;
   top: 0;
   left: 0;
   width: 0;
   height: 100%;
-  background-color: #1ABC9C;
+  background-color: #006FCF;
   overflow: visible !important;
   border-radius: 2px;
   -webkit-transition: width 1.2s ease-in-out;
   -o-transition: width 1.2s ease-in-out;
   transition: width 1.2s ease-in-out;
 }
+
 .skills li .progress-percent {
   position: absolute;
   top: -28px;
@@ -135,11 +154,13 @@ body:not(.device-touch) .rounded-skill {
   font-size: 11px;
   border-radius: 2px;
 }
+
 .skills li .progress-percent .counter {
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
-.skills li > span {
+
+.skills li>span {
   position: absolute;
   z-index: 1;
   top: -23px;

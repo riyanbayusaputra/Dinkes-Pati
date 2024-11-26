@@ -25,7 +25,7 @@
 				<!-- Header Buttons
 						============================================= -->
 				<div class="header-misc">
-					<a href="{{ route('bantuan') }}" class="button rounded-pill bg-color-2 button-light text-dark ls0 font-weight-medium m-0">Bantuan</a>
+					<a href="{{ route('bantuan') }}" class="button rounded-pill bg-color-2 button-light text-white ls0 font-weight-medium m-0">Bantuan</a>
 				</div>
 
 				<!-- Primary Navigation
