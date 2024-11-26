@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\BeritaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -41,12 +41,15 @@ class BeritaController extends Controller
             'description' => $request->description,
         ];
 
-        if ($request->image) {
-            // Upload gambar
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images/berita'), $imageName);
-            $input['image'] = $imageName;
+        if ($request->hasFile('image')) {
+            $imageName = $request->file('image')->store('berita/' . date('Y/m/d'), 'public');
+            $input['image'] = $imageName; // Simpan path ke dalam array input
+        } else {
+            $input['image'] = null; // Set null jika tidak ada gambar
         }
+        
+
+     
 
         // Simpan ke database
         $b = BeritaModel::updateOrCreate([
@@ -89,11 +92,11 @@ class BeritaController extends Controller
     public function destroy($id, BeritaModel $berita)
     {
         $berita = BeritaModel::where('id', $id)->first();
-        // Hapus gambar dari folder
-        if (file_exists(public_path('images/berita/' . $berita->image))) {
-            unlink(public_path('images/berita/' . $berita->image));
-        }
-
+       
+            // Hapus gambar dari storage jika ada
+            if ($berita->image) {
+                Storage::disk('public')->delete($berita->image);
+            }
         // Hapus data dari database
         $berita->delete();
         return Redirect::to('/berita')->with('info', 'Data berhasil dihapus');

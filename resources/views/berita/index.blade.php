@@ -66,7 +66,7 @@
                                     <td>{{ \Illuminate\Support\Str::limit($activity->description, 50) }}</td>
                                     <td>
                                         @if ($activity->image)
-                                        <img src="{{ asset('images/berita/' . $activity->image) }}"
+                                        <img src="{{ Storage::url( $activity->image) }}"
                                             alt="{{ $activity->activity_title }}" class="img-fluid"
                                             style="max-width: 100px;">
                                         @else

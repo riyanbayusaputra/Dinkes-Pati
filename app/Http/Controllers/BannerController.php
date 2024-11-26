@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 
@@ -36,9 +36,15 @@ class BannerController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
-        // Upload gambar
-        $imageName = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('images'), $imageName);
+      
+
+
+        if ($request->hasFile('image')) {
+            $imageName = $request->file('image')->store('banner/' . date('Y/m/d'), 'public');
+        } else {
+            $imageName = null; // Pastikan image tidak kosong
+        }
+
     
         // Simpan ke database
         Banner::create([
@@ -68,16 +74,16 @@ class BannerController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Jika gambar baru diupload
-        if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();  
-            $request->image->move(public_path('images'), $imageName);
 
-            // Hapus gambar lama
-            if (file_exists(public_path('images/'.$banner->image))) {
-                unlink(public_path('images/'.$banner->image));
+         // Jika gambar baru diupload
+         if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($banner->image) {
+                Storage::disk('public')->delete($banner->image);
             }
-
+    
+            // Simpan gambar baru
+            $imageName = $request->file('image')->store('banner/' . date('Y/m/d'), 'public');
             $banner->image = $imageName;
         }
 
@@ -93,10 +99,11 @@ class BannerController extends Controller
      */
     public function destroy(Banner $banner)
     {
-        // Hapus gambar dari folder
-        if (file_exists(public_path('images/'.$banner->image))) {
-            unlink(public_path('images/'.$banner->image));
-        }
+     
+              // Hapus gambar dari storage jika ada
+    if ($banner->image) {
+        Storage::disk('public')->delete($banner->image);
+    }
 
         // Hapus data dari database
         $banner->delete();

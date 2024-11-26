@@ -58,7 +58,7 @@
                                 
                                 <!-- Display Existing Image -->
                                 <div class="mt-4">
-                                    <img src="{{ asset('images/' . $banner->image) }}" alt="{{ $banner->title }}" class="w-40 h-auto">
+                                    <img src="{{ Storage::url ($banner->image) }}" alt="{{ $banner->title }}" class="w-40 h-auto">
                                     <p class="text-sm text-gray-600 mt-2">Current Image</p>
                                 </div>
                             </div>

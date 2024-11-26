@@ -9,10 +9,10 @@
 				<ul>
 					@foreach ($banners as $banner)
 					<li data-transition="fade" data-slotamount="1" data-masterspeed="1500"
-						data-thumb="{{ asset('images/' . $banner->image) }}"
+						data-thumb="{{ Storage::url ( $banner->image) }}"
 						data-delay="15000" data-saveperformance="off"
 						data-title="{{ $banner->title }}">
-						<img src="{{ asset('images/' . $banner->image) }}"
+						<img src="{{ Storage::url ($banner->image) }}"
 							alt="{{ $banner->title }}"
 							data-bgposition="center bottom"
 							data-bgpositionend="center top"
@@ -125,10 +125,10 @@
 					<div class="slider-wrap">
 						@foreach ($activityGalleries as $activity)
 						@if(!empty($activity->image))
-						<div class="slide" data-thumb="{{ asset('images/activity-galleries/' . $activity->image) }}">
+						<div class="slide" data-thumb="{{ Storage::url ( $activity->image) }}">
 							<!-- Post Article -->
 							<div class="entry mb-0">
-								<img src="{{ asset('images/activity-galleries/' . $activity->image) }}" alt="Image">
+								<img src="{{ Storage::url ( $activity->image) }}" alt="Image">
 
 							</div>
 						</div>
@@ -156,8 +156,8 @@
 				<div class="entry col-md-4 col-sm-6 col-12">
 					<div class="grid-inner">
 						<div class="entry-image">
-							<a href="{{ asset('images/berita/' . $activity->image) }}" data-lightbox="image">
-								<img src="{{ asset('images/berita/' . $activity->image) }}" alt="{{ $activity->activity_title }}">
+							<a href="{{ Storage::url ( $activity->image) }}" data-lightbox="image">
+								<img src="{{ Storage::url ($activity->image) }}" alt="{{ $activity->activity_title }}">
 							</a>
 						</div>
 						<div class="entry-title">

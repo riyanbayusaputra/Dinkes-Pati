@@ -61,7 +61,7 @@
                                 <!-- Menampilkan gambar yang sudah ada -->
                                 @if($activityGallery->image)
                                     <div class="mt-4">
-                                        <img src="{{ asset('images/' . $activityGallery->image) }}" alt="{{ $activityGallery->activity_title }}" class="w-40 h-auto">
+                                        <img src="{{ Storage::url ($activityGallery->image) }}" alt="{{ $activityGallery->activity_title }}" class="w-40 h-auto">
                                         <p class="text-sm text-gray-600 mt-2">Gambar saat ini</p>
                                     </div>
                                 @endif
