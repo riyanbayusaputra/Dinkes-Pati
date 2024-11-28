@@ -22,7 +22,7 @@
 
 	<!-- Covid Care Demo Specific Stylesheet -->
 	<link rel="stylesheet" href="{{asset('FE/base/covid-care.css')}}" type="text/css" /> <!-- Covid Care Custom Css -->
-	<link rel="stylesheet" href="{{asset('FE/base/css/fonts.css')}}" type="text/css" /> <!-- Covid Care Custom Fonts -->
+	<!-- <link rel="stylesheet" href="{{asset('FE/base/css/fonts.css')}}" type="text/css" />  -->
 	<!-- / -->
 
 	<link rel="stylesheet" href="{{asset('FE/css/dark.css')}}" type="text/css" />
@@ -39,7 +39,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('FE/include/rs-plugin/css/settings.css')}}" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{{asset('FE/include/rs-plugin/css/layers.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('FE/include/rs-plugin/css/navigation.css')}}">
-	<link rel="stylesheet" href="{{asset('FE/base2/css/fonts.css')}}" type="text/css" />
+	<!-- <link rel="stylesheet" href="{{asset('FE/base2/css/fonts.css')}}" type="text/css" /> -->
 	<link rel="stylesheet" href="{{asset('FE/base2/hosting.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('FE/css/components/bs-rating.css')}}" type="text/css" />
 
@@ -48,7 +48,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 
-	{{--@vite(['resources/js/app.js'])--}}
+	@vite(['resources/js/app.js'])
 	<!-- Document Title
 	============================================= -->
 	<title>DINAS KESEHATAN KOTA PATI</title>

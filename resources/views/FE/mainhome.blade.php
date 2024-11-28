@@ -120,7 +120,7 @@
 			</div>
 			<!-- Flex Thumbs Slider
 								============================================= -->
-			<div class="fslider flex-thumb-grid grid-6 mt-4" data-pagi="false" data-speed="650" data-pause="3500" data-animation="fade" data-arrows="true" data-thumbs="true">
+			<div class="fslider flex-thumb-grid grid-6 mt-4" data-pagi="false" data-speed="100" data-pause="3500" data-arrows="true" data-thumbs="true">
 				<div class="flexslider">
 					<div class="slider-wrap">
 						@foreach ($activityGalleries as $activity)
@@ -154,7 +154,7 @@
 			<div id="posts" class="post-grid row grid-container gutter-40 clearfix" data-layout="fitRows">
 				@foreach ($berita as $activity)
 				<div class="entry col-md-4 col-sm-6 col-12">
-					<div class="grid-inner">
+					<div class="grid-inner" data-animation="fadeInLeftBig">
 						<div class="entry-image">
 							<a href="{{ Storage::url ( $activity->image) }}" data-lightbox="image">
 								<img src="{{ Storage::url ($activity->image) }}" alt="{{ $activity->activity_title }}">
@@ -163,12 +163,7 @@
 						<div class="entry-title">
 							<h2><a href="blog-single.html">{{ $activity->activity_title }}</a></h2>
 						</div>
-						<div class="entry-meta">
-							<ul>
-								<li><i class="icon-calendar3"></i> {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y') }}</li>
-							</ul>
-						</div>
-						<div class="entry-content">
+						<div class="entry-content" style="margin-top: 10px !important;">
 							<p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
 							<a href="blog-single.html" class="more-link">Selengkapnya</a>
 						</div>
@@ -187,12 +182,12 @@
 		<div class="container clearfix">
 			<div class="row align-items-center gutter-40 ">
 				<div class="col-md-5">
-					<img data-animate="fadeInLeftBig" src="{{ asset('FE/Frame_7.png') }}" alt="Imac">
+					<img data-animate="fadeInLeftBig" src="{{ asset('FE/Group1673.png') }}" alt="Imac">
 				</div>
 
 				<div class="col-md-7">
 					<div class="heading-block">
-						<h2>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</h2>
+						<h2 style="color: #006FCF !important;">SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</h2>
 					</div>
 					<p><b>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</b> Merupakan aplikasi digital untuk memantau dan melakukan monitoring sanitasi dan pengolahan limbah rumah tangga. Kami terus berkomitmen untuk memberikan pelayanan dan informasi yang akurat untuk mendorong sebaran dan analisa yang kredibel.</p>
 
@@ -205,7 +200,7 @@
 
 @if (count($videos) == 6)
 <section id="content">
-	<div class="section m-0 border-0 bg-color dark" style="padding: 10px 0;">
+	<div class="section m-0 border-0" style="padding: 10px 0; background-color:#F3F3F3 !important">
 		<div class="container center clearfix">
 			<div class="heading-block mt-3">
 				<h2>Video Tutorial</h2>

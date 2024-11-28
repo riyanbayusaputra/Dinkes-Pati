@@ -2678,7 +2678,7 @@ img.lazy:not([src]) {
 .fslider .slide>a>img {
 	position: relative;
 	display: block;
-	/* width: 100%; */
+	width: 100%;
 	height: auto;
 	overflow: hidden;
 	-webkit-backface-visibility: hidden;
@@ -2687,7 +2687,7 @@ img.lazy:not([src]) {
 .fslider.h-100 .flexslider,
 .fslider.h-100 .slider-wrap,
 .fslider.h-100 .slide {
-	height: 90% !important;
+	height: 100% !important;
 }
 
 .fslider {
@@ -2720,11 +2720,12 @@ img.lazy:not([src]) {
 
 .flexslider .slider-wrap>.slide {
 	display: none;
+	height: 470px !important;
 	-webkit-backface-visibility: hidden;
 }
 
 .flexslider .slider-wrap img {
-	/* width: 100%; */
+	width: 100%;
 	display: block;
 }
 
@@ -7684,8 +7685,10 @@ body:not(.device-touch) .portfolio {
 .entry-image img {
 	display: block;
 	position: relative;
-	width: 100%;
-	height: auto;
+	/* width: 100%;
+	height: auto; */
+	width: 400px;
+	height: 224px;
 }
 
 .posts-sm .entry-image {
