@@ -32,7 +32,7 @@ class BeritaController extends Controller
     {
         $request->validate([
             'activity_title' => 'required|string|max:255',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Gambar opsional
             'description' => 'nullable|string',
         ]);
 
@@ -64,9 +64,13 @@ class BeritaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        // 
+        // Fetch the specific berita by ID
+        $berita = BeritaModel::findOrFail($id);
+
+        // Return the 'show' view with the berita data
+        return view('detail.berita', compact('berita'));
     }
 
     /**

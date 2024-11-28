@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('berita_models', function (Blueprint $table) {
             $table->id();
             $table->string('activity_title');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();

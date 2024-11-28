@@ -66,45 +66,53 @@
                 </a>
             </li>
 
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+            <li class="dropdown {{ Request::is('banner*', 'activity-galleries*', 'video_banners*', 'videos*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-columns"></i>
                     <span>Manage</span>
                 </a>
                 <ul class="dropdown-menu">
                     @can('manage banner')
-                    <li class="nav-item">
+                    <li class="{{ Request::is('banner*') ? 'active' : '' }}">
                         <a href="{{ route('banner.index') }}" class="nav-link" title="Banner">
-                            <i class="fas fa-image"></i><span>Banner</span>
+                            <i class="fas fa-image"></i>
+                            <span>Banner</span>
                         </a>
                     </li>
                     @endcan
-
+            
                     @can('manage gallery')
-                    <li class="nav-item">
+                    <li class="{{ Request::is('activity-galleries*') ? 'active' : '' }}">
                         <a href="{{ route('activity-galleries.index') }}" class="nav-link" title="Gallery">
-                            <i class="fas fa-photo-video"></i><span>Gallery</span>
+                            <i class="fas fa-photo-video"></i>
+                            <span>Gallery</span>
                         </a>
                     </li>
                     @endcan
-
+            
                     @can('manage video banner')
-                    <li class="nav-item">
+                    <li class="{{ Request::is('video_banners*') ? 'active' : '' }}">
                         <a href="{{ route('video_banners.index') }}" class="nav-link" title="Video Banner">
-                            <i class="fas fa-video"></i><span>Video Banner</span>
+                            <i class="fas fa-video"></i>
+                            <span>Video Banner</span>
                         </a>
                     </li>
                     @endcan
-
+            
                     @can('manage videos')
-                    <li class="nav-item">
+                    <li class="{{ Request::is('videos*') ? 'active' : '' }}">
                         <a href="{{ route('videos.index') }}" class="nav-link" title="Videos">
-                            <i class="fas fa-video"></i><span>Videos</span>
+                            <i class="fas fa-video"></i>
+                            <span>Videos</span>
                         </a>
                     </li>
                     @endcan
                 </ul>
             </li>
+            
+            
+            
+            
 
 
             <!-- Kuesioner Section -->
@@ -131,3 +139,20 @@
         </ul>
     </aside>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const manageDropdown = document.querySelector('.nav-link.has-dropdown');
+    
+    manageDropdown.addEventListener('click', function (e) {
+        e.preventDefault(); // Mencegah pengalihan tautan default
+        const parent = this.parentElement; // Mendapatkan elemen induk (li.dropdown)
+        
+        // Toggle kelas "show" dan atur atribut "aria-expanded"
+        const dropdownMenu = parent.querySelector('.dropdown-menu');
+        dropdownMenu.classList.toggle('show');
+        this.setAttribute('aria-expanded', dropdownMenu.classList.contains('show'));
+    });
+});
+
+</script>
