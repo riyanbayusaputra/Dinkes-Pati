@@ -36,7 +36,7 @@ class ActivityGalleryController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imageName = $request->file('image')->store('activity-galleries/' . date('Y/m/d'), 'public');
+            $imageName = $request->file('image')->store('activity-galleries/' . date('Y/m/d'));
         } else {
             $imageName = null; // Pastikan image tidak kosong
         }
@@ -83,17 +83,13 @@ class ActivityGalleryController extends Controller
         ]);
     
         // Jika gambar baru diupload
-        if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
-            if ($activityGallery->image) {
-                Storage::disk('public')->delete($activityGallery->image);
-            }
-    
-            // Simpan gambar baru
-            $imageName = $request->file('image')->store('activity-galleries/' . date('Y/m/d'), 'public');
-            $activityGallery->image = $imageName;
+       // Proses upload gambar baru jika ada
+       if ($request->hasFile('image')) {
+        if ($activityGallery->image) {
+            Storage::delete($activityGallery->image); // Hapus gambar lama
         }
-    
+        $activityGallery->image = $request->file('image')->store('activity-galleries/' . date('Y/m/d'));
+    }
         // Perbarui data lainnya
         $activityGallery->activity_title = $validated['activity_title'];
         $activityGallery->description = $validated['description'];
@@ -110,15 +106,32 @@ class ActivityGalleryController extends Controller
      */
     public function destroy(ActivityGallery $activityGallery)
     {
-         // Hapus gambar dari storage jika ada
-    if ($activityGallery->image) {
-        Storage::disk('public')->delete($activityGallery->image);
+     
+       // Hapus gambar dari storage jika ada
+       if ($activityGallery->image) {
+        Storage::delete($activityGallery->image);
     }
 
-        // Hapus data dari database
-        $activityGallery->delete();
+    // Hapus data dari database
+    $activityGallery->delete();
+
+
 
         return redirect()->route('activity-galleries.index')
                          ->with('success', 'Kegiatan berhasil dihapus.');
+    }
+
+    public function showGallery($path)
+    {
+        // Menyusun path lengkap menuju gambar
+        $fullPath = storage_path('app/' . $path);
+
+        // Cek apakah file ada
+        if (file_exists($fullPath)) {
+            return response()->file($fullPath);
+        }
+
+        // Jika file tidak ditemukan
+        abort(404, 'Gambar tidak ditemukan.');
     }
 }

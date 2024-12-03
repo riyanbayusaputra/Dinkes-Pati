@@ -42,7 +42,7 @@ class BeritaController extends Controller
         ];
 
         if ($request->hasFile('image')) {
-            $imageName = $request->file('image')->store('berita/' . date('Y/m/d'), 'public');
+            $imageName = $request->file('image')->store('berita/' . date('Y/m/d'));
             $input['image'] = $imageName; // Simpan path ke dalam array input
         } else {
             $input['image'] = null; // Set null jika tidak ada gambar
@@ -104,5 +104,18 @@ class BeritaController extends Controller
         // Hapus data dari database
         $berita->delete();
         return Redirect::to('/berita')->with('info', 'Data berhasil dihapus');
+    }
+    public function showberita($path)
+    {
+        // Menyusun path lengkap menuju gambar
+        $fullPath = storage_path('app/' . $path);
+
+        // Cek apakah file ada
+        if (file_exists($fullPath)) {
+            return response()->file($fullPath);
+        }
+
+        // Jika file tidak ditemukan
+        abort(404, 'Gambar tidak ditemukan.');
     }
 }

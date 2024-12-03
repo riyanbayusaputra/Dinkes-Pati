@@ -18,10 +18,38 @@ use App\Http\Controllers\ActivityGalleryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GrafischartController;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// Group route untuk Banner
+Route::prefix('banner')->group(function() {
+    Route::get('/view/{path}', [BannerController::class, 'showImage'])
+        ->name('banner.image')
+        ->where('path', '.*');
+});
+
+// Group route untuk Berita
+Route::prefix('berita')->group(function() {
+    Route::get('/view/{path}', [BeritaController::class, 'showberita'])
+        ->name('berita.image')
+        ->where('path', '.*');
+});
+
+Route::prefix('galery')->group(function() {
+Route::get('/view/{path}', [ActivityGalleryController::class, 'showGallery'])
+    ->where('path', '.*')
+    ->name('activity-gallery.image');
+});
+
+Route::get('documents/{id}/download', [DocumentController::class, 'download'])->name('documents.download');
+Route::get('documents/{id}/show-file', [DocumentController::class, 'showFile'])->name('documents.showFile');
+
+
+
 
 
 Route::resource('/questionnaires', QuestionnaireController::class);

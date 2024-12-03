@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Document;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -27,7 +28,7 @@ class DocumentController extends Controller
         ]);
 
         // Simpan file ke folder storage
-        $filePath = $request->file('file')->store('documents/' . date('Y/m/d'), 'public');
+        $filePath = $request->file('file')->store('documents/' . date('Y/m/d'));
 
         // Simpan informasi dokumen ke database
         Document::create([
@@ -70,15 +71,12 @@ class DocumentController extends Controller
         // Cek jika file diupload
         if ($request->hasFile('file')) {
             // Hapus file lama jika ada
-            if ($document->file) {
-                $oldFilePath = storage_path('app/public/' . $document->file);
-                if (file_exists($oldFilePath)) {
-                    unlink($oldFilePath);
-                }
+            if ($document->file && Storage::exists($document->file)) {
+                Storage::delete($document->file);
             }
 
             // Simpan file baru
-            $filePath = $request->file('file')->store('documents/' . date('Y/m/d'), 'public');
+            $filePath = $request->file('file')->store('documents/' . date('Y/m/d'));
             $document->file = $filePath;
         }
 
@@ -102,5 +100,28 @@ class DocumentController extends Controller
         $document->delete();
 
         return redirect()->route('documents.index')->with('success', 'Dokumen berhasil dihapus.');
+    }
+    public function download($id)
+    {
+        $document = Document::findOrFail($id);
+
+        if ($document->file && Storage::exists($document->file)) {
+            // Download file dari storage
+            return Storage::download($document->file);
+        }
+
+        return redirect()->route('documents.index')->with('error', 'File tidak ditemukan.');
+    }
+
+    public function showFile($id)
+    {
+        $document = Document::findOrFail($id);
+
+        if ($document->file && Storage::exists($document->file)) {
+            // Tampilkan file di browser
+            return response()->file(storage_path('app/' . $document->file));
+        }
+
+        abort(404, 'File tidak ditemukan.');
     }
 }

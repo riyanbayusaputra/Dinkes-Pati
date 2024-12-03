@@ -42,7 +42,7 @@
                                         <td>{{ $document->penyusun }}</td>
                                         <td class="row-data">{{ $document->description }}</td>
                                         <td>
-                                            <a href="{{ Storage::url ($document->file) }}" target="_blank" class="download-icon"><i
+                                            <a href="{{ route('documents.showFile', ['id' => $document->id]) }}" target="_blank" class="download-icon"><i
                                                     class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>

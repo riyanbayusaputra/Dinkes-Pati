@@ -64,7 +64,7 @@
                             <div class="form-group">
                                 <label for="file">Pilih File Baru (Optional)</label>
                                 <input type="file" name="file" class="form-control @error('file') is-invalid @enderror">
-                                <small>File saat ini: <a href="{{ asset('storage/' . $document->file) }}" target="_blank">{{ $document->file }}</a></small>
+                                <small>File saat ini: <a href="{{ route('documents.showFile', ['id' => $document->id]) }}" target="_blank">{{ $document->file }}</a></small>
                                 @error('file')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

@@ -55,7 +55,7 @@
                                             <td>{{ $document->tahun }}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($document->description, 50) }}</td>
                                             <td>
-                                                <a href="{{ asset('storage/' . $document->file) }}" target="_blank" class="btn btn-link">Lihat</a>
+                                                <a href="{{ route('documents.showFile', ['id' => $document->id]) }}" target="_blank" class="btn btn-link">Lihat</a>
                                             </td>
                                             <td>
                                                 <a href="{{ route('documents.edit', $document->id) }}" class="btn btn-warning btn-sm">Edit</a>

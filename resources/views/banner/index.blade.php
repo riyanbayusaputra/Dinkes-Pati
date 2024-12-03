@@ -59,7 +59,7 @@
                                         <tr>
                                             <td>{{ $banner->title }}</td>
                                             <td>
-                                                <img src="{{ Storage::url ( $banner->image) }}" alt="{{ $banner->title }}" class="img-fluid img-thumbnail" style="max-width: 100px;">
+                                                <img src="{{ route('banner.image', ['path' => $banner->image]) }}" alt="{{ $banner->title }}" class="img-fluid img-thumbnail" style="max-width: 100px;">
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column flex-sm-row">

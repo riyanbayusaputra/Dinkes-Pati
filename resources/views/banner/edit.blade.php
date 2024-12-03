@@ -58,7 +58,10 @@
                                 
                                 <!-- Display Existing Image -->
                                 <div class="mt-4">
-                                    <img src="{{ Storage::url ($banner->image) }}" alt="{{ $banner->title }}" class="w-40 h-auto">
+                                    <img src="{{ route('banner.image', ['path' => $banner->image]) }}" 
+                                         alt="{{ $banner->title }}" 
+                                         class="img-thumbnail"
+                                         style="max-width: 150px; height: auto;">
                                     <p class="text-sm text-gray-600 mt-2">Current Image</p>
                                 </div>
                             </div>
