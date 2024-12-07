@@ -2,40 +2,42 @@
 
 @section('content')
 
-<section id="slider" class="slider-element slider-parallax revslider-wrap min-vh-0">
+<section id="slider" class="slider-element slider-parallax swiper_wrapper vh-75">
 	<div class="slider-inner">
-		<div id="rev_slider_k_fullwidth_wrapper" class="rev_slider_wrapper fullwidth-container" style="padding:0px;">
-			<div id="rev_slider_k_fullwidth" class="rev_slider fullwidthbanner" style="display:none;" data-version="5.1.4">
-				<ul>
-					@foreach ($banners as $banner)
-					<li data-transition="fade" data-slotamount="1" data-masterspeed="1500"
-						data-thumb="{{ route('banner.image',['path' => $banner->image]) }}"
-						data-delay="15000" data-saveperformance="off"
-						data-title="{{ $banner->title }}">
-						<img src="{{ route('banner.image', ['path' => $banner->image]) }}"
-							alt="{{ $banner->title }}"
-							data-bgposition="center bottom"
-							data-bgpositionend="center top"
-							data-kenburns="on"
-							data-duration="25000"
-							data-ease="Linear.easeNone"
-							data-scalestart="100"
-							data-scaleend="140"
-							data-rotatestart="0"
-							data-rotateend="0"
-							data-blurstart="0"
-							data-blurend="0"
-							data-offsetstart="0 0"
-							data-offsetend="0 0"
-							class="rev-slidebg"
-							data-no-retina>
-					</li>
-					@endforeach
-				</ul>
+
+		<div class="swiper-container swiper-parent">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide dark">
+
+					<div class="swiper-slide-bg" style="background-image: url('FE/Jarm.png');"></div>
+				</div>
+				<div class="swiper-slide dark">
+
+					<div class="swiper-slide-bg" style="background-image: url('FE/Jaringan_Air_Minum.png');"></div>
+				</div>
+				@foreach ($banners as $banner)
+				<div class="swiper-slide dark">
+					<!-- <div class="container">
+						<div class="slider-caption slider-caption-center">
+							<h2 data-animate="fadeInUp">Welcome to Canvas</h2>
+							<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Create just what you need for your Perfect Website. Choose from a wide range of Elements &amp; simply put them on our Canvas.</p>
+						</div>
+					</div> -->
+					<div class="swiper-slide-bg" style="background-image: url({{ route('banner.image',['path' => $banner->image]) }});"></div>
+				</div>
+				@endforeach
+			</div>
+			<div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+			<div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+			<div class="slide-number">
+				<div class="slide-number-current"></div><span>/</span>
+				<div class="slide-number-total"></div>
 			</div>
 		</div>
+
 	</div>
-</section><!-- #slider end -->
+</section>
+
 
 
 <section id="content">
@@ -67,41 +69,7 @@
 							</div>
 
 						</div>
-						<!-- <div class="row align-items-center clearfix">
-							<div class="col-lg-4 col-md-6">
-								<a class="feature-box not-dark">
-									
-									<div class="fbox-icon">
-										<img src="{{ asset('images/ehra.png') }}" class="rounded-0 bg-transparent text-left" alt="Image">
-									</div>
-									<div class="fbox-content">
-										<h3 class="font-weight-medium text-uppercase text-white ">EHRA</h3>
-									</div>
 
-								</a>
-							</div>
-							<div class="col-lg-4 col-md-6">
-								<div class="feature-box not-dark">
-									<div class="fbox-icon">
-										<img src="{{ asset('images/kajian.png') }}" class="rounded-0 bg-transparent text-left" alt="Image">
-									</div>
-									<div class="fbox-content">
-										<h3 class="font-weight-medium text-uppercase text-white ">Kajian Rumpun</h3>
-									</div>
-
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6">
-								<div class="feature-box not-dark">
-									<div class="fbox-icon">
-										<img src="{{ asset('images/peta.png') }}" class="rounded-0 bg-transparent text-left" alt="Image">
-									</div>
-									<div class="fbox-content">
-										<h3 class="font-weight-medium text-uppercase text-white ">Peta sebaran</h3>
-									</div>
-								</div>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div>
@@ -125,15 +93,15 @@
 					<div class="slider-wrap">
 						@foreach ($activityGalleries as $activity)
 						@if(!empty($activity->image))
-						
+
 						<div class="slide" data-thumb="{{ route('activity-gallery.image', ['path' => $activity->image]) }}">
 							<!-- Post Article -->
 							<div class="entry mb-0">
 								<img src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}" alt="Image">
 							</div>
 						</div>
-						
-					
+
+
 						@endif
 						@endforeach
 					</div>
@@ -161,7 +129,7 @@
 							<a href="{{ route('berita.image', ['path' => $activity->image])  }}" data-lightbox="image">
 								<img src="{{ route('berita.image', ['path' => $activity->image])  }}" alt="{{ $activity->activity_title }}">
 							</a>
-							
+
 						</div>
 						<div class="entry-title">
 							<h2><a href="blog-single.html">{{ $activity->activity_title }}</a></h2>
@@ -185,7 +153,7 @@
 		<div class="container clearfix">
 			<div class="row align-items-center gutter-40 ">
 				<div class="col-md-5">
-					<img data-animate="fadeInLeftBig" src="{{ asset('FE/Group1673.png') }}" alt="Imac">
+					<img data-animate="fadeInLeftBig" src="{{ asset('FE/4.png') }}" alt="Imac">
 				</div>
 
 				<div class="col-md-7">

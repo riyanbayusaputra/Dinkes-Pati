@@ -51,9 +51,23 @@
 	@vite(['resources/js/app.js'])
 	<!-- Document Title
 	============================================= -->
-	<title>DINAS KESEHATAN KOTA PATI</title>
+	<title>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</title>
 
 	<style>
+		/* .wrapper {
+		} */
+
+		.chart-container {
+			/* max-width: 400px;
+			max-height: 400px; */
+			display: flex;
+			justify-content: center !important;
+			height: 389px;
+			width: 389px;
+		}
+
+
+
 		.flex-container {
 
 			display: flex;

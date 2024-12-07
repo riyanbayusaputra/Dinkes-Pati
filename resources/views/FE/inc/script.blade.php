@@ -33,7 +33,12 @@
 <script>
 	$(document).ready(function() {
 		$('#myTable').DataTable();
+		$('#charttable1').DataTable();
+		$('#charttable2').DataTable();
+		$('#charttable3').DataTable();
+		$('#charttable4').DataTable();
 		const ctx = document.getElementById('riskChart').getContext('2d');
+
 		const riskChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
@@ -49,7 +54,10 @@
 					legend: {
 						display: true
 					}
-				}
+				},
+				// legend: {
+				// 	display: false // <- the important part
+				// },
 			}
 		});
 
@@ -161,10 +169,33 @@
 		const configbar = new Chart(ctx4, {
 			type: 'bar',
 			data: {
-				labels: ['Batangan', 'Cluwak', 'Dukuh Seti', 'Gabus'],
+				labels: [
+					'Batangan',
+					'Cluwak',
+					'Dukuh Seti',
+					'Gabus',
+					'Kab. Pati',
+					'Sukolilo',
+					'Kayen',
+					'Tambakromo',
+					'Winong',
+					'Pucakwangi',
+					'Jaken',
+					'Juwana',
+					'Jakenan',
+					'Pati',
+					'Margorejo',
+					'Gembong',
+					'Tlogowungu',
+					'Wedarijaksa',
+					'Trangkil',
+					'Margoyoso',
+					'Gunungwungkal',
+					'Tayu',
+				],
 				datasets: [{
 						label: 'Kecamatan',
-						data: [10, 12, 15, 17],
+						data: [10, 12, 15, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 					},
 					// {
 					//     // label: 'Air Minum',

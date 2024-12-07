@@ -4,38 +4,8 @@
 <section id="content" class=" mt-4 mb-2">
     <div class="content-wrap py-0">
         <div class="container clearfix ">
-            <!-- <div class="row">
-                <div class="col-lg-4">
-
-                    <div class="sanitation-risk m-0">
-                        <div class="title-containerc">
-                            <h2 class="title text-center">INDEKS RISIKO SANITASI</h2>
-                        </div>
-                        <div class="chart-container">
-                            <ul class="legend">
-                                <li><span class="color-box" style="background-color: #F89B45;"></span> Sumber Air</li>
-                                <li><span class="color-box" style="background-color: #998CEB;"></span> Air Limbah
-                                    Domestik</li>
-                                <li><span class="color-box" style="background-color: #F48989;"></span> Persampahan</li>
-                                <li><span class="color-box" style="background-color: #4BC0C0;"></span> Genangan Air</li>
-                                <li><span class="color-box" style="background-color: #5A87EB;"></span> Perilaku STBM
-                                    Pilar</li>
-                            </ul>
-                            <canvas id="riskChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-              
-            </div>
-
-
-            <br>
-            <br>
-            <br> -->
-
-
-            <div class="row">
-                <div class="col-lg-9">
+            <div class="row mb-2">
+                <div class="col-lg-6">
 
                     <div class="row justify-content-center">
                         <div class="fancy-title title-bottom-border">
@@ -44,52 +14,273 @@
                     </div>
                     <canvas id="chartline"></canvas>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="fancy-title title-bottom-border">
+                            <h4 class="text-uppercase" style="color: rgba(0,0,0,0);">INDEKS RISIKO SANITASI</h4>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="charttable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr style="font-size: 12px !important;">
+                                    <th>Tahun</th>
+                                    <th>Kecamatan</th>
+                                    <th>Area Sebaran</th>
+                                    <th>Luas Sebaran</th>
+                                    <th>Tingkat Risiko</th>
+                                    <th>Kondisi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Bleber</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gerit</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gesengan</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Karangsari</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="divider divider-center"><i class="icon-cloud"></i></div>
+            <div class="row mb-2">
+                <div class="col-lg-6">
                     <div class="row justify-content-center">
                         <div class="fancy-title title-bottom-border">
                             <h4 class="text-uppercase">INDEKS RISIKO SANITASI</h4>
+
                         </div>
                     </div>
-                    <canvas id="riskChart"></canvas>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="content" class=" mt-4 mb-2">
-    <div class="content-wrap py-0">
-        <div class="container clearfix">
-            <div class="row justify-content-center">
-                <div class="fancy-title title-bottom-border">
-                    <h4 class="text-uppercase">Kondisi Sampah</h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="kondisi-sampah">
-                        <canvas id="kondisiSampahChart"></canvas>
+                    <div class="table-responsive">
+                        <table id="charttable2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr style="font-size: 12px !important;">
+                                    <th>Tahun</th>
+                                    <th>Kecamatan</th>
+                                    <th>Area Sebaran</th>
+                                    <th>Luas Sebaran</th>
+                                    <th>Tingkat Risiko</th>
+                                    <th>Kondisi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Bleber</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gerit</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gesengan</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Karangsari</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="fancy-title title-bottom-border">
+                            <h4 class="text-uppercase" style="color: rgba(0,0,0,0);">INDEKS RISIKO SANITASI</h4>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div>
-</section>
-<section id="content" class=" mt-4 mb-2">
-    <div class="content-wrap py-0 mt-2 mb-2">
-        <div class="container clearfix">
-            <div class="row justify-content-center">
-                <div class="fancy-title title-bottom-border">
-                    <h4>AREA BERISIKO KABUPATEN PATI</h4>
+            <div class="divider divider-center"><i class="icon-cloud"></i></div>
+            <div class="row mb-2">
+                <div class="col-lg-6">
+
+                    <div class="row justify-content-center">
+                        <div class="fancy-title title-bottom-border">
+                            <h4 class="text-uppercase">Kondisi Sampah</h4>
+                        </div>
+                    </div>
+                    <canvas id="kondisiSampahChart"></canvas>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="fancy-title title-bottom-border">
+                            <h4 class="text-uppercase" style="color: rgba(0,0,0,0);">INDEKS RISIKO SANITASI</h4>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="charttable3" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr style="font-size: 12px !important;">
+                                    <th>Tahun</th>
+                                    <th>Kecamatan</th>
+                                    <th>Area Sebaran</th>
+                                    <th>Luas Sebaran</th>
+                                    <th>Tingkat Risiko</th>
+                                    <th>Kondisi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Bleber</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gerit</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gesengan</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Karangsari</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="divider divider-center"><i class="icon-cloud"></i></div>
+            <div class="row mb-2">
+                <div class="col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="fancy-title title-bottom-border">
+                            <h4>AREA BERISIKO KABUPATEN PATI</h4>
+
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="charttable4" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr style="font-size: 12px !important;">
+                                    <th>Tahun</th>
+                                    <th>Kecamatan</th>
+                                    <th>Area Sebaran</th>
+                                    <th>Luas Sebaran</th>
+                                    <th>Tingkat Risiko</th>
+                                    <th>Kondisi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Bleber</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gerit</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Gesengan</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2019</td>
+                                    <td>Cluwak</td>
+                                    <td>Karangsari</td>
+                                    <td>235642</td>
+                                    <td>Sedang</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="fancy-title title-bottom-border">
+                            <h4 class="text-uppercase" style="color: rgba(0,0,0,0);">INDEKS RISIKO SANITASI</h4>
+                        </div>
+                    </div>
                     <canvas id="chartbatang"></canvas>
+                    <!-- <div class="chart-container">
+                    </div> -->
                 </div>
+
             </div>
         </div>
-    </div>
 </section>
+
+
 @endsection

@@ -8,8 +8,8 @@
 				<!-- Logo
 						============================================= -->
 				<div id="logo">
-					<a href="/" class="standard-logo"><img src="{{asset('FE/Frame_1539.png')}}" alt="Canvas Logo"></a>
-					<a href="/" class="retina-logo"><img src="{{asset('FE/Frame 1540.png')}}" alt="Canvas Logo"></a>
+					<a href="/" class="standard-logo"><img src="{{asset('FE/logo2rs2.png')}}" alt="Canvas Logo"></a>
+					<a href="/" class="retina-logo"><img src="{{asset('FE/logo2rs3.png')}}" alt="Canvas Logo"></a>
 				</div><!-- #logo end -->
 
 				<!-- Primary Menu Mobile Trigger

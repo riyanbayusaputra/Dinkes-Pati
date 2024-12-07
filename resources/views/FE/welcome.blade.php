@@ -23,7 +23,7 @@
 </section> -->
 <section id="content">
     <div class="content-wrap py-0">
-        <div class="section parallax parallax-bg m-0 border-top-0" data-rellax-speed="2" style="background: url('FE/3.jpg')center center; padding: 100px 0;" data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px -200px;">
+        <div class="section parallax parallax-bg m-0 border-top-0" data-rellax-speed="2" style="background: url('FE/bgprof.png') center center/cover no-repeat;">
             <div class="container-fluid center clearfix">
 
                 <div class="heading-block">
