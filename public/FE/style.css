@@ -7691,6 +7691,18 @@ body:not(.device-touch) .portfolio {
 	height: 224px;
 }
 
+.entry-images,
+.entry-images>a,
+.entry-images .slide a,
+.entry-images img {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: auto;
+	/* width: 400px;
+	height: 224px; */
+}
+
 .posts-sm .entry-image {
 	width: 64px;
 }

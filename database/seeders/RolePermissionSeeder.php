@@ -22,9 +22,9 @@ class RolePermissionSeeder extends Seeder
             'manage videos',
             'manage gallery',
             'manage faq',
-           'manage documents',
-           'manage merchant',
-           'manage video banner'
+            'manage documents',
+            'manage merchant',
+            'manage video banner'
         ];
 
         // Create or find permissions
@@ -34,18 +34,18 @@ class RolePermissionSeeder extends Seeder
             ]);
         }
 
-      
+
 
         $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
-        $superAdminPermissions = ['manage users', 'manage kuisioner', 'manage banner', 'manage videos', 'manage gallery', 'manage faq','manage documents','manage video banner'];
+        $superAdminPermissions = ['manage users', 'manage kuisioner', 'manage banner', 'manage videos', 'manage gallery', 'manage faq', 'manage documents', 'manage video banner', 'manage pengumuman'];
         $superAdminRole->syncPermissions($superAdminPermissions);
 
 
-          // Create or find roles and assign permissions
+        // Create or find roles and assign permissions
         $MerchantRole = Role::firstOrCreate(['name' => 'Merchant']);
         $MerchantPermissions = ['manage users', 'manage kuisioner'];
         $MerchantRole->syncPermissions($MerchantPermissions);
-  
+
         $pegawaiRole = Role::firstOrCreate(['name' => 'pegawai']);
         $pegawaiPermissions = ['manage kuisioner'];
         $pegawaiRole->syncPermissions($pegawaiPermissions);

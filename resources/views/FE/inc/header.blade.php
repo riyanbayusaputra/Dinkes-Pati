@@ -81,7 +81,7 @@
 							</a>
 							<ul class="sub-menu-container">
 								<li class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="/daftar-berita">
 										<div>Berita</div>
 									</a>
 								</li>

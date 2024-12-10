@@ -62,8 +62,13 @@
 			<div class="news red">
 				<span class="badge badge-danger bnews-title">Pengumuman:</span>
 				<marquee class="text1">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima in iusto molestiae voluptate sapiente ipsa repellendus, laborum eaque commodi libero. Vero vel voluptates totam pariatur perspiciatis? Architecto facilis ad magnam.
-					Corrupti, nulla facilis, nostrum qui repudiandae impedit quasi temporibus, ex illum blanditiis nam tempore. Blanditiis nisi, id temporibus, error veniam quos itaque alias voluptates laborum veritatis distinctio amet nihil iure.
+					@if(count($pgn) > 0)
+					@foreach($pgn as $value)
+					{{ $value->keterangan }} |
+					@endforeach
+					@else
+					Tidak ada pengumuman
+					@endif
 				</marquee>
 			</div>
 		</div>
@@ -151,11 +156,16 @@
 
 						</div>
 						<div class="entry-title">
-							<h2><a href="blog-single.html">{{ $activity->activity_title }}</a></h2>
+							<h2><a href="/baca-berita?kontenberita={{str_replace(' ', '-', $activity->activity_title)}}">{{ $activity->activity_title }}</a></h2>
+						</div>
+						<div class="entry-meta">
+							<ul>
+								<li><i class="icon-calendar3"></i> {{\Carbon\Carbon::parse($activity->created_at)->locale('id')->format('j F Y')}}</li>
+							</ul>
 						</div>
 						<div class="entry-content" style="margin-top: 10px !important;">
 							<p>{{ \Illuminate\Support\Str::limit($activity->description, 100) }}</p>
-							<a href="blog-single.html" class="more-link">Selengkapnya</a>
+							<a href="/baca-berita?kontenberita={{str_replace(' ', '-', $activity->activity_title)}}" class="more-link">Selengkapnya</a>
 						</div>
 					</div>
 				</div>

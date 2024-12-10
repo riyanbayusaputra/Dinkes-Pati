@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('home') }}">SIPALING SAPA</a>
+            <a href="{{ route('home') }}">SIRIWIL</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('home') }}">St</a>
@@ -60,6 +60,13 @@
                 </a>
             </li>
             @endcan
+            @can('manage pengumuman')
+            <li class="nav-item">
+                <a href="{{ route('datapengumuman.index') }}" class="nav-link" title="FAQs">
+                    <i class="fas fa-bullhorn"></i><span>Pengumuman</span>
+                </a>
+            </li>
+            @endcan
             <li class="nav-item">
                 <a href="/kritikdansaran" class="nav-link" title="Kritik dan Saran">
                     <i class="fas fa-question"></i><span>Kritik dan Saran</span>
@@ -80,7 +87,7 @@
                         </a>
                     </li>
                     @endcan
-            
+
                     @can('manage gallery')
                     <li class="{{ Request::is('activity-galleries*') ? 'active' : '' }}">
                         <a href="{{ route('activity-galleries.index') }}" class="nav-link" title="Gallery">
@@ -89,7 +96,7 @@
                         </a>
                     </li>
                     @endcan
-            
+
                     @can('manage video banner')
                     <li class="{{ Request::is('video_banners*') ? 'active' : '' }}">
                         <a href="{{ route('video_banners.index') }}" class="nav-link" title="Video Banner">
@@ -98,7 +105,7 @@
                         </a>
                     </li>
                     @endcan
-            
+
                     @can('manage videos')
                     <li class="{{ Request::is('videos*') ? 'active' : '' }}">
                         <a href="{{ route('videos.index') }}" class="nav-link" title="Videos">
@@ -109,10 +116,10 @@
                     @endcan
                 </ul>
             </li>
-            
-            
-            
-            
+
+
+
+
 
 
             <!-- Kuesioner Section -->
@@ -141,18 +148,17 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const manageDropdown = document.querySelector('.nav-link.has-dropdown');
-    
-    manageDropdown.addEventListener('click', function (e) {
-        e.preventDefault(); // Mencegah pengalihan tautan default
-        const parent = this.parentElement; // Mendapatkan elemen induk (li.dropdown)
-        
-        // Toggle kelas "show" dan atur atribut "aria-expanded"
-        const dropdownMenu = parent.querySelector('.dropdown-menu');
-        dropdownMenu.classList.toggle('show');
-        this.setAttribute('aria-expanded', dropdownMenu.classList.contains('show'));
-    });
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        const manageDropdown = document.querySelector('.nav-link.has-dropdown');
 
+        manageDropdown.addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah pengalihan tautan default
+            const parent = this.parentElement; // Mendapatkan elemen induk (li.dropdown)
+
+            // Toggle kelas "show" dan atur atribut "aria-expanded"
+            const dropdownMenu = parent.querySelector('.dropdown-menu');
+            dropdownMenu.classList.toggle('show');
+            this.setAttribute('aria-expanded', dropdownMenu.classList.contains('show'));
+        });
+    });
 </script>

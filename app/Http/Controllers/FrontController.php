@@ -12,6 +12,7 @@ use App\Models\RatingUsModel;
 use App\Models\ActivityGallery;
 use Illuminate\Support\Facades\DB;
 use App\Models\KritikdansaranModel;
+use App\Models\PengumumanModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -80,10 +81,15 @@ class FrontController extends Controller
             ->whereDate('created_at', Carbon::now()->format('d'))
             ->count();
 
+        $pgn = PengumumanModel::whereDate('selesai', '>=',  Carbon::now()->format('Y-m-d'))
+            ->get();
+
+        // return $pgn;
+
         // return $visitbulan;
         // Mengirimkan data galeri dan video ke view 'fE.home'
         // return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
-        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit', 'banners', 'visitbulan', 'visithari'));
+        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit', 'banners', 'visitbulan', 'visithari', 'pgn'));
     }
 
     public function kajian(Request $request)
@@ -284,5 +290,32 @@ class FrontController extends Controller
 
         // return $activityGalleries;
         return view('FE.daftargallery',  compact('visit', 'visitbulan', 'visithari', 'activityGalleries'));
+    }
+    public function daftarberita(Request $request)
+    {
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+
+        $activityGalleries = BeritaModel::paginate(6);
+
+        // return $activityGalleries;
+        return view('FE.daftarberita',  compact('visit', 'visitbulan', 'visithari', 'activityGalleries'));
+    }
+
+    public function bacaberita(Request $request)
+    {
+        // return $request->all();
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+
+        $detailberita = BeritaModel::where('activity_title', str_replace('-', ' ', $request->kontenberita))->first();
+
+        return view('FE.bacaberita',  compact('visit', 'visitbulan', 'visithari', 'detailberita'));
     }
 }

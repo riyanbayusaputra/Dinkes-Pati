@@ -18,6 +18,7 @@ use App\Http\Controllers\ActivityGalleryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GrafischartController;
+use App\Http\Controllers\PengumumanController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -110,6 +111,9 @@ Route::middleware(['auth', 'can:manage berita'])->group(function () {
 Route::middleware(['auth', 'can:manage videos'])->group(function () {
     Route::resource('videos', VideoController::class);
 });
+Route::middleware(['auth', 'can:manage pengumuman'])->group(function () {
+    Route::resource('datapengumuman', PengumumanController::class);
+});
 
 Route::middleware(['auth', 'can:manage users'])->group(function () {
     Route::resource('users', UserController::class);
@@ -149,6 +153,8 @@ Route::get('/getkoordinattransport', [FrontController::class, 'getkoordinattrans
 Route::get('/getkoordinatirigasi', [FrontController::class, 'getkoordinatirigasi']);
 Route::get('/getkoordinattaklayakhuni', [FrontController::class, 'getkoordinattaklayakhuni']);
 Route::get('/daftar-galeri', [FrontController::class, 'listgallery']);
+Route::get('/baca-berita', [FrontController::class, 'bacaberita']);
+Route::get('/daftar-berita', [FrontController::class, 'daftarberita']);
 
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');
