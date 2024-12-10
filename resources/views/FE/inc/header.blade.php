@@ -25,7 +25,7 @@
 				<!-- Header Buttons
 						============================================= -->
 				<div class="header-misc">
-					<a href="{{ route('bantuan') }}" class="button bg-color-2 button-light text-white ls0 font-weight-medium m-0" style="border-radius: 10px;">Bantuan</a>
+					<a href="{{ route('bantuan') }}" class="button bg-color-2 button-light text-white ls0 font-weight-medium m-0" style="border-radius: 10px;">FAQ</a>
 				</div>
 
 				<!-- Primary Navigation
@@ -34,16 +34,76 @@
 
 					<ul class="menu-container">
 						<li class="menu-item"><a class="menu-link" href="{{ route('home') }}">
-								<div>Home</div>
+								<div>Beranda</div>
 							</a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ route('profile') }}">
-								<div>Profile</div>
+						<!--<li class="menu-item"><a class="menu-link" href="{{ route('profile') }}">-->
+						<!--		<div>Layanan</div>-->
+						<!--	</a></li>-->
+
+						<li class="menu-item">
+							<a class="menu-link" href="#">
+								<div>Layanan</div>
+							</a>
+							<ul class="sub-menu-container">
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<div>EHRA</div>
+									</a>
+									<ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="rs-demos.html">
+												<div>Login</div>
+											</a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="{{ route('kajian') }}">
+												<div>Kajian Rumpun</div>
+											</a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="{{ route('petasebaran') }}">
+												<div>Peta Sebaran</div>
+											</a>
+										</li>
+										<li class="menu-item">
+											<a class="menu-link" href="{{ route('infografis') }}">
+												<div>Grafis</div>
+											</a>
+										</li>
+									</ul>
+								</li>
+
+							</ul>
+						</li>
+						<li class="menu-item">
+							<a class="menu-link" href="#">
+								<div>Info</div>
+							</a>
+							<ul class="sub-menu-container">
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<div>Berita</div>
+									</a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<div>Galeri</div>
+									</a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#">
+										<div>Pengumuman</div>
+									</a>
+								</li>
+
+
+							</ul>
+						</li>
+						<li class="menu-item"><a class="menu-link" href="#">
+								<div>Panduan</div>
 							</a></li>
-						<li class="menu-item"><a class="menu-link" href="/login">
-								<div>Kuesioner</div>
-							</a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ route('infografis') }}">
-								<div>Info Grafis</div>
+						<li class="menu-item"><a class="menu-link" href="#">
+								<div>Kontak Kami</div>
 							</a></li>
 					</ul>
 

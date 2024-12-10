@@ -13,20 +13,20 @@
 
 							<div class="widget clearfix">
 
-								<img src="{{asset('FE/Frame_61.png')}}" alt="Image" class="footer-logo">
+								<img src="{{asset('FE/logo2-removebg-preview.png')}}" alt="Image" class="footer-logo">
 
 								<p>Informasi dan pelayanan dapat dilakukan melalui :</p>
 
 								<div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
 									<address>
 										<strong>Alamat:</strong><br>
-										Jalan Raya Pati - Kudus Km. 3,5 (Komplek BPBD) Pati Jawa Tengah<br>
+										Jalan Raya Pati - Kudus Km. 3,5 Pati Jawa Tengah<br>
 									</address>
 									<abbr title="Phone Number"><strong>Telepon:</strong></abbr>0295 381351<br>
 									<abbr title="Fax"><strong>Fax:</strong></abbr> 0295 381375<br>
 									<abbr title="Fax"><strong>Kode Pos:</strong></abbr> 59163<br>
 									<abbr title="Email Address"><strong>Email:</strong></abbr> bappeda@patikab.go.id <br>
-									<abbr title="Email Address"><strong>Website:</strong></abbr> https://bappeda.patikab.go.id/
+									<!-- <abbr title="Email Address"><strong>Website:</strong></abbr> https://bappeda.patikab.go.id/ -->
 								</div>
 
 							</div>
@@ -43,17 +43,24 @@
 					<div class="row col-mb-50">
 						<div class="col-md-4 col-lg-12">
 							<div class="widget clearfix" style="margin-bottom: -20px;">
-
 								<div class="row">
-									<div class="col-lg-6 bottommargin-sm">
-										<div class="counter counter-small"><span data-from="50" data-to="{{$visit}}" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-										<h5 class="mb-0">Jumlah pengunjung </h5>
+									<div class="col-lg-6">
+										<h5 class="mb-0 mr-3">Jumlah Pengunjung </h5>
 									</div>
-
-									<!-- <div class="col-lg-6 bottommargin-sm">
-										<div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
-										<h5 class="mb-0">Clients</h5>
-									</div> -->
+								</div>
+								<div class="row ">
+									<div class="col-lg-4 bottommargin-sm">
+										<div class="counter counter-small"><span data-from="50" data-to="{{$visit}}" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+										<h5 class="mb-0">Tahun </h5>
+									</div>
+									<div class="col-lg-4 bottommargin-sm">
+										<div class="counter counter-small"><span data-from="50" data-to="{{$visitbulan}}" data-refresh-interval="80" data-speed="3000" data-comma="false"></span></div>
+										<h5 class="mb-0">Bulan </h5>
+									</div>
+									<div class="col-lg-4 bottommargin-sm">
+										<div class="counter counter-small"><span data-from="50" data-to="{{$visithari}}" data-refresh-interval="80" data-speed="3000" data-comma="false"></span></div>
+										<h5 class="mb-0">Hari </h5>
+									</div>
 								</div>
 
 							</div>
@@ -61,7 +68,7 @@
 
 						<div class="col-md-5 col-lg-12">
 							<div class="widget subscribe-widget clearfix">
-								<h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers & Inside Scoops:</h5>
+								<!-- <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers & Inside Scoops:</h5> -->
 
 								<!-- Alert Messages -->
 								@if(session('success'))
@@ -122,7 +129,7 @@
 											id="widget-subscribe-form-nama"
 											name="nama"
 											class="form-control @error('nama') is-invalid @enderror"
-											placeholder="Enter your Name"
+											placeholder="Masukan Nama"
 											value="{{ old('nama') }}"
 											required>
 										@error('nama')
@@ -136,7 +143,7 @@
 											id="widget-subscribe-form-email"
 											name="email"
 											class="form-control @error('email') is-invalid @enderror"
-											placeholder="Enter your Email"
+											placeholder="Masukan Email"
 											value="{{ old('email') }}"
 											required>
 										@error('email')

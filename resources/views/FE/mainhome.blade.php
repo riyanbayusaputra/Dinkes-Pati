@@ -1,42 +1,18 @@
 @extends('FE.layouts.app')
 
 @section('content')
-
-<section id="slider" class="slider-element slider-parallax swiper_wrapper vh-75">
+<section id="slider" class="slider-element slider-parallax min-vh-60 min-vh-md-100 include-header">
 	<div class="slider-inner">
 
-		<div class="swiper-container swiper-parent">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide dark">
-
-					<div class="swiper-slide-bg" style="background-image: url('FE/Jarm.png');"></div>
-				</div>
-				<div class="swiper-slide dark">
-
-					<div class="swiper-slide-bg" style="background-image: url('FE/Jaringan_Air_Minum.png');"></div>
-				</div>
-				@foreach ($banners as $banner)
-				<div class="swiper-slide dark">
-					<!-- <div class="container">
-						<div class="slider-caption slider-caption-center">
-							<h2 data-animate="fadeInUp">Welcome to Canvas</h2>
-							<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Create just what you need for your Perfect Website. Choose from a wide range of Elements &amp; simply put them on our Canvas.</p>
-						</div>
-					</div> -->
-					<div class="swiper-slide-bg" style="background-image: url({{ route('banner.image',['path' => $banner->image]) }});"></div>
-				</div>
-				@endforeach
-			</div>
-			<div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
-			<div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
-			<div class="slide-number">
-				<div class="slide-number-current"></div><span>/</span>
-				<div class="slide-number-total"></div>
-			</div>
+		<div class="video-wrap">
+			<video poster="{{ asset('FE/Jaringan_Air_Minum.png') }}" preload="auto" loop autoplay muted>
+				<source src="{{ asset('FE/Untitled video - Made with Clipchamp.mp4') }}" type='video/mp4' />
+			</video>
 		</div>
 
 	</div>
 </section>
+
 
 
 
@@ -77,13 +53,24 @@
 	</div>
 </section>
 
+
 <!-- GALLERY -->
 <section id="content">
 	<div class="content-wrap">
+		<div class="container">
+			<div class="news red">
+				<span>Pengumuman</span>
+				<marquee class="text1">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima in iusto molestiae voluptate sapiente ipsa repellendus, laborum eaque commodi libero. Vero vel voluptates totam pariatur perspiciatis? Architecto facilis ad magnam.
+					Corrupti, nulla facilis, nostrum qui repudiandae impedit quasi temporibus, ex illum blanditiis nam tempore. Blanditiis nisi, id temporibus, error veniam quos itaque alias voluptates laborum veritatis distinctio amet nihil iure.
+				</marquee>
+			</div>
+		</div>
 		<div class="container clearfix">
+
 			<div class="row justify-content-center">
 				<div class="fancy-title title-bottom-border">
-					<h3>Gallery</h3>
+					<h3>Galeri</h3>
 				</div>
 			</div>
 			<!-- Flex Thumbs Slider

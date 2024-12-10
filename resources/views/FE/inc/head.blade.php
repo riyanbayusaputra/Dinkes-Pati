@@ -127,6 +127,83 @@
 		.tp-caption {
 			white-space: nowrap;
 		}
+
+
+
+		.red {
+			background: #006FCF;
+			margin-bottom: 20px;
+		}
+
+		.news {
+			overflow: hidden;
+			border-radius: 4px;
+			-webkit-user-select: none;
+		}
+
+		.news span {
+			float: left;
+			color: #fff;
+			padding: 9px;
+			box-shadow: inset 0 -15px 30px rgba(0, 0, 0, 0.4);
+			-webkit-font-smoothing: antialiased;
+			-webkit-user-select: none;
+			cursor: pointer;
+			/* padding: 4px !important; */
+		}
+
+		.text1 {
+			box-shadow: none !important;
+			width: 90%;
+			color: white;
+			line-height: 12px;
+			padding-top: 15px;
+		}
+
+
+
+		@media only screen and (max-width: 760px) {
+			.red {
+				background: #006FCF;
+				margin-bottom: 20px;
+			}
+
+			.news {
+				overflow: hidden;
+				border-radius: 4px;
+				-webkit-user-select: none;
+				/* display: flex; */
+
+			}
+
+			.news span {
+				float: left;
+				color: #fff;
+				padding: 9px;
+				box-shadow: inset 0 -15px 30px rgba(0, 0, 0, 0.4);
+				-webkit-font-smoothing: antialiased;
+				-webkit-user-select: none;
+				cursor: pointer;
+			}
+
+			.text1 {
+				box-shadow: none !important;
+				width: 75%;
+				color: white;
+				line-height: 12px;
+				padding-top: 15px;
+			}
+		}
+
+		@media (min-width: 761px) and (max-width: 915px) {
+			.text1 {
+				box-shadow: none !important;
+				width: 85%;
+				color: white;
+				line-height: 12px;
+				padding-top: 15px;
+			}
+		}
 	</style>
 
 </head>

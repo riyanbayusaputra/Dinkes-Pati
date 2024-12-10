@@ -224,11 +224,30 @@
 </script>
 
 <script>
-	const map = L.map('map').setView([-6.748821786341696, 111.0437742143056], 10);
-	// Add OpenStreetMap tile layer
+	var Stadia_StamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.{ext}', {
+		// minZoom: 0,
+		// maxZoom: 18,
+		attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+		ext: 'png'
+	});
+
+	var Stadia_AlidadeSatellite = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}', {
+		// minZoom: 0,
+		// maxZoom: 20,
+		attribution: '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+		ext: 'jpg'
+	});
+	const map = L.map('map').setView([-6.748821786341696, 111.0437742143056], 12);
+	var baseMaps = {
+		" Stadia.StamenTerrain": Stadia_StamenTerrain,
+		"Stadia.AlidadeSatellite": Stadia_AlidadeSatellite
+	};
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '© OpenStreetMap contributors'
+		attribution: '© OpenStreetMap contributors',
 	}).addTo(map);
+	L.control.layers(baseMaps).addTo(map);
+
+
 	var geojson = null;
 
 
@@ -319,8 +338,8 @@
 					var myLines = result.data;
 					var myStyle = {
 						"color": "#0a1df5",
-						"weight": 2,
-						"opacity": 0.65
+						"weight": 4,
+						// "opacity": 0.65
 					};
 					if (geojson) {
 						map.removeLayer(geojson);
@@ -398,8 +417,8 @@
 					var myLines = result.data;
 					var myStyle = {
 						"color": "#fa0202",
-						"weight": 2,
-						"opacity": 0.65
+						"weight": 4,
+						// "opacity": 0.65
 					};
 
 					// L.geoJSON(myLines, {

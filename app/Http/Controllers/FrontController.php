@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Video; // Pastikan untuk mengimpor model Video
+use Carbon\Carbon;
 
 class FrontController extends Controller
 {
@@ -46,7 +47,13 @@ class FrontController extends Controller
             $video->youtube_url = !empty($urlParts) ? end($urlParts) : null; // Mengubah URL menjadi ID video
         }
 
-        $visit = DB::table('shetabit_visits')->count();
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+
+        // return $visithari;
         // Mengirimkan data galeri dan video ke view 'fE.home'
         return view('FE.home', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
     }
@@ -67,10 +74,16 @@ class FrontController extends Controller
             $video->youtube_url = !empty($urlParts) ? end($urlParts) : null; // Mengubah URL menjadi ID video
         }
 
-        $visit = DB::table('shetabit_visits')->count();
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+
+        // return $visitbulan;
         // Mengirimkan data galeri dan video ke view 'fE.home'
         // return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
-        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit', 'banners'));
+        return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit', 'banners', 'visitbulan', 'visithari'));
     }
 
     public function kajian(Request $request)
@@ -95,21 +108,29 @@ class FrontController extends Controller
                     ->orWhere('penyusun', 'like', "%{$search}%");
             });
         }
-        $visit = DB::table('shetabit_visits')->count();
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
 
         // Ambil data setelah difilter dan/atau dicari dengan pagination
         $documents = $query->paginate(10); // Menampilkan 10 dokumen per halaman
 
         // Kembalikan data ke view
-        return view('FE.kajian', compact('documents', 'visit'));
+        return view('FE.kajian', compact('documents', 'visit', 'visitbulan', 'visithari'));
     }
 
     public function petasebaran()
     {
-        $visit = DB::table('shetabit_visits')->count();
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
 
         // return $data;
-        return view('FE.petasebaran', compact('visit',));
+        return view('FE.petasebaran', compact('visit', 'visitbulan', 'visithari'));
     }
 
     public function getkoordinatpdam()
@@ -171,20 +192,32 @@ class FrontController extends Controller
 
     public function bantuan()
     {
-        $visit = DB::table('shetabit_visits')->count();
-        return view('FE.bantuan', compact('visit'));
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+        return view('FE.bantuan', compact('visit', 'visitbulan', 'visithari'));
     }
 
     public function infografis()
     {
-        $visit = DB::table('shetabit_visits')->count();
-        return view('FE.infografis', compact('visit'));
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+        return view('FE.infografis', compact('visit', 'visitbulan', 'visithari'));
     }
 
     public function profile()
     {
-        $visit = DB::table('shetabit_visits')->count();
-        return view('FE.welcome', compact('visit',));
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+        return view('FE.welcome', compact('visit', 'visitbulan', 'visithari'));
     }
 
     public function kritikdansaran(Request $request)
