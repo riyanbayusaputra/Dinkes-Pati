@@ -26,23 +26,23 @@ use Illuminate\Http\Request;
 // });
 
 // Group route untuk Banner
-Route::prefix('banner')->group(function() {
+Route::prefix('banner')->group(function () {
     Route::get('/view/{path}', [BannerController::class, 'showImage'])
         ->name('banner.image')
         ->where('path', '.*');
 });
 
 // Group route untuk Berita
-Route::prefix('berita')->group(function() {
+Route::prefix('berita')->group(function () {
     Route::get('/view/{path}', [BeritaController::class, 'showberita'])
         ->name('berita.image')
         ->where('path', '.*');
 });
 
-Route::prefix('galery')->group(function() {
-Route::get('/view/{path}', [ActivityGalleryController::class, 'showGallery'])
-    ->where('path', '.*')
-    ->name('activity-gallery.image');
+Route::prefix('galery')->group(function () {
+    Route::get('/view/{path}', [ActivityGalleryController::class, 'showGallery'])
+        ->where('path', '.*')
+        ->name('activity-gallery.image');
 });
 
 Route::get('documents/{id}/download', [DocumentController::class, 'download'])->name('documents.download');
@@ -148,6 +148,7 @@ Route::get('/getkoordinatkawankumuh', [FrontController::class, 'getkoordinatkawa
 Route::get('/getkoordinattransport', [FrontController::class, 'getkoordinattransport']);
 Route::get('/getkoordinatirigasi', [FrontController::class, 'getkoordinatirigasi']);
 Route::get('/getkoordinattaklayakhuni', [FrontController::class, 'getkoordinattaklayakhuni']);
+Route::get('/daftar-galeri', [FrontController::class, 'listgallery']);
 
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');

@@ -57,7 +57,19 @@
 <!-- GALLERY -->
 <section id="content">
 	<div class="content-wrap">
-		<div class="container">
+
+		<div class="container clearfix">
+			<div class="news red">
+				<span class="badge badge-danger bnews-title">Pengumuman:</span>
+				<marquee class="text1">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima in iusto molestiae voluptate sapiente ipsa repellendus, laborum eaque commodi libero. Vero vel voluptates totam pariatur perspiciatis? Architecto facilis ad magnam.
+					Corrupti, nulla facilis, nostrum qui repudiandae impedit quasi temporibus, ex illum blanditiis nam tempore. Blanditiis nisi, id temporibus, error veniam quos itaque alias voluptates laborum veritatis distinctio amet nihil iure.
+				</marquee>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="container">
 			<div class="news red">
 				<span>Pengumuman</span>
 				<marquee class="text1">
@@ -65,36 +77,56 @@
 					Corrupti, nulla facilis, nostrum qui repudiandae impedit quasi temporibus, ex illum blanditiis nam tempore. Blanditiis nisi, id temporibus, error veniam quos itaque alias voluptates laborum veritatis distinctio amet nihil iure.
 				</marquee>
 			</div>
-		</div>
-		<div class="container clearfix">
+		</div> -->
+	<!-- <br>
+		<br>
+		<br>
+		<div class="section header-stick bottommargin-lg clearfix">
+			<div>
+				<div class="container clearfix">
+					<span class="badge badge-danger bnews-title">Breaking News:</span>
 
-			<div class="row justify-content-center">
-				<div class="fancy-title title-bottom-border">
-					<h3>Galeri</h3>
-				</div>
-			</div>
-			<!-- Flex Thumbs Slider
-								============================================= -->
-			<div class="fslider flex-thumb-grid grid-6 mt-4" data-pagi="false" data-speed="100" data-pause="3500" data-arrows="true" data-thumbs="true">
-				<div class="flexslider">
-					<div class="slider-wrap">
-						@foreach ($activityGalleries as $activity)
-						@if(!empty($activity->image))
-
-						<div class="slide" data-thumb="{{ route('activity-gallery.image', ['path' => $activity->image]) }}">
-							<!-- Post Article -->
-							<div class="entry mb-0">
-								<img src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}" alt="Image">
+					<div class="fslider bnews-slider mb-0" data-speed="800" data-pause="6000" data-arrows="false" data-pagi="false">
+						<div class="flexslider">
+							<div class="slider-wrap">
+								<div class="slide"><a href="#"><strong>Russia hits back, says US acts like a 'bad surgeon'..</strong></a></div>
+								<div class="slide"><a href="#"><strong>'Sulking' Narayan Rane needs consolation: Uddhav reacts to Cong leader's attack..</strong></a></div>
+								<div class="slide"><a href="#"><strong>Rane needs consolation. I pray to God that he gets mental peace in a political party..</strong></a></div>
 							</div>
 						</div>
-
-
-						@endif
-						@endforeach
 					</div>
 				</div>
-			</div> <!-- Flex Slider End -->
+			</div>
+		</div> -->
+	<div class="container clearfix">
+
+		<div class="row justify-content-center">
+			<div class="fancy-title title-bottom-border">
+				<h3>Galeri</h3>
+			</div>
 		</div>
+		<!-- Flex Thumbs Slider
+								============================================= -->
+		<div class="fslider flex-thumb-grid grid-6 mt-4" data-pagi="false" data-speed="100" data-pause="3500" data-arrows="true" data-thumbs="true">
+			<div class="flexslider">
+				<div class="slider-wrap">
+					@foreach ($activityGalleries as $activity)
+					@if(!empty($activity->image))
+
+					<div class="slide" data-thumb="{{ route('activity-gallery.image', ['path' => $activity->image]) }}">
+						<!-- Post Article -->
+						<div class="entry mb-0">
+							<img src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}" alt="Image">
+						</div>
+					</div>
+
+
+					@endif
+					@endforeach
+				</div>
+			</div>
+		</div> <!-- Flex Slider End -->
+	</div>
 	</div>
 </section>
 

@@ -270,4 +270,19 @@ class FrontController extends Controller
 
         return Redirect::back()->with('info', 'Kritik dan saran gagal tersimpan')->withInput();
     }
+
+
+    public function listgallery(Request $request)
+    {
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+
+        $activityGalleries = ActivityGallery::paginate(6);
+
+        // return $activityGalleries;
+        return view('FE.daftargallery',  compact('visit', 'visitbulan', 'visithari', 'activityGalleries'));
+    }
 }
