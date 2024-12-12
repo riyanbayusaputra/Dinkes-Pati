@@ -86,7 +86,7 @@ class FrontController extends Controller
 
         // return $pgn;
 
-        // return $visitbulan;
+        // return [$visit, $visitbulan, $visithari];
         // Mengirimkan data galeri dan video ke view 'fE.home'
         // return view('FE.home2', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit'));
         return view('FE.mainhome', compact('activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit', 'banners', 'visitbulan', 'visithari', 'pgn'));
@@ -204,6 +204,16 @@ class FrontController extends Controller
             ->whereDate('created_at', Carbon::now()->format('d'))
             ->count();
         return view('FE.bantuan', compact('visit', 'visitbulan', 'visithari'));
+    }
+
+    public function kontakkami()
+    {
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->count();
+        return view('FE.kontakkami', compact('visit', 'visitbulan', 'visithari'));
     }
 
     public function infografis()

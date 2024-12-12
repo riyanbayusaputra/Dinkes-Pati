@@ -1,4 +1,4 @@
-<div class="main-sidebar sidebar-style-2">
+<div class="main-sidebar sidebar-style-2" style="overflow: auto">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
             <a href="{{ route('home') }}">SIRIWIL</a>
@@ -73,20 +73,20 @@
                 </a>
             </li>
 
-            <li class="dropdown {{ Request::is('banner*', 'activity-galleries*', 'video_banners*', 'videos*') ? 'active' : '' }}">
+            @can('manage banner')
+            <li
+                class="dropdown {{ Request::is('banner*', 'activity-galleries*', 'video_banners*', 'videos*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-columns"></i>
                     <span>Manage</span>
                 </a>
                 <ul class="dropdown-menu">
-                    @can('manage banner')
                     <li class="{{ Request::is('banner*') ? 'active' : '' }}">
                         <a href="{{ route('banner.index') }}" class="nav-link" title="Banner">
                             <i class="fas fa-image"></i>
                             <span>Banner</span>
                         </a>
                     </li>
-                    @endcan
 
                     @can('manage gallery')
                     <li class="{{ Request::is('activity-galleries*') ? 'active' : '' }}">
@@ -116,7 +116,7 @@
                     @endcan
                 </ul>
             </li>
-
+            @endcan
 
 
 
@@ -129,11 +129,11 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ route('questionnaires.create') }}" class="nav-link" title="Buat Kuisioner">
                     <i class="fas fa-edit"></i><span>Buat Kuisioner</span>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 @if($questionnaire)

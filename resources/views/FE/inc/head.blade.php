@@ -14,7 +14,9 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
 
 	<link rel="stylesheet" href="{{asset('FE/css/bootstrap.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('FE/style.css')}}" type="text/css" />
@@ -33,7 +35,8 @@
 	<link rel="stylesheet" href="{{asset('FE/css/custom.css')}}" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	{{--<link rel="stylesheet" href="{{asset('FE/css/colors.php?color=0F6458')}}" type="text/css" />--}}
+	{{--
+	<link rel="stylesheet" href="{{asset('FE/css/colors.php?color=0F6458')}}" type="text/css" />--}}
 	<link rel="shortcut icon" href="{{asset('FE/Frame_1541.png')}}" type="image/x-icon">
 	<link rel="icon" href="{{asset('FE/Frame_1541.png')}}" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="{{asset('FE/include/rs-plugin/css/settings.css')}}" media="screen" />
@@ -44,8 +47,16 @@
 	<link rel="stylesheet" href="{{asset('FE/css/components/bs-rating.css')}}" type="text/css" />
 
 	<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+	{{--
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> --}}
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.3.0/maptiler-sdk.umd.js"></script>
+	<link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.3.0/maptiler-sdk.css" rel="stylesheet" />
+	<script src="https://cdn.maptiler.com/leaflet-maptilersdk/v2.0.0/leaflet-maptilersdk.js"></script>
 
 
 	@vite(['resources/js/app.js'])
@@ -139,6 +150,7 @@
 			overflow: hidden;
 			border-radius: 4px;
 			-webkit-user-select: none;
+			background-color: #fce7a3;
 		}
 
 		/* .news span {

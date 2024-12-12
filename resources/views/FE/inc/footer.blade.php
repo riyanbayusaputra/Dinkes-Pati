@@ -17,7 +17,8 @@
 
 								<p>Informasi dan pelayanan dapat dilakukan melalui :</p>
 
-								<div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
+								<div
+									style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
 									<address>
 										<strong>Alamat:</strong><br>
 										Jalan Raya Pati - Kudus Km. 3,5 Pati Jawa Tengah<br>
@@ -25,7 +26,8 @@
 									<abbr title="Phone Number"><strong>Telepon:</strong></abbr>0295 381351<br>
 									<abbr title="Fax"><strong>Fax:</strong></abbr> 0295 381375<br>
 									<abbr title="Fax"><strong>Kode Pos:</strong></abbr> 59163<br>
-									<abbr title="Email Address"><strong>Email:</strong></abbr> bappeda@patikab.go.id <br>
+									<abbr title="Email Address"><strong>Email:</strong></abbr> bappeda@patikab.go.id
+									<br>
 									<!-- <abbr title="Email Address"><strong>Website:</strong></abbr> https://bappeda.patikab.go.id/ -->
 								</div>
 
@@ -50,15 +52,24 @@
 								</div>
 								<div class="row ">
 									<div class="col-lg-4 bottommargin-sm">
-										<div class="counter counter-small"><span data-from="50" data-to="{{$visit}}" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+										<div class="counter counter-small"><span data-from="50"
+												data-to="{{$visit <= 0 ? 1: $visit}}" data-refresh-interval="80"
+												data-speed="3000" data-comma="true"></span>
+										</div>
 										<h5 class="mb-0">Tahun </h5>
 									</div>
 									<div class="col-lg-4 bottommargin-sm">
-										<div class="counter counter-small"><span data-from="50" data-to="{{$visitbulan}}" data-refresh-interval="80" data-speed="3000" data-comma="false"></span></div>
+										<div class="counter counter-small"><span data-from="50"
+												data-to="{{$visitbulan <= 0 ? 1: $visitbulan}}"
+												data-refresh-interval="80" data-speed="3000" data-comma="false">0</span>
+										</div>
 										<h5 class="mb-0">Bulan </h5>
 									</div>
 									<div class="col-lg-4 bottommargin-sm">
-										<div class="counter counter-small"><span data-from="50" data-to="{{$visithari}}" data-refresh-interval="80" data-speed="3000" data-comma="false"></span></div>
+										<div class="counter counter-small"><span data-from="50"
+												data-to="{{$visithari <= 0 ? 1: $visithari}}" data-refresh-interval="80"
+												data-speed="3000" data-comma="false"></span>
+										</div>
 										<h5 class="mb-0">Hari </h5>
 									</div>
 								</div>
@@ -72,35 +83,42 @@
 
 								<!-- Alert Messages -->
 								@if(session('success'))
-								<div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
+								<div class="alert alert-success alert-dismissible fade show" role="alert"
+									id="successAlert">
 									{{ session('success') }}
-									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
 								</div>
 								@endif
 
 								@if(session('error'))
-								<div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert">
+								<div class="alert alert-danger alert-dismissible fade show" role="alert"
+									id="errorAlert">
 									{{ session('error') }}
-									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
 								</div>
 								@endif
 
 								@if(session('info'))
 								<div class="alert alert-info alert-dismissible fade show" role="alert" id="infoAlert">
 									{{ session('info') }}
-									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
 								</div>
 								@endif
 
 								<!-- Form Errors -->
 								@if($errors->any())
-								<div class="alert alert-danger alert-dismissible fade show" role="alert" id="validationAlert">
+								<div class="alert alert-danger alert-dismissible fade show" role="alert"
+									id="validationAlert">
 									<ul class="mb-0">
 										@foreach($errors->all() as $error)
 										<li>{{ $error }}</li>
 										@endforeach
 									</ul>
-									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
 								</div>
 								@endif
 
@@ -111,27 +129,16 @@
 									@csrf
 									<div class="mb-3">
 										<label class="form-label">Rating</label>
-										<input id="input-1"
-											type="number"
-											class="rating form-control"
-											name="rate"
-											max="5"
-											min="1"
-											data-step="1"
-											data-size="lg"
-											value="{{ old('rate') }}"
+										<input id="input-1" type="number" class="rating form-control" name="rate"
+											max="5" min="1" data-step="1" data-size="lg" value="{{ old('rate') }}"
 											required>
 									</div>
 
 									<div class="input-group mb-3">
 										<span class="input-group-text"><i class="icon-user"></i></span>
-										<input type="text"
-											id="widget-subscribe-form-nama"
-											name="nama"
+										<input type="text" id="widget-subscribe-form-nama" name="nama"
 											class="form-control @error('nama') is-invalid @enderror"
-											placeholder="Masukan Nama"
-											value="{{ old('nama') }}"
-											required>
+											placeholder="Masukan Nama" value="{{ old('nama') }}" required>
 										@error('nama')
 										<div class="invalid-feedback">{{ $message }}</div>
 										@enderror
@@ -139,13 +146,9 @@
 
 									<div class="input-group mb-3">
 										<span class="input-group-text"><i class="icon-email2"></i></span>
-										<input type="email"
-											id="widget-subscribe-form-email"
-											name="email"
+										<input type="email" id="widget-subscribe-form-email" name="email"
 											class="form-control @error('email') is-invalid @enderror"
-											placeholder="Masukan Email"
-											value="{{ old('email') }}"
-											required>
+											placeholder="Masukan Email" value="{{ old('email') }}" required>
 										@error('email')
 										<div class="invalid-feedback">{{ $message }}</div>
 										@enderror

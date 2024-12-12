@@ -224,6 +224,20 @@
 </script>
 
 <script>
+	var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '© OpenStreetMap'
+	});
+
+	var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+	});
+	var baseMaps0 = {
+		"OpenStreetMap": osm,
+		"OpenStreetMap.HOT": osmHOT
+	};
+
 	var Stadia_StamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.{ext}', {
 		// minZoom: 0,
 		// maxZoom: 18,
@@ -245,7 +259,7 @@
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '© OpenStreetMap contributors',
 	}).addTo(map);
-	L.control.layers(baseMaps).addTo(map);
+	L.control.layers(baseMaps0).addTo(map);
 
 
 	var geojson = null;
@@ -481,6 +495,10 @@
 			SEMICOLON.slider.revolutionSliderMenu();
 		});
 	});
+</script>
+
+<script>
+	$('.counterxx').countTo();
 </script>
 
 </body>

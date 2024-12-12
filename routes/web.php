@@ -138,6 +138,7 @@ Route::get('/index2', [FrontController::class, 'index2'])->name('home2');
 Route::get('/kajian', [FrontController::class, 'kajian'])->name('kajian');
 Route::get('/petasebaran', [FrontController::class, 'petasebaran'])->name('petasebaran');
 Route::get('/bantuan', [FrontController::class, 'bantuan'])->name('bantuan');
+Route::get('/kontakkami', [FrontController::class, 'kontakkami'])->name('kontakkami');
 Route::get('/infografis', [FrontController::class, 'infografis'])->name('infografis');
 Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
 Route::get('/questionnaires/{questionnaire}/thankyou', [QuestionnaireController::class, 'thankyou'])
