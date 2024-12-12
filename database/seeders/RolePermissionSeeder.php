@@ -24,7 +24,8 @@ class RolePermissionSeeder extends Seeder
             'manage faq',
             'manage documents',
             'manage merchant',
-            'manage video banner'
+            'manage video banner',
+            'manage pengumuman'
         ];
 
         // Create or find permissions
