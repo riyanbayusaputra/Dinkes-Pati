@@ -4,6 +4,10 @@
 <section id="content" class=" mt-4 mb-2">
     <div class="content-wrap py-0">
         <div class="container clearfix ">
+            <div class="heading-block center">
+                <h2>Info Grafis</h2>
+                <span>Data statistik dan info grafis</span>
+            </div>
             <div class="row mb-2">
                 <div class="col-lg-6">
 

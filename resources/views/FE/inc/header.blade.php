@@ -1,5 +1,11 @@
 <!-- Header
 		============================================= -->
+<style>
+	.menu-link {
+		font-family: "Poppins", sans-serif;
+		font-size: 18px;
+	}
+</style>
 <header id="header" class="">
 	<div id="header-wrap">
 		<div class="container">
@@ -8,9 +14,9 @@
 				<!-- Logo
 						============================================= -->
 				<div id="logo">
-					<a href="/" class="standard-logo header-size-sm"><img src="{{asset('FE/logo1.png')}}"
-							alt="Logo"></a>
-					<a href="/" class="retina-logo"><img src="{{asset('FE/logo.png')}}" alt="Logo"></a>
+					<a href="/" class="standard-logo header-size-sm"><img src="{{asset('FE/logo1.png')}}" alt="Logo"
+							data-logo-height="60"></a>
+					<a href="/" class="retina-logo"><img src="{{asset('FE/logo1.png')}}" alt="Logo"></a>
 				</div><!-- #logo end -->
 
 				<!-- Primary Menu Mobile Trigger
@@ -30,7 +36,7 @@
 				<!-- Header Buttons
 						============================================= -->
 				<div class="header-misc">
-					<a href="{{ route('bantuan') }}"
+					<a href="{{ route('faq') }}"
 						class="button bg-color-2 button-light text-white ls0 font-weight-medium m-0"
 						style="border-radius: 10px;">FAQ</a>
 				</div>
@@ -40,6 +46,16 @@
 				<nav class="primary-menu">
 
 					<ul class="menu-container">
+						{{-- @if(Route::current()->getName() == 'home')
+						<li class="menu-item text-white"
+							style="background-color: #006FCF !important; border-radius: 10px">
+							<span class="pl-2">Play Video</span>
+							<button class="btn btn-primay btn-sm text-white" onclick="playvideo()" id="btnplay"><i
+									class='icon-play'></i></button>
+							<button class="btn btn-primay btn-sm text-white" onclick="playvideo()" id="btnpause"
+								hidden><i class='icon-pause'></i></button>
+						</li>
+						@endif --}}
 						<li class="menu-item"><a class="menu-link" href="{{ route('home') }}">
 								<div>Beranda</div>
 							</a></li>
@@ -56,8 +72,13 @@
 									<a class="menu-link" href="/login">
 										<div>EHRA</div>
 									</a>
-									{{-- <ul class="sub-menu-container">
-									</ul> --}}
+									<ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="{{ route('infografis') }}">
+												<div>Grafis</div>
+											</a>
+										</li>
+									</ul>
 								</li>
 								{{-- <li class="menu-item">
 									<a class="menu-link" href="rs-demos.html">
@@ -72,11 +93,6 @@
 								<li class="menu-item">
 									<a class="menu-link" href="{{ route('petasebaran') }}">
 										<div>Peta Sebaran</div>
-									</a>
-								</li>
-								<li class="menu-item">
-									<a class="menu-link" href="{{ route('infografis') }}">
-										<div>Grafis</div>
 									</a>
 								</li>
 
@@ -98,7 +114,7 @@
 									</a>
 								</li>
 								<li class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="/pengumuman">
 										<div>Pengumuman</div>
 									</a>
 								</li>
@@ -106,7 +122,7 @@
 
 							</ul>
 						</li>
-						<li class="menu-item"><a class="menu-link" href="#">
+						<li class="menu-item"><a class="menu-link" href="/panduan">
 								<div>Panduan</div>
 							</a></li>
 						<li class="menu-item"><a class="menu-link" href="/kontakkami">

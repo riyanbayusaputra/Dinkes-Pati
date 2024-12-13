@@ -4,13 +4,20 @@
 <section id="content">
 	<div class="content-wrap">
 		<div class="container clearfix">
+			<div class="heading-block center">
+				<h2>Gallery</h2>
+				{{-- <span>Pertanyaan dan jawaban yang umum ditanyakan menurut kami</span> --}}
+			</div>
 			<div id="posts" class="post-grid row grid-container clearfix" data-layout="fitRows">
 
 				@foreach ($activityGalleries as $activity)
 				<div class="entry col-md-4 col-sm-6 col-12">
 					<div class="grid-inner">
 						<div class="entry-image">
-							<a href="{{ route('activity-gallery.image', ['path' => $activity->image]) }}" data-lightbox="image"><img src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}" alt="Standard Post with Image"></a>
+							<a href="{{ route('activity-gallery.image', ['path' => $activity->image]) }}"
+								data-lightbox="image"><img
+									src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}"
+									alt="Standard Post with Image"></a>
 						</div>
 
 

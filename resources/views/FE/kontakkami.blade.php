@@ -6,7 +6,10 @@
         <div class="container clearfix mt-4">
             <!-- <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4121744803957!2d111.04365!3d-6.7487441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d2538f64a577%3A0xc5900941f4d3b89f!2sDinas%20Kesehatan%20Kabupaten%20Pati!5e0!3m2!1sid!2sid!4v1578581465204!5m2!1sid!2sid"></iframe> -->
-
+            <div class="heading-block center">
+                <h2>Informasi dan pelayanan dapat dilakukan melalui :</h2>
+                {{-- <span>Sistem Informasi Rumpun Bidang Infrastruktur dan Kewilayahan Pati</span> --}}
+            </div>
             <div class="row mb-2">
                 <div class="col-lg-6">
                     <iframe width="90%" height="50%"
@@ -17,9 +20,7 @@
 
                         {{-- <img src="{{asset('FE/logo2-removebg-preview.png')}}" alt="Image" class="footer-logo"> --}}
 
-                        <p>Informasi dan pelayanan dapat dilakukan melalui :</p>
-
-                        <div>
+                        <div style="font-size: 20px">
                             <address>
                                 <strong>Alamat:</strong><br>
                                 Jalan Raya Pati - Kudus Km. 3,5 Pati Jawa Tengah<br>

@@ -4,6 +4,10 @@
 <section id="content">
     <div class="content-wrap py-0">
         <div class="container-fluid">
+            <div class="heading-block center">
+                <h2>Peta Sebaran</h2>
+                {{-- <span>Pertanyaan dan jawaban yang umum ditanyakan menurut kami</span> --}}
+            </div>
             <div class="row mt-3">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-center">

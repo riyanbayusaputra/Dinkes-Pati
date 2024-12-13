@@ -23,6 +23,7 @@
 <script src="{{asset('FE/include/rs-plugin/js/extensions/revolution.extension.migration.min.js')}}"></script>
 <script src="{{asset('FE/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js')}}"></script>
 <script src="{{asset('FE/js/components/star-rating.js')}}"></script>
+<script src="{{asset('FE/js/components/bs-switches.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
@@ -31,14 +32,20 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
+	let play = false;
 	$(document).ready(function() {
+		
+		setTimeout(() => {
+			document.getElementById('videoplay').style.display = 'block';
+			console.log('showvideoplay');
+		}, 7000);
 		$('#myTable').DataTable();
 		$('#charttable1').DataTable();
 		$('#charttable2').DataTable();
 		$('#charttable3').DataTable();
 		$('#charttable4').DataTable();
-		const ctx = document.getElementById('riskChart').getContext('2d');
 
+		const ctx = document.getElementById('riskChart').getContext('2d');
 		const riskChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
@@ -221,8 +228,23 @@
 			}
 		});
 	})
+	function playvideo() {
+		if (play == false) {
+			play = true;
+			document.getElementById('videoplay').play();
+			$('#btnplay').attr('hidden',true);
+			$('#btnpause').removeAttr('hidden');
+		}else{
+			play = false;
+			$('#btnpause').attr('hidden',true);
+			$('#btnplay').removeAttr('hidden');
+			document.getElementById('videoplay').pause();
+		}
+	}
 </script>
-
+<script>
+	jQuery(".bt-switch").bootstrapSwitch();
+</script>
 <script>
 	var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,

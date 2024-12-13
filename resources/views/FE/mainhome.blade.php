@@ -5,9 +5,10 @@
 	<div class="slider-inner">
 
 		<div class="video-wrap">
-			<video poster="{{ asset('FE/Jaringan_Air_Minum.png') }}" preload="auto" loop autoplay muted>
-				<source src="{{ asset('FE/banner.mp4') }}" type='video/mp4' />
-			</video>
+			{{-- <video poster="{{ asset('FE/Jaringan_Air_Minum.png') }}" preload="auto" loop autoplay muted> --}}
+				<video preload="auto" loop autoplay muted id="videoplay">
+					<source src="{{ asset('FE/banner.mp4') }}" type='video/mp4' />
+				</video>
 		</div>
 	</div>
 </section>
@@ -61,16 +62,20 @@
 	<div class="content-wrap">
 
 		<div class="container clearfix">
-			<div class="news red">
-				<span class="badge badge-danger bnews-title">Pengumuman:</span>
+			<div class="news red d-flex align-items-center">
+				<span class="badge badge-danger bnews-title">
+					<p class="m-0" style="font-size: 16px">Pengumuman:</p>
+				</span>
 				<marquee class="text1">
-					@if(count($pgn) > 0)
-					@foreach($pgn as $value)
-					{{ $value->keterangan }} |
-					@endforeach
-					@else
-					Tidak ada pengumuman
-					@endif
+					<p class="m-0" style="font-size: 16px">
+						@if(count($pgn) > 0)
+						@foreach($pgn as $value)
+						{{ $value->keterangan }} |
+						@endforeach
+						@else
+						Tidak ada pengumuman
+						@endif
+					</p>
 				</marquee>
 			</div>
 		</div>
@@ -150,6 +155,7 @@
 			</div>
 			<div id="posts" class="post-grid row grid-container gutter-40 clearfix" data-layout="fitRows">
 				@foreach ($berita as $activity)
+				@if($activity->image)
 				<div class="entry col-md-4 col-sm-6 col-12">
 					<div class="grid-inner" data-animation="fadeInLeftBig">
 						<div class="entry-image">
@@ -177,6 +183,7 @@
 						</div>
 					</div>
 				</div>
+				@endif
 				@endforeach
 			</div>
 		</div>
@@ -195,10 +202,10 @@
 
 				<div class="col-md-7">
 					<div class="heading-block">
-						<h2 style="color: #006FCF !important;">SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN
+						<h2 style="color: #006FCF !important;">SISTEM INFORMASI RUMPUN INFRASTRUKTUR DAN
 							KEWILAYAHAN PATI</h2>
 					</div>
-					<p><b>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</b> Merupakan aplikasi
+					<p><b>SISTEM INFORMASI RUMPUN INFRASTRUKTUR DAN KEWILAYAHAN PATI</b> Merupakan aplikasi
 						digital untuk memantau dan melakukan monitoring sanitasi dan pengolahan limbah rumah tangga.
 						Kami terus berkomitmen untuk memberikan pelayanan dan informasi yang akurat untuk mendorong
 						sebaran dan analisa yang kredibel.</p>

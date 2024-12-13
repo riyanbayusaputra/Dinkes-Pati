@@ -17,9 +17,13 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
-
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Kalam:wght@300;400;700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('FE/css/bootstrap.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('FE/style.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('FE/style2.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('FE/css/swiper.css')}}" type="text/css" />
 
 	<!-- Covid Care Demo Specific Stylesheet -->
@@ -37,14 +41,16 @@
 
 	{{--
 	<link rel="stylesheet" href="{{asset('FE/css/colors.php?color=0F6458')}}" type="text/css" />--}}
-	<link rel="shortcut icon" href="{{asset('FE/Frame_1541.png')}}" type="image/x-icon">
-	<link rel="icon" href="{{asset('FE/Frame_1541.png')}}" type="image/x-icon">
+	<link rel="shortcut icon" href="{{asset('FE/favicon.jpg')}}" type="image/x-icon">
+	<link rel="icon" href="{{asset('FE/favicon.jpg')}}" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="{{asset('FE/include/rs-plugin/css/settings.css')}}" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{{asset('FE/include/rs-plugin/css/layers.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('FE/include/rs-plugin/css/navigation.css')}}">
 	<!-- <link rel="stylesheet" href="{{asset('FE/base2/css/fonts.css')}}" type="text/css" /> -->
 	<link rel="stylesheet" href="{{asset('FE/base2/hosting.css')}}" type="text/css" />
 	<link rel="stylesheet" href="{{asset('FE/css/components/bs-rating.css')}}" type="text/css" />
+	<link rel="stylesheet" href="{{asset('FE/css/components/bs-switches.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{asset('FE/css/components/radio-checkbox.css')}}" type="text/css">
 
 	<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" />
 	<link rel="stylesheet"
@@ -58,8 +64,9 @@
 	<link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.3.0/maptiler-sdk.css" rel="stylesheet" />
 	<script src="https://cdn.maptiler.com/leaflet-maptilersdk/v2.0.0/leaflet-maptilersdk.js"></script>
 
+	<script src="js/app.js?v=2"></script>
 
-	@vite(['resources/js/app.js'])
+	{{-- @vite(['resources/js/app.js']) --}}
 	<!-- Document Title
 	============================================= -->
 	<title>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</title>

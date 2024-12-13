@@ -4,20 +4,30 @@
 <section id="content">
 	<div class="content-wrap">
 		<div class="container clearfix">
+			<div class="heading-block center">
+				<h2>Berita</h2>
+				<span>Baca berita kami yang terpercaya</span>
+			</div>
 			<div id="posts" class="post-grid row grid-container clearfix" data-layout="fitRows">
 
 				@foreach ($activityGalleries as $activity)
 				<div class="entry col-md-4 col-sm-6 col-12">
 					<div class="grid-inner">
 						<div class="entry-image">
-							<a href="{{ route('activity-gallery.image', ['path' => $activity->image]) }}" data-lightbox="image"><img src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}" alt="Standard Post with Image"></a>
+							<a href="{{ route('activity-gallery.image', ['path' => $activity->image]) }}"
+								data-lightbox="image"><img
+									src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}"
+									alt="Standard Post with Image"></a>
 						</div>
 						<div class="entry-title">
-							<h2><a href="/baca-berita?kontenberita={{str_replace(' ', '-', $activity->activity_title)}}">{{ $activity->activity_title }}</a></h2>
+							<h2><a
+									href="/baca-berita?kontenberita={{str_replace(' ', '-', $activity->activity_title)}}">{{
+									$activity->activity_title }}</a></h2>
 						</div>
 						<div class="entry-meta">
 							<ul>
-								<li><i class="icon-calendar3"></i> {{\Carbon\Carbon::parse($activity->created_at)->locale('id')->format('j F Y')}}</li>
+								<li><i class="icon-calendar3"></i>
+									{{\Carbon\Carbon::parse($activity->created_at)->locale('id')->format('j F Y')}}</li>
 							</ul>
 						</div>
 

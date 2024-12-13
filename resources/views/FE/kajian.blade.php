@@ -7,7 +7,7 @@
             <div class="container center clearfix">
 
                 <div class="heading-block">
-                    <h2>Kajian Dinas Kesehatan Kabupaten Pati</h2>
+                    <h2>Kajian Kabupaten Pati</h2>
                     <span>Sistem Informasi Rumpun Bidang Infrastruktur dan Kewilayahan Pati</span>
                 </div>
 
@@ -42,8 +42,8 @@
                                         <td>{{ $document->penyusun }}</td>
                                         <td class="row-data">{{ $document->description }}</td>
                                         <td>
-                                            <a href="{{ route('documents.showFile', ['id' => $document->id]) }}" target="_blank" class="download-icon"><i
-                                                    class="fas fa-eye"></i></a>
+                                            <a href="{{ route('documents.showFile', ['id' => $document->id]) }}"
+                                                target="_blank" class="download-icon"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
