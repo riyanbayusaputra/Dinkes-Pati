@@ -7,7 +7,7 @@
 <!-- JavaScripts
 	============================================= -->
 <script src="{{asset('FE/js/jquery.js')}}"></script>
-<script src="{{asset('FE/js/plugins.min.js')}}"></script>
+<script src="{{asset('FE/js/plugins.js')}}"></script>
 
 <!-- Footer Scripts
 	============================================= -->

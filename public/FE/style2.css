@@ -245,6 +245,9 @@ h6 {
 
 @media (max-width: 767.98px) {
 
+	.flex-container {
+		justify-content: flex-start !important;
+	}
 	h1 {
 		font-size: 1.75rem;
 	}

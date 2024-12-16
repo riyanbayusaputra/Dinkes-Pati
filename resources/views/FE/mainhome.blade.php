@@ -6,7 +6,7 @@
 
 		<div class="video-wrap">
 			{{-- <video poster="{{ asset('FE/Jaringan_Air_Minum.png') }}" preload="auto" loop autoplay muted> --}}
-				<video preload="auto" loop autoplay muted id="videoplay">
+				<video preload="auto" loop autoplay muted id="videoplay" width="100%">
 					<source src="{{ asset('FE/banner.mp4') }}" type='video/mp4' />
 				</video>
 		</div>

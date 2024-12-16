@@ -303,6 +303,7 @@ class FrontController extends Controller
     }
     public function setratingus(Request $request)
     {
+        // return $request->all();
         // Validasi input
         $validated = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
@@ -320,6 +321,15 @@ class FrontController extends Controller
             'email' => $request->email,
             'rate' => $request->rate,
         ]);
+        if ($request->ajax()) {
+            if ($k) {
+                return response()->json([
+                    'alert' => 'success',
+                    'msg' => 'Data tersimpan'
+                ], 200);
+            }
+            return response()->json('Data tidak tersimpan', 400);
+        }
 
         if ($k) {
             // Jika sukses, beri pesan sukses dan kosongkan form

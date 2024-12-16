@@ -3217,6 +3217,7 @@ window.SEMICOLON_subscribeFormInit = function( $subscribeForm ){
 			elResult = element.find('.widget-subscribe-form-result'),
 			elRedirect = element.attr('data-redirect'),
 			defButton, defButtonText, alertType;
+			return element;
 
 		element.find('form').validate({
 			submitHandler: function(form) {

@@ -19,6 +19,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GrafischartController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\RatingUsController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -91,6 +92,7 @@ Route::middleware('auth')->group(function () {
     // Route::resource('documents', DocumentController::class);
 
     Route::resource('import-data', GrafischartController::class);
+    Route::resource('rating-us', RatingUsController::class);
 });
 
 Route::middleware(['auth', 'can:manage video banner'])->group(function () {

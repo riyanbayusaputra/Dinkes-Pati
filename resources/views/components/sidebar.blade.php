@@ -37,6 +37,14 @@
             </li>
             @endcan
 
+            @can('manage users')
+            <li class="nav-item">
+                <a href="/rating-us" class="nav-link" title="Rating Us">
+                    <i class="fas fa-star"></i><span>Rating Us</span>
+                </a>
+            </li>
+            @endcan
+
             @can('manage documents')
             <li class="nav-item">
                 <a href="{{ route('documents.index') }}" class="nav-link" title="E-Library">
