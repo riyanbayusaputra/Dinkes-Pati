@@ -27,31 +27,31 @@
 							<div class="d-flex align-items-center mt-2">
 								<img src="/FE/icon/location-check.png" alt="" width="40px">
 								<p class="ml-2" title="Alamat">
-									<strong>Alamat: Jalan Raya Pati - Kudus Km. 3,5 Pati Jawa Tengah</strong>
+									Alamat: Jalan Raya Pati - Kudus Km. 3,5 Pati Jawa Tengah
 								</p>
 							</div>
 							<div class="d-flex align-items-center mt-2">
 								<img src="/FE/icon/telephone.png" alt="" width="40px">
-								<p class="ml-2" title="Phone Number"><strong>Telepon: 0295 381351</strong>
+								<p class="ml-2" title="Phone Number">Telepon: 0295 381351
 								</p>
 							</div>
 							<div class="d-flex align-items-center mt-2">
 								<img src="/FE/icon/printer.png" alt="" width="40px">
 								<p class="ml-2" title="Fax">
-									<strong>Fax: 0295 381375</strong>
+									Fax: 0295 381375
 								</p>
 							</div>
 							<div class="d-flex align-items-center mt-2">
 								<img src="/FE/icon/pos.png" alt="" width="40px">
 								<p class="ml-2" class="Kode Pos">
-									<strong>Kode Pos: 59163</strong>
+									Kode Pos: 59163
 								</p>
 
 							</div>
 							<div class="d-flex align-items-center">
 								<img src="/FE/icon/mail.png" alt="" width="40px">
 								<p class="ml-2" title="Email">
-									<strong>Email: bappeda@patikab.go.id</strong>
+									Email: bappeda@patikab.go.id
 								</p>
 							</div>
 							<!-- <abbr title="Email Address"><strong>Website:</strong></abbr> https://bappeda.patikab.go.id/ -->

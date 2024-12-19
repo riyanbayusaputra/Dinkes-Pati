@@ -205,10 +205,9 @@
 						<h2 style="color: #006FCF !important;">SISTEM INFORMASI RUMPUN INFRASTRUKTUR DAN
 							KEWILAYAHAN PATI</h2>
 					</div>
-					<p><b>SISTEM INFORMASI RUMPUN INFRASTRUKTUR DAN KEWILAYAHAN PATI</b> Merupakan aplikasi
-						digital untuk memantau dan melakukan monitoring sanitasi dan pengolahan limbah rumah tangga.
-						Kami terus berkomitmen untuk memberikan pelayanan dan informasi yang akurat untuk mendorong
-						sebaran dan analisa yang kredibel.</p>
+					<p><b>SISTEM INFORMASI RUMPUN INFRASTRUKTUR DAN KEWILAYAHAN PATI</b> merupakan aplikasi basis data
+						infrastruktur dan kewilayahan (air minum, penyehatan lingkungan, sanitasi, serta kawasan kumuh)
+						yang akurat, komprehensif dan berbasis spasial sebagai dasar perencanaan Pembangunan Daerah</p>
 
 					<!-- <a href="#" class="button button-border button-rounded button-large ml-0 topmargin-sm">Experience More</a> -->
 				</div>
