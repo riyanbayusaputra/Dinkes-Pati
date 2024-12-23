@@ -37,7 +37,8 @@ class FrontController extends Controller
                     'updated_at' => now()
                 ]);
         }
-
+        // Query sql live
+        // SELECT * FROM `shetabit_visits` WHERE created_at BETWEEN DATE_SUB(NOW() , INTERVAL 10 MINUTE) AND NOW()
         $this->visitoronline = DB::table('shetabit_visits')->distinct('ip')->where('updated_at', '>', Carbon::now()->subMinutes(10))->count();
     }
 
@@ -61,7 +62,7 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
 
         // return $visithari;
@@ -88,7 +89,7 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
 
         $pgn = PengumumanModel::whereDate('selesai', '>=',  Carbon::now()->format('Y-m-d'))
@@ -102,7 +103,50 @@ class FrontController extends Controller
         $vo = $this->visitoronline;
         // return now()->format('h:i:s');
         // return $vo;
-        return view('FE.mainhome', compact('vo', 'activityGalleries', 'videos', 'faqs', 'videoBanner', 'berita', 'visit', 'banners', 'visitbulan', 'visithari', 'pgn'));
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
+        return view('FE.mainhome', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'activityGalleries',
+            'videos',
+            'faqs',
+            'videoBanner',
+            'berita',
+            'visit',
+            'banners',
+            'visitbulan',
+            'visithari',
+            'pgn'
+        ));
     }
 
     public function kajian(Request $request)
@@ -130,15 +174,52 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
 
         // Ambil data setelah difilter dan/atau dicari dengan pagination
         $documents = $query->paginate(10); // Menampilkan 10 dokumen per halaman
 
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
         // Kembalikan data ke view
-        return view('FE.kajian', compact('vo', 'documents', 'visit', 'visitbulan', 'visithari'));
+        return view('FE.kajian', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'documents',
+            'visit',
+            'visitbulan',
+            'visithari'
+        ));
     }
 
     public function petasebaran()
@@ -146,12 +227,49 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
 
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
+
         // return $data;
-        return view('FE.petasebaran', compact('vo', 'visit', 'visitbulan', 'visithari'));
+        return view('FE.petasebaran', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari'
+        ));
     }
 
     public function getkoordinatpdam()
@@ -216,11 +334,48 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
         $faqs = Faq::with('answers')->get();
-        return view('FE.bantuan', compact('vo', 'visit', 'visitbulan', 'visithari', 'faqs'));
+        return view('FE.bantuan', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari',
+            'faqs'
+        ));
     }
 
     public function kontakkami()
@@ -228,32 +383,142 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
-        return view('FE.kontakkami', compact('vo', 'visit', 'visitbulan', 'visithari'));
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
+        return view('FE.kontakkami', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari'
+        ));
     }
     public function pengumuman()
     {
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
-        $pengumuman = PengumumanModel::get();
-        return view('FE.pengumuman', compact('vo', 'visit', 'visitbulan', 'visithari', 'pengumuman'));
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
+        $pengumuman = PengumumanModel::paginate(6);
+        return view('FE.pengumuman', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari',
+            'pengumuman'
+        ));
     }
     public function panduan()
     {
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
         $pengumuman = PengumumanModel::get();
-        return view('FE.panduan', compact('vo', 'visit', 'visitbulan', 'visithari', 'pengumuman'));
+        return view('FE.panduan', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari',
+            'pengumuman'
+        ));
     }
 
     public function infografis()
@@ -261,10 +526,46 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
-        return view('FE.infografis', compact('vo', 'visit', 'visitbulan', 'visithari'));
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
+        return view('FE.infografis', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari'
+        ));
     }
 
     public function profile()
@@ -272,10 +573,46 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
-        return view('FE.welcome', compact('vo', 'visit', 'visitbulan', 'visithari'));
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
+        return view('FE.welcome', compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari'
+        ));
     }
 
     public function kritikdansaran(Request $request)
@@ -345,27 +682,101 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
         $activityGalleries = ActivityGallery::paginate(6);
 
         // return $activityGalleries;
-        return view('FE.daftargallery',  compact('vo', 'visit', 'visitbulan', 'visithari', 'activityGalleries'));
+        return view('FE.daftargallery',  compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari',
+            'activityGalleries'
+        ));
     }
     public function daftarberita(Request $request)
     {
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
 
-        $activityGalleries = BeritaModel::paginate(6);
+        $activityGalleries = BeritaModel::orderBy('created_at', 'DESC')->paginate(6);
 
         // return $activityGalleries;
-        return view('FE.daftarberita',  compact('vo', 'visit', 'visitbulan', 'visithari', 'activityGalleries'));
+        return view('FE.daftarberita',  compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari',
+            'activityGalleries'
+        ));
     }
 
     public function bacaberita(Request $request)
@@ -374,12 +785,101 @@ class FrontController extends Controller
         $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
         $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
         $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
-            ->whereDate('created_at', Carbon::now()->format('d'))
+            ->whereDay('created_at', Carbon::now()->format('d'))
             ->count();
         $vo = $this->visitoronline;
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
 
         $detailberita = BeritaModel::where('activity_title', str_replace('-', ' ', $request->kontenberita))->first();
 
-        return view('FE.bacaberita',  compact('vo', 'visit', 'visitbulan', 'visithari', 'detailberita'));
+        return view('FE.bacaberita',  compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari',
+            'detailberita'
+        ));
+    }
+    public function bacapengumuman(Request $request)
+    {
+        // return $request->all();
+        $visit = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->count();
+        $visitbulan = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $visithari = DB::table('shetabit_visits')->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)
+            ->whereDay('created_at', Carbon::now()->format('d'))
+            ->count();
+        $vo = $this->visitoronline;
+        $rating = RatingUsModel::get();
+        $star0 = 0;
+        $star = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        ];
+        foreach ($rating as $key => $v) {
+            if ($v->rate == 1) {
+                $star[1]++;
+            }
+            if ($v->rate == 2) {
+                $star[2]++;
+            }
+            if ($v->rate == 3) {
+                $star[3]++;
+            }
+            if ($v->rate == 4) {
+                $star[4]++;
+            }
+            if ($v->rate == 5) {
+                $star[5]++;
+            }
+        }
+        $star0 = round(count($rating) / 5, 2);
+
+        $detailberita = PengumumanModel::where('judul', str_replace('-', ' ', $request->kontenpengumuman))->first();
+        // return $detailberita;
+
+        return view('FE.bacapengumuman',  compact(
+            'rating',
+            'star0',
+            'star',
+            'vo',
+            'visit',
+            'visitbulan',
+            'visithari',
+            'detailberita'
+        ));
     }
 }

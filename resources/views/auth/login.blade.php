@@ -166,7 +166,7 @@
             <div class="right-panel">
                 <div class="login-box">
                     <h1>Masuk </h1>
-                    <p class="system-info">SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</p>
+                    <p class="system-info">{{env('APP_NAME'),''}}</p>
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

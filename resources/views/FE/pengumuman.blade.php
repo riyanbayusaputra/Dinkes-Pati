@@ -2,38 +2,51 @@
 
 @section('content')
 <section id="content">
-    <div class="content-wrap py-0">
-        <div class="container clearfix mt-4">
+    <div class="content-wrap">
+        <div class="container clearfix">
             <div class="heading-block center">
-                <h2>Pengumuman</h2>
-                <span>Daftar pengumunan</span>
+                <h2>Galeri</h2>
+                {{-- <span>Pertanyaan dan jawaban yang umum ditanyakan menurut kami</span> --}}
             </div>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="myTable">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th colspan="2" class="text-center">Tanggal</th>
-                            <th>Pengumuman</th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th>Mulai</th>
-                            <th>Selesai</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($pengumuman as $key => $p)
-                        <tr>
-                            <td>{{$key+1}}</td>
-                            <td>{{\Carbon\Carbon::parse($p->mulai)->format('d-m-Y')}}</td>
-                            <td>{{\Carbon\Carbon::parse($p->selesai)->format('d-m-Y')}}</td>
-                            <td>{{$p->keterangan}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+            <div id="posts" class="post-grid row grid-container clearfix" data-layout="fitRows">
+
+                @foreach ($pengumuman as $activity)
+                <div class="entry col-md-4 col-sm-6 col-12">
+                    <div class="grid-inner">
+                        <div class="entry-image">
+                            @if($activity->image)
+                            <a href="{{ route('activity-gallery.image', ['path' => $activity->image]) }}"
+                                data-lightbox="image"><img
+                                    src="{{ route('activity-gallery.image', ['path' => $activity->image]) }}"
+                                    alt="Standard Post with Image"></a>
+                            @endif
+                        </div>
+                        <div class="entry-title">
+                            <h2><a href="/baca-pengumuman?kontenpengumuman={{str_replace(' ', '-', $activity->judul)}}"
+                                    style="text-transform: none !important">{{
+                                    $activity->judul }}</a></h2>
+                        </div>
+
+                        <div class="entry-content">
+                            <p>{{ \Illuminate\Support\Str::limit($activity->keterangan, 160) }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+                <div class="clear mt-5"></div>
+
+                <!-- Pagination
+					============================================= -->
+                <!-- .pager end -->
+                <div class="row">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <!-- <ul class="pagination">
+							</ul> -->
+                        {!! $pengumuman->links('pagination::bootstrap-4') !!}
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

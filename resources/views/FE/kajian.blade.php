@@ -8,7 +8,7 @@
 
                 <div class="heading-block">
                     <h2>Kajian Kabupaten Pati</h2>
-                    <span>Sistem Informasi Rumpun Bidang Infrastruktur dan Kewilayahan Pati</span>
+                    <span style="font-size: 18px">{{env('APP_NAME'),''}}</span>
                 </div>
 
                 <!-- <div class="select-data">

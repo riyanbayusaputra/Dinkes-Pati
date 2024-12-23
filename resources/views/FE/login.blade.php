@@ -226,17 +226,23 @@
                 background-color: #f9f6f6;
                 overflow: hidden;
             }
+
             .left-panel {
-                display: none; /* Sembunyikan panel kiri */
+                display: none;
+                /* Sembunyikan panel kiri */
             }
 
             .right-content {
                 background: transparent;
-                width: 100%; /* Panel kanan mengambil seluruh lebar */
-                justify-content: center; /* Tengah-tengahkan konten secara vertikal */
-                align-items: center; /* Tengah-tengahkan konten secara horizontal */
+                width: 100%;
+                /* Panel kanan mengambil seluruh lebar */
+                justify-content: center;
+                /* Tengah-tengahkan konten secara vertikal */
+                align-items: center;
+                /* Tengah-tengahkan konten secara horizontal */
                 overflow: hidden;
             }
+
             .login-box {
                 background-color: #fff;
                 padding: 40px;
@@ -262,7 +268,7 @@
             <div class="right-panel">
                 <div class="login-box">
                     <h1>Masuk untuk mengisi kuesioner</h1>
-                    <p class="system-info">SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</p>
+                    <p class="system-info">{{env('APP_NAME'),''}}</p>
 
                     <!-- Email input -->
                     <div class="input-group">

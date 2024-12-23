@@ -29,17 +29,35 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $validated = $request->validate([
             'mulai' => 'required', // Validasi untuk title
             'selesai' => 'required',
+            'judul' => 'required',
             'keterangan' => 'required',
+            'image' => 'mimes:jpeg,jpg,png|required',
+            'pdf' => 'mimes:pdf|required',
         ]);
+
+        $image = null; // Set null jika tidak ada gambar
+        if ($request->hasFile('image')) {
+            $imageName = $request->file('image')->store('pengumuman/' . date('Y/m/d'));
+            $image = $imageName; // Simpan path ke dalam array input
+        }
+        $pdf = null; // Set null jika tidak ada gambar
+        if ($request->hasFile('pdf')) {
+            $pdfName = $request->file('pdf')->store('pengumuman/' . date('Y/m/d'));
+            $pdf = $pdfName; // Simpan path ke dalam array input
+        }
 
         // Simpan FAQ dengan title dan question
         $faq = PengumumanModel::create([
             'mulai' => $validated['mulai'], // Menyimpan title
             'selesai' => $validated['selesai'], // Menyimpan title
-            'keterangan' => $validated['keterangan']
+            'keterangan' => $validated['keterangan'],
+            'judul' => $validated['judul'],
+            'image' => $image,
+            'pdf' => $pdf
         ]);
 
 
@@ -69,20 +87,34 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
         // return $id;
         $validated = $request->validate([
             'mulai' => 'required', // Validasi untuk title
             'selesai' => 'required',
+            'judul' => 'required',
             'keterangan' => 'required',
+            'image' => 'nullable|mimes:jpeg,jpg,png',
+            'pdf' => 'nullable|mimes:pdf',
         ]);
 
-        // Simpan FAQ dengan title dan question
-        PengumumanModel::where('id', $id)->update([
+        $i = [
             'mulai' => $validated['mulai'], // Menyimpan title
             'selesai' => $validated['selesai'], // Menyimpan title
-            'keterangan' => $validated['keterangan']
-        ]);
+            'judul' => $validated['judul'],
+            'keterangan' => $validated['keterangan'],
+        ];
+
+        if ($request->hasFile('image')) {
+            $imageName = $request->file('image')->store('pengumuman/' . date('Y/m/d'));
+            $i['image'] = $imageName; // Simpan path ke dalam array input
+        }
+        if ($request->hasFile('pdf')) {
+            $pdfName = $request->file('pdf')->store('pengumuman/' . date('Y/m/d'));
+            $i['pdf'] = $pdfName; // Simpan path ke dalam array input
+        }
+
+        // Simpan FAQ dengan title dan question
+        PengumumanModel::where('id', $id)->update($i);
 
 
 
@@ -96,5 +128,19 @@ class PengumumanController extends Controller
     {
         PengumumanModel::where('id', $id)->delete();
         return redirect()->route('datapengumuman.index')->with('success', 'Pengumuman berhasil dihapus.');
+    }
+
+    public function showpengumuman($path)
+    {
+        // Menyusun path lengkap menuju gambar
+        $fullPath = storage_path('app/' . $path);
+
+        // Cek apakah file ada
+        if (file_exists($fullPath)) {
+            return response()->file($fullPath);
+        }
+
+        // Jika file tidak ditemukan
+        abort(404, 'Gambar tidak ditemukan.');
     }
 }

@@ -202,10 +202,9 @@
 
 				<div class="col-md-7">
 					<div class="heading-block">
-						<h2 style="color: #006FCF !important;">SISTEM INFORMASI RUMPUN INFRASTRUKTUR DAN
-							KEWILAYAHAN PATI</h2>
+						<h2 style="color: #006FCF !important;">{{env('APP_NAME'),''}}</h2>
 					</div>
-					<p><b>SISTEM INFORMASI RUMPUN INFRASTRUKTUR DAN KEWILAYAHAN PATI</b> merupakan aplikasi basis data
+					<p><b>{{env('APP_NAME'),''}}</b> merupakan aplikasi basis data
 						infrastruktur dan kewilayahan (air minum, penyehatan lingkungan, sanitasi, serta kawasan kumuh)
 						yang akurat, komprehensif dan berbasis spasial sebagai dasar perencanaan Pembangunan Daerah</p>
 

@@ -32,11 +32,13 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="datatable1_wrapper">
                             <thead>
                                 <tr>
-                                    <th>Tanggal Mulai</th> <!-- Kolom untuk judul -->
-                                    <th>Tanggal Selesai</th>
+                                    <th>Judul</th>
+                                    <th>PDF</th>
+                                    <th>Gambar</th>
+                                    <th>Tanggal</th>
                                     <th>Pengumuman</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -44,13 +46,39 @@
                             <tbody>
                                 @foreach ($faqs as $faq)
                                 <tr>
-                                    <td>{{ \Carbon\Carbon::parse($faq->mulai)->locale('id')->isoFormat('dddd, D MMMM Y') }}</td> <!-- Menampilkan judul FAQ -->
-                                    <td>{{ \Carbon\Carbon::parse($faq->selesai)->locale('id')->isoFormat('dddd, D MMMM Y') }} </td> <!-- Menampilkan judul FAQ -->
+                                    <td>
+                                        {{$faq->judul}}
+                                    </td>
+                                    <td>
+                                        @if ($faq->pdf)
+                                        <a href="{{ route('pengumuman.image', ['path' => $faq->pdf])  }}"
+                                            target="_blank" class="btn btn-info btn-sm">Download</a>
+                                        @else
+                                        <span>Tidak ada dokumen</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($faq->image)
+                                        <img src="{{ route('pengumuman.image', ['path' => $faq->image])  }}"
+                                            alt="{{ $faq->keterangan }}" class="img-fluid" style="max-width: 100px;">
+                                        @else
+                                        <span>Tidak ada gambar</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($faq->mulai)->locale('id')->isoFormat('dddd, D MMMM
+                                        Y')}} - {{ \Carbon\Carbon::parse($faq->selesai)->locale('id')->isoFormat('dddd,
+                                        D MMMM
+                                        Y') }}
+                                    </td>
                                     <td>{{ $faq->keterangan }}</td>
 
                                     <td>
-                                        <a href="{{ route('datapengumuman.edit', $faq->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('datapengumuman.destroy', $faq->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus pengumumaan ini?');">
+                                        <a href="{{ route('datapengumuman.edit', $faq->id) }}"
+                                            class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{{ route('datapengumuman.destroy', $faq->id) }}" method="POST"
+                                            style="display:inline;"
+                                            onsubmit="return confirm('Yakin ingin menghapus pengumumaan ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

@@ -6,7 +6,6 @@
 		<div class="container clearfix">
 			<div class="heading-block center">
 				<h2>Berita</h2>
-				<span>Baca berita kami yang terpercaya</span>
 			</div>
 			<div id="posts" class="post-grid row grid-container clearfix" data-layout="fitRows">
 
@@ -20,8 +19,8 @@
 									alt="Standard Post with Image"></a>
 						</div>
 						<div class="entry-title">
-							<h2><a
-									href="/baca-berita?kontenberita={{str_replace(' ', '-', $activity->activity_title)}}">{{
+							<h2><a href="/baca-berita?kontenberita={{str_replace(' ', '-', $activity->activity_title)}}"
+									style="text-transform: none !important">{{
 									$activity->activity_title }}</a></h2>
 						</div>
 						<div class="entry-meta">

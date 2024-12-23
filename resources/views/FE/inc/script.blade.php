@@ -32,13 +32,7 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
-	let play = false;
 	$(document).ready(function() {
-		
-		setTimeout(() => {
-			document.getElementById('videoplay').style.display = 'block';
-			console.log('showvideoplay');
-		}, 7000);
 		$('#myTable').DataTable();
 		$('#charttable1').DataTable();
 		$('#charttable2').DataTable();
@@ -320,7 +314,7 @@
 
 	function irigasi() {
 		// cleargeojson()
-		$("#DaerahIrigasi").prop("checked", true)
+		// $("#DaerahIrigasi").prop("checked", true)
 		if ($("#DaerahIrigasi").prop("checked") == true) {
 			// console.log($("#DaerahIrigasi").prop("checked"));
 			$.ajaxSetup({
@@ -344,9 +338,9 @@
 					// 	geojson.clearLayers();
 					// } else {
 					// }
-					if (geojson) {
-						map.removeLayer(geojson);
-					}
+					// if (geojson) {
+					// 	map.removeLayer(geojson);
+					// }
 					geojson = L.geoJSON(myLines, {
 						style: myStyle
 					}).addTo(map);
@@ -358,7 +352,7 @@
 
 	function transportsarana() {
 		// cleargeojson()
-		$("#SaranaDanPrasarana").prop("checked", true)
+		// $("#SaranaDanPrasarana").prop("checked", true)
 		if ($("#SaranaDanPrasarana").prop("checked") == true) {
 			// console.log($("#SaranaDanPrasarana").prop("checked"));
 			$.ajaxSetup({
@@ -377,9 +371,9 @@
 						"weight": 4,
 						// "opacity": 0.65
 					};
-					if (geojson) {
-						map.removeLayer(geojson);
-					}
+					// if (geojson) {
+					// 	map.removeLayer(geojson);
+					// }
 					// console.log(geojson)
 					// if (geojson) {
 					// 	geojson.clearLayers();
@@ -437,8 +431,8 @@
 
 	function jaringanpdam() {
 		// cleargeojson()
-		$("#JaringanAirMinum").prop("checked", true)
-
+		// $("#JaringanAirMinum").prop("checked", true)
+		
 		if ($("#JaringanAirMinum").prop("checked") == true) {
 			$.ajaxSetup({
 				headers: {
@@ -460,9 +454,9 @@
 					// L.geoJSON(myLines, {
 					// 	style: myStyle
 					// }).addTo(map);
-					if (geojson) {
-						map.removeLayer(geojson);
-					}
+					// if (geojson) {
+					// 	map.removeLayer(geojson);
+					// }
 					geojson = L.geoJSON(myLines, {
 						style: myStyle
 					}).addTo(map);
@@ -476,7 +470,16 @@
 	}
 
 	function cleargeojson() {
+		$(".leaflet-interactive").remove();
+		$(".leaflet-shadow-pane").remove();
 		L.geoJSON().clearLayers();
+	}
+
+	function setmaps() {
+		cleargeojson();
+		jaringanpdam();
+		irigasi();
+		transportsarana();
 	}
 	// console.log($("#JaringanAirMinum").prop("checked", true));
 	$(document).ready(function() {

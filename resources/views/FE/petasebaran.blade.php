@@ -11,12 +11,12 @@
             <div class="row mt-3">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-center">
-                        <label class="mr-2"><input class="mr-2" type="radio" id="JaringanAirMinum"
-                                onclick="jaringanpdam()" name="e">Jaringan Air Minum</label>
-                        <label class="mr-2"><input class="mr-2" type="radio" id="DaerahIrigasi" onclick="irigasi()"
+                        <label class="mr-2"><input class="mr-2" type="checkbox" id="JaringanAirMinum"
+                                onclick="setmaps()" name="e">Jaringan Air Minum</label>
+                        <label class="mr-2"><input class="mr-2" type="checkbox" id="DaerahIrigasi" onclick="setmaps()"
                                 name="e">Daerah Irigasi</label>
-                        <label class="mr-2"><input class="mr-2" type="radio" id="SaranaDanPrasarana"
-                                onclick="transportsarana()" name="e">Sarana Dan Prasarana</label>
+                        <label class="mr-2"><input class="mr-2" type="checkbox" id="SaranaDanPrasarana"
+                                onclick="setmaps()" name="e">Sarana Dan Prasarana</label>
                         <!-- <label><input type="radio" id="RumahTidakLayakHuni" onclick="taklayakhuni()" name="e">Rumah Tidak Layak Huni</label>
                         <label><input type="radio" id="KawasanKumuh" onclick="kawansankumuh()" name="e">Kawasan Kumuh</label> -->
                     </div>

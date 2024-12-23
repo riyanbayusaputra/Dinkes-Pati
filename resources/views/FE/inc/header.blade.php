@@ -5,6 +5,11 @@
 		font-family: "Poppins", sans-serif;
 		font-size: 18px;
 	}
+
+	.fs-14 {
+		font-size: 14px !important;
+
+	}
 </style>
 <header id="header" class="">
 	<div id="header-wrap">
@@ -69,29 +74,29 @@
 							</a>
 							<ul class="sub-menu-container">
 								<li class="menu-item">
-									<a class="menu-link" href="/login">
+									<a class="menu-link fs-14" href="/login">
 										<div>EHRA</div>
 									</a>
 									<ul class="sub-menu-container">
 										<li class="menu-item">
-											<a class="menu-link" href="{{ route('infografis') }}">
+											<a class="menu-link fs-14" href="{{ route('infografis') }}">
 												<div>Grafis</div>
 											</a>
 										</li>
 									</ul>
 								</li>
 								{{-- <li class="menu-item">
-									<a class="menu-link" href="rs-demos.html">
+									<a class="menu-link fs-14" href="rs-demos.html">
 										<div>Login</div>
 									</a>
 								</li> --}}
 								<li class="menu-item">
-									<a class="menu-link" href="{{ route('kajian') }}">
+									<a class="menu-link fs-14" href="{{ route('kajian') }}">
 										<div>Kajian Rumpun</div>
 									</a>
 								</li>
 								<li class="menu-item">
-									<a class="menu-link" href="{{ route('petasebaran') }}">
+									<a class="menu-link fs-14" href="{{ route('petasebaran') }}">
 										<div>Peta Sebaran</div>
 									</a>
 								</li>
@@ -104,17 +109,17 @@
 							</a>
 							<ul class="sub-menu-container">
 								<li class="menu-item">
-									<a class="menu-link" href="/daftar-berita">
+									<a class="menu-link fs-14" href="/daftar-berita">
 										<div>Berita</div>
 									</a>
 								</li>
 								<li class="menu-item">
-									<a class="menu-link" href="/daftar-galeri">
+									<a class="menu-link fs-14" href="/daftar-galeri">
 										<div>Galeri</div>
 									</a>
 								</li>
 								<li class="menu-item">
-									<a class="menu-link" href="/pengumuman">
+									<a class="menu-link fs-14" href="/pengumuman">
 										<div>Pengumuman</div>
 									</a>
 								</li>

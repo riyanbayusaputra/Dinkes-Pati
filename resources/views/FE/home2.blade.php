@@ -1518,8 +1518,8 @@
                         <img src="{{ asset('images/logodin.png') }}" alt="Logo Kabupaten Pati">
                     </div>
                     <div class="info-right">
-                        <h3>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</h3>
-                        <h5>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI Merupakan aplikasi digital
+                        <h3>{{env('APP_NAME'),''}}</h3>
+                        <h5>{{env('APP_NAME'),''}} Merupakan aplikasi digital
                             untuk memantau dan melakukan monitoring sanitasi dan pengolahan limbah rumah tangga. Kami
                             terus berkomitmen untuk memberikan pelayanan dan informasi yang akurat untuk mendorong
                             sebaran dan analisa yang kredibel.</h5>

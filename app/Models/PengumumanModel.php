@@ -13,6 +13,9 @@ class PengumumanModel extends Model
     protected $fillable = [
         'mulai',
         'selesai',
+        'image',
+        'pdf',
+        'judul',
         'keterangan'
     ];
 }

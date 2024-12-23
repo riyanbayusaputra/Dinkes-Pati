@@ -1,3 +1,13 @@
+<style>
+	.progress,
+	.progress-stacked {
+		--bs-progress-bar-bg: #fde16d;
+	}
+
+	.rating-container .caption {
+		display: none;
+	}
+</style>
 <footer id="footer" class="dark">
 	<div class="container">
 
@@ -224,8 +234,47 @@
 					</div>
 
 				</div>
-
 			</div><!-- .footer-widgets-wrap end -->
+			<div class="widget clearfix text-center">
+				<h3>Rating Masyarakat</h3>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="widget subscribe-widget clearfix">
+							<h2 class="m-0">{{$star0}}/5</h2>
+							<input id="input-1" type="number" class="rating form-control" max="5" min="1"
+								data-step="0.1" value="{{$star0}}" data-size="lg" readonly>
+							<p>{{count($rating)}} Penilaian</p>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<table>
+							<thead>
+								<tr>
+									<td width="1%"></td>
+									<td width="5%"></td>
+									<td width="70%"></td>
+									<td width="14%"></td>
+								</tr>
+							</thead>
+							<tbody>
+								@for($i = 5; $i >= 1; $i--) <tr>
+									<td>{{$i}}</td>
+									<td><span class="filled-star"><span class="star"><i
+													class="icon-star3"></i></span></span></td>
+									<td>
+										<div class="progress" role="progressbar" aria-label="Basic example"
+											aria-valuenow="0" aria-valuemin="0" aria-valuemax="{{count($rating)}}">
+											<div class="progress-bar" style="width: {{$star[$i]}}%"></div>
+										</div>
+									</td>
+									<td class="text-center">{{$star[$i]}} Penilaian</td>
+								</tr>
+								@endfor
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 
 		</div>
 	</div>

@@ -69,11 +69,15 @@
 	{{-- @vite(['resources/js/app.js']) --}}
 	<!-- Document Title
 	============================================= -->
-	<title>SISTEM INFORMASI RUMPUN BIDANG INFRASTRUKTUR DAN KEWILAYAHAN PATI</title>
+	<title>{{env('APP_NAME'),''}}</title>
 
 	<style>
 		/* .wrapper {
 		} */
+
+		h2 {
+			text-transform: capitalize !important;
+		}
 
 		.chart-container {
 			/* max-width: 400px;

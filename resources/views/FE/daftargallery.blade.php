@@ -5,7 +5,7 @@
 	<div class="content-wrap">
 		<div class="container clearfix">
 			<div class="heading-block center">
-				<h2>Gallery</h2>
+				<h2>Galeri</h2>
 				{{-- <span>Pertanyaan dan jawaban yang umum ditanyakan menurut kami</span> --}}
 			</div>
 			<div id="posts" class="post-grid row grid-container clearfix" data-layout="fitRows">

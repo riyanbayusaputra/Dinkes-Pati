@@ -35,6 +35,11 @@ Route::prefix('banner')->group(function () {
 });
 
 // Group route untuk Berita
+Route::prefix('pengumuman')->group(function () {
+    Route::get('/view/{path}', [PengumumanController::class, 'showpengumuman'])
+        ->name('pengumuman.image')
+        ->where('path', '.*');
+});
 Route::prefix('berita')->group(function () {
     Route::get('/view/{path}', [BeritaController::class, 'showberita'])
         ->name('berita.image')
@@ -160,6 +165,7 @@ Route::get('/getkoordinattaklayakhuni', [FrontController::class, 'getkoordinatta
 Route::get('/daftar-galeri', [FrontController::class, 'listgallery']);
 Route::get('/baca-berita', [FrontController::class, 'bacaberita']);
 Route::get('/daftar-berita', [FrontController::class, 'daftarberita']);
+Route::get('/baca-pengumuman', [FrontController::class, 'bacapengumuman']);
 
 
 Route::get('/responses/{id}', [ResponseController::class, 'show'])->name('responses.show');
