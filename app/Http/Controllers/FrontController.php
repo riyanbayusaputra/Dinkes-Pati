@@ -130,7 +130,7 @@ class FrontController extends Controller
                 $star[5]++;
             }
         }
-        $star0 = round(count($rating) / 5, 2);
+        $star0 = round((($star[1] * 1) + ($star[2] * 2) + ($star[3] * 3) + ($star[4] * 4) + ($star[5] * 5)) / count($rating), 1);
         return view('FE.mainhome', compact(
             'rating',
             'star0',

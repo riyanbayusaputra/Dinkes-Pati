@@ -7,6 +7,10 @@
 	.rating-container .caption {
 		display: none;
 	}
+
+	.counter-small {
+		font-size: 16px !important;
+	}
 </style>
 <footer id="footer" class="dark">
 	<div class="container">
@@ -73,8 +77,46 @@
 				</div>
 				<div class="col-lg-4">
 
+					<h4 class="">Jumlah Pengunjung :</h4>
+					<table width="100%">
+						<thead></thead>
+						<tbody>
+							<tr>
+								<td>Tahun</td>
+								<td>:</td>
+								<td>
+									<div class="counter counter-small"><span data-from="50"
+											data-to="{{$visit <= 0 ? 1: $visit}}" data-refresh-interval="80"
+											data-speed="3000" data-comma="false"></span> Pengunjung
+								</td>
+							</tr>
+							<tr>
+								<td>Bulan</td>
+								<td>:</td>
+								<td>
+									<div class="counter counter-small"><span data-from="50"
+											data-to="{{$visitbulan <= 0 ? 1: $visitbulan}}" data-refresh-interval="80"
+											data-speed="3000" data-comma="false"></span> Pengunjung
+								</td>
+							</tr>
+							<tr>
+								<td>Hari</td>
+								<td>:</td>
+								<td>
+									<div class="counter counter-small"><span data-from="50"
+											data-to="{{$visithari <= 0 ? 1: $visithari}}" data-refresh-interval="80"
+											data-speed="3000" data-comma="false"></span> Pengunjung
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h5>Pengunjung Online :
+						<div class="counter counter-small"><span data-from="50" data-to="{{$vo <= 0 ? 1: $vo}}"
+								data-refresh-interval="80" data-speed="3000" data-comma="false"></span> Pengunjung
+						</div>
+					</h5>
 					<div class="row col-mb-50">
-						<div class="col-md-4 col-lg-12">
+						{{-- <div class="col-md-4 col-lg-12">
 							<div class="widget clearfix" style="margin-bottom: -20px;">
 								<h5 class="mb-0 mr-3">Jumlah Pengunjung Per</h5>
 								<div class="row">
@@ -114,7 +156,7 @@
 								</div>
 
 							</div>
-						</div>
+						</div> --}}
 
 						<div class="col-md-5 col-lg-12">
 							<div class="widget subscribe-widget clearfix">
@@ -235,7 +277,7 @@
 
 				</div>
 			</div><!-- .footer-widgets-wrap end -->
-			<div class="widget clearfix text-center">
+			<div class="widget clearfix text-center" hidden>
 				<h3>Rating Masyarakat</h3>
 				<div class="row">
 					<div class="col-md-4">
@@ -264,7 +306,8 @@
 									<td>
 										<div class="progress" role="progressbar" aria-label="Basic example"
 											aria-valuenow="0" aria-valuemin="0" aria-valuemax="{{count($rating)}}">
-											<div class="progress-bar" style="width: {{$star[$i]}}%"></div>
+											<div class="progress-bar"
+												style="width: {{($star[$i]/count($rating))*100}}%"></div>
 										</div>
 									</td>
 									<td class="text-center">{{$star[$i]}} Penilaian</td>

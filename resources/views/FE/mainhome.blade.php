@@ -3,12 +3,10 @@
 @section('content')
 <section id="slider" class="slider-element slider-parallax min-vh-60 min-vh-md-100 include-header">
 	<div class="slider-inner">
-
 		<div class="video-wrap">
-			{{-- <video poster="{{ asset('FE/Jaringan_Air_Minum.png') }}" preload="auto" loop autoplay muted> --}}
-				<video preload="auto" loop autoplay muted id="videoplay" width="100%">
-					<source src="{{ asset('FE/banner.mp4') }}" type='video/mp4' />
-				</video>
+			<video preload="auto" loop autoplay muted id="videoplay" width="100%">
+				<source src="{{ asset('FE/banner.mp4') }}" type='video/mp4' />
+			</video>
 		</div>
 	</div>
 </section>
@@ -20,29 +18,29 @@
 	<div class="content-wrap py-0">
 
 		<div class="container clearfix">
-			<div class="row justify-content-center slider-box-wrap clearfix">
+			<div class="row justify-content-center slider-box-wrap clearfix" style="top: -70px !important;">
 				<div class="col-12">
 					<div class="slider-bottom-box">
 						<div class="flex-container">
 
 							<div class="item1">
-								<a href="/login" class="text-center text-uppercase text-white">
-									<img src="{{ asset('images/ehra.png') }}" class="rounded-0 bg-transparent text-left"
-										alt="Image">
+								<a href="/login" class="text-center text-uppercase text-white fs-5">
+									<img src="{{ asset('icon/Untitled-1-01-1.png') }}" width="60px"
+										class="rounded-0 bg-transparent text-left" alt="Image">
 									EHRA
 								</a>
 							</div>
 							<div class="item2">
-								<a href="{{ route('kajian') }}" class="text-center text-uppercase text-white">
-									<img src="{{ asset('images/kajian.png') }}"
+								<a href="{{ route('kajian') }}" class="text-center text-uppercase text-white fs-5">
+									<img src="{{ asset('icon/Untitled-1-03-1.png') }}" width="60px"
 										class="rounded-0 bg-transparent text-left" alt="Image">
 									Kajian Rumpun
 								</a>
 							</div>
 							<div class="item3">
-								<a href="{{ route('petasebaran') }}" class="text-center text-uppercase text-white">
-									<img src="{{ asset('images/peta.png') }}" class="rounded-0 bg-transparent text-left"
-										alt="Image">
+								<a href="{{ route('petasebaran') }}" class="text-center text-uppercase text-white fs-5">
+									<img src="{{ asset('icon/Untitled-1-04-1.png') }}" width="60px"
+										class="rounded-0 bg-transparent text-left" alt="Image">
 									Peta sebaran
 								</a>
 							</div>
@@ -245,6 +243,51 @@
 	</div>
 </section>
 @endif
+
+<section id="content" class="mb-4">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			<div class="row align-items-center gutter-40 text-center">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-4">
+					<h2>Rating Masyarakat</h2>
+					<h3 class="m-0">{{$star0}}/5</h3>
+					<input id="input-1" type="number" class="rating form-control" max="5" min="1" data-step="0.1"
+						value="{{$star0}}" data-size="lg" readonly>
+					<p>{{count($rating)}} Penilaian</p>
+				</div>
+				<div class="col-lg-4">
+					<table>
+						<thead>
+							<tr>
+								<td width="1%"></td>
+								<td width="5%"></td>
+								<td width="25%"></td>
+								<td width="10%"></td>
+							</tr>
+						</thead>
+						<tbody>
+							@for($i = 5; $i >= 1; $i--) <tr>
+								<td>{{$i}}</td>
+								<td><span class="filled-star"><span class="star"><i
+												class="icon-star3"></i></span></span></td>
+								<td>
+									<div class="progress" role="progressbar" aria-label="Basic example"
+										aria-valuenow="0" aria-valuemin="0" aria-valuemax="{{count($rating)}}">
+										<div class="progress-bar" style="width: {{($star[$i]/count($rating))*100}}%">
+										</div>
+									</div>
+								</td>
+								<td class="text-center">{{$star[$i]}} Penilaian</td>
+							</tr>
+							@endfor
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 <!-- <section id="content">
 	<div class="content-wrap">

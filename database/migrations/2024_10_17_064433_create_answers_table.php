@@ -11,7 +11,7 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('faq_id')->constrained('faqs')->onDelete('cascade');
-            $table->string('answer');
+            $table->text('answer');
             $table->timestamps();
         });
     }
@@ -21,4 +21,3 @@ class CreateAnswersTable extends Migration
         Schema::dropIfExists('answers');
     }
 }
-

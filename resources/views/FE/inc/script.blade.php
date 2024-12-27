@@ -11,7 +11,6 @@
 
 <!-- Footer Scripts
 	============================================= -->
-<script src="{{asset('FE/js/functions.js')}}"></script>
 <script src="{{asset('FE/include/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
 <script src="{{asset('FE/include/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
 <script src="{{asset('FE/include/rs-plugin/js/extensions/revolution.extension.video.min.js')}}"></script>
@@ -24,6 +23,7 @@
 <script src="{{asset('FE/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js')}}"></script>
 <script src="{{asset('FE/js/components/star-rating.js')}}"></script>
 <script src="{{asset('FE/js/components/bs-switches.js')}}"></script>
+<script src="{{asset('FE/js/functions.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
@@ -222,19 +222,6 @@
 			}
 		});
 	})
-	function playvideo() {
-		if (play == false) {
-			play = true;
-			document.getElementById('videoplay').play();
-			$('#btnplay').attr('hidden',true);
-			$('#btnpause').removeAttr('hidden');
-		}else{
-			play = false;
-			$('#btnpause').attr('hidden',true);
-			$('#btnplay').removeAttr('hidden');
-			document.getElementById('videoplay').pause();
-		}
-	}
 </script>
 <script>
 	jQuery(".bt-switch").bootstrapSwitch();
@@ -519,6 +506,11 @@
 		apiRevoSlider.on("revolution.slide.onchange", function(e, data) {
 			SEMICOLON.slider.revolutionSliderMenu();
 		});
+
+		setTimeout(() => {
+			document.getElementById('videoplay').style.display = "block";
+			console.log('playvideo');
+		}, 5000);
 	});
 </script>
 

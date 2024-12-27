@@ -29,10 +29,10 @@ class FaqController extends Controller
     {
         // Validasi input
         $validated = $request->validate([
-            'title' => 'required|string|max:255', // Validasi untuk title
-            'question' => 'required|string|max:255',
+            'title' => 'required|string', // Validasi untuk title
+            'question' => 'required|string',
             'answers' => 'required|array', // Pastikan ini array
-            'answers.*' => 'required|string|max:255', // Pastikan tiap item adalah string
+            'answers.*' => 'required|string', // Pastikan tiap item adalah string
         ]);
 
         // Simpan FAQ dengan title dan question
@@ -58,10 +58,10 @@ class FaqController extends Controller
     {
         // Validasi input
         $validated = $request->validate([
-            'title' => 'required|string|max:255', // Validasi untuk title
-            'question' => 'required|string|max:255',
+            'title' => 'required|string', // Validasi untuk title
+            'question' => 'required|string',
             'answers' => 'required|array',
-            'answers.*' => 'required|string|max:255',
+            'answers.*' => 'required|string',
         ]);
 
         // Update FAQ
