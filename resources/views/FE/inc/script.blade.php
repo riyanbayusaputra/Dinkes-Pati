@@ -237,8 +237,8 @@
 		attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
 	});
 	var baseMaps0 = {
+		"OpenStreetMap.HOT": osmHOT,
 		"OpenStreetMap": osm,
-		"OpenStreetMap.HOT": osmHOT
 	};
 
 	var Stadia_StamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.{ext}', {
@@ -256,12 +256,14 @@
 	});
 	const map = L.map('map').setView([-6.748821786341696, 111.0437742143056], 12);
 	var baseMaps = {
-		" Stadia.StamenTerrain": Stadia_StamenTerrain,
-		"Stadia.AlidadeSatellite": Stadia_AlidadeSatellite
+		"Stadia.AlidadeSatellite": Stadia_AlidadeSatellite,
+		"Stadia.StamenTerrain": Stadia_StamenTerrain,
 	};
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '© OpenStreetMap contributors',
-	}).addTo(map);
+	
+	L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+maxZoom: 20,
+subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+}).addTo(map);
 	L.control.layers(baseMaps0).addTo(map);
 
 

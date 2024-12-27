@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="map-container">
-                <div id="map" style="height: 40vw; margin-top: 10px; z-index: 1;"></div>
+                <div id="map" style="height: 500px; margin-top: 10px; z-index: 1;"></div>
             </div>
         </div>
     </div>
