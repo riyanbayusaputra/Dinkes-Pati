@@ -51,7 +51,7 @@
         }
 
         .right-content {
-            background-image: url('{{ asset('images/kuisioner.png') }}');
+            background-image: url('{{ asset(' images/kuisioner.png') }}');
             background-size: cover;
             background-position: center;
             background-color: #f9f6f6;
@@ -166,27 +166,32 @@
             <div class="right-panel">
                 <div class="login-box">
                     <h1>Masuk </h1>
-                    <p class="system-info">{{env('APP_NAME'),''}}</p>
-
+                    @error('email')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <!-- Email input -->
                         <div class="input-group">
-                            <img src="{{ asset('images/e.png') }}" alt="Email Icon" style="width: 20px; height: 20px; margin-right: 10px;">
-                            <input type="email" class="form-control" name="email" :value="old('email')" placeholder="Email" required autofocus>
+                            <img src="{{ asset('images/e.png') }}" alt="Email Icon"
+                                style="width: 20px; height: 20px; margin-right: 10px;">
+                            <input type="email" class="form-control" name="email" :value="old('email')"
+                                placeholder="Email" required autofocus>
                         </div>
 
                         <!-- Password input -->
                         <div class="input-group">
-                            <img src="{{ asset('images/p.png') }}" alt="Password Icon" style="width: 20px; height: 20px; margin-right: 10px;">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                            <img src="{{ asset('images/p.png') }}" alt="Password Icon"
+                                style="width: 20px; height: 20px; margin-right: 10px;">
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Password" required>
                         </div>
 
                         <!-- Show Password toggle and Login button -->
                         <div class="login-actions">
                             <div class="toggle-switch">
                                 <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                                <label for="showPassword">Show Password</label>
+                                <label for="showPassword" class="text-black">Show Password</label>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Login</button>

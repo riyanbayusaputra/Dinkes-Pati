@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Response;
 use Illuminate\Http\Request;
 use App\Models\Questionnaire;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,14 +16,18 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-    
-    $user = Auth::user();
 
-    // Ambil semua kuis tanpa memfilter berdasarkan user_id, sehingga semua role dapat melihatnya
-    $questionnaires = Questionnaire::all();
+        $user = Auth::user();
 
+        // Ambil semua kuis tanpa memfilter berdasarkan user_id, sehingga semua role dapat melihatnya
+        $questionnaires = Questionnaire::all();
+        $u = User::where('id', $user->id)->with('roles')->first();
+        $superadmin = false;
+        if ($u->roles[0]->name == 'super_admin') {
+            $superadmin = true;
+        }
         // Kirim data ke view
-        return view('questionnaires.index', compact('questionnaires'));
+        return view('questionnaires.index', compact('questionnaires', 'superadmin'));
     }
 
     /**
@@ -120,21 +125,19 @@ class QuestionnaireController extends Controller
     {
         $questionnaire = Questionnaire::findOrFail($id);
         $responses = $questionnaire->responses()
-            ->when(request('search'), function($query) {
-                $query->where('respondent_email', 'like', '%'.request('search').'%');
+            ->when(request('search'), function ($query) {
+                $query->where('respondent_email', 'like', '%' . request('search') . '%');
             })
             ->paginate(10);
-        
         // Data untuk navigasi
         $nextQuestionnaire = Questionnaire::where('id', '>', $id)->orderBy('id')->first();
         $prevQuestionnaire = Questionnaire::where('id', '<', $id)->orderBy('id', 'desc')->first();
-        
+
         return view('questionnaires.responses', compact(
-            'questionnaire', 
-            'responses', 
-            'nextQuestionnaire', 
+            'questionnaire',
+            'responses',
+            'nextQuestionnaire',
             'prevQuestionnaire'
         ));
     }
-
 }

@@ -28,6 +28,9 @@
                                     <label>Email Responden (Opsionals)</label>
                                     <input type="email" name="respondent_email" class="form-control"
                                         value="{{ old('respondent_email') }}">
+                                    @error('respondent_email')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
                                 <div id="accordion">
                                     <div class="accordion">
@@ -61,34 +64,61 @@
                                                     <select name="kecamatan" id="kecamatan" class="form-control"
                                                         onchange="changekecamatan()">
                                                         <option value="">Pilih</option>
-                                                        <option value="33.18.07">Batangan</option>
-                                                        <option value="33.18.18">Cluwak</option>
-                                                        <option value="33.18.20">Dukuhseti</option>
-                                                        <option value="33.18.11">Gabus</option>
-                                                        <option value="33.18.13">Gembong</option>
-                                                        <option value="33.18.17">Gunungwungkal</option>
-                                                        <option value="33.18.06">Jaken</option>
-                                                        <option value="33.18.09">Jakenan</option>
-                                                        <option value="33.18.08">Juwana</option>
-                                                        <option value="33.18.02">Kayen</option>
-                                                        <option value="33.18.12">Margorejo</option>
-                                                        <option value="33.18.16">Margoyoso</option>
-                                                        <option value="33.18.10">Pati</option>
-                                                        <option value="33.18.15">Pucakwangi</option>
-                                                        <option value="33.18.01">Sukolilo</option>
-                                                        <option value="33.18.03">Tambakromo</option>
-                                                        <option value="33.18.19">Tayu</option>
-                                                        <option value="33.18.14">Tlogowungu</option>
-                                                        <option value="33.18.21">Trangkil</option>
-                                                        <option value="33.18.15">Wedarijaksa</option>
-                                                        <option value="33.18.04">Winong</option>
+                                                        <option value="33.18.07" {{old('kecamatan')=='33.18.07'
+                                                            ? 'selected' : '' }}>Batangan</option>
+                                                        <option value="33.18.18" {{old('kecamatan')=='33.18.18'
+                                                            ? 'selected' : '' }}>Cluwak</option>
+                                                        <option value="33.18.20" {{old('kecamatan')=='33.18.20'
+                                                            ? 'selected' : '' }}>Dukuhseti</option>
+                                                        <option value="33.18.11" {{old('kecamatan')=='33.18.11'
+                                                            ? 'selected' : '' }}>Gabus</option>
+                                                        <option value="33.18.13" {{old('kecamatan')=='33.18.13'
+                                                            ? 'selected' : '' }}>Gembong</option>
+                                                        <option value="33.18.17" {{old('kecamatan')=='33.18.17'
+                                                            ? 'selected' : '' }}>Gunungwungkal</option>
+                                                        <option value="33.18.06" {{old('kecamatan')=='33.18.06'
+                                                            ? 'selected' : '' }}>Jaken</option>
+                                                        <option value="33.18.09" {{old('kecamatan')=='33.18.09'
+                                                            ? 'selected' : '' }}>Jakenan</option>
+                                                        <option value="33.18.08" {{old('kecamatan')=='33.18.08'
+                                                            ? 'selected' : '' }}>Juwana</option>
+                                                        <option value="33.18.02" {{old('kecamatan')=='33.18.02'
+                                                            ? 'selected' : '' }}>Kayen</option>
+                                                        <option value="33.18.12" {{old('kecamatan')=='33.18.12'
+                                                            ? 'selected' : '' }}>Margorejo</option>
+                                                        <option value="33.18.16" {{old('kecamatan')=='33.18.16'
+                                                            ? 'selected' : '' }}>Margoyoso</option>
+                                                        <option value="33.18.10" {{old('kecamatan')=='33.18.10'
+                                                            ? 'selected' : '' }}>Pati</option>
+                                                        <option value="33.18.15" {{old('kecamatan')=='33.18.15'
+                                                            ? 'selected' : '' }}>Pucakwangi</option>
+                                                        <option value="33.18.01" {{old('kecamatan')=='33.18.01'
+                                                            ? 'selected' : '' }}>Sukolilo</option>
+                                                        <option value="33.18.03" {{old('kecamatan')=='33.18.03'
+                                                            ? 'selected' : '' }}>Tambakromo</option>
+                                                        <option value="33.18.19" {{old('kecamatan')=='33.18.19'
+                                                            ? 'selected' : '' }}>Tayu</option>
+                                                        <option value="33.18.14" {{old('kecamatan')=='33.18.14'
+                                                            ? 'selected' : '' }}>Tlogowungu</option>
+                                                        <option value="33.18.21" {{old('kecamatan')=='33.18.21'
+                                                            ? 'selected' : '' }}>Trangkil</option>
+                                                        <option value="33.18.15" {{old('kecamatan')=='33.18.15'
+                                                            ? 'selected' : '' }}>Wedarijaksa</option>
+                                                        <option value="33.18.04" {{old('kecamatan')=='33.18.04'
+                                                            ? 'selected' : '' }}>Winong</option>
                                                     </select>
+                                                    @error('kecamatan')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="kelurahan" class="text-capitalize">desa /
                                                         kelurahan</label>
                                                     <select name="kelurahan" id="kelurahan"
                                                         class="form-control"></select>
+                                                    @error('kelurahan')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="stratakelurahan" class="text-capitalize">strata
@@ -96,24 +126,36 @@
                                                         / kelurahan</label>
                                                     <input type="text" name="stratakelurahan" id="stratakelurahan"
                                                         class="form-control" value="{{ old('stratakelurahan') }}">
+                                                    @error('stratakelurahan')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-2">
                                                     <label for="rtrw" class="text-capitalize">banjar atau rt /
                                                         rw</label>
                                                     <input type="text" name="rtrw" id="rtrw" class="form-control"
                                                         value="{{ old('rtrw') }}">
+                                                    @error('rtrw')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-2">
                                                     <label for="nourutresponden" class="text-capitalize">no urut
                                                         responden</label>
                                                     <input type="text" name="nourutresponden" id="nourutresponden"
                                                         class="form-control" value="{{ old('nourutresponden') }}">
+                                                    @error('nourutresponden')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="nokuesioner" class="text-capitalize">no
                                                         kuesioner</label>
                                                     <input type="text" name="nokuesioner" id="nokuesioner"
                                                         class="form-control" value="{{ old('nokuesioner') }}">
+                                                    @error('nokuesioner')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -135,45 +177,74 @@
                                                 <div class="form-group col-lg-2">
                                                     <label for="tanggal_survei">Tanggal Survei</label>
                                                     <input type="date" name="tanggal_survei" id="tanggal_survei"
-                                                        class="form-control">
+                                                        class="form-control" value="{{old('tanggal_survei')}}">
+                                                    @error('tanggal_survei')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label for="jam_mulai_wawancara">Jam Mulai Wawancara</label>
                                                     <input type="time" name="jam_mulai_wawancara"
-                                                        id="jam_mulai_wawancara" class="form-control">
+                                                        id="jam_mulai_wawancara" class="form-control"
+                                                        value="{{old('jam_mulai_wawancara')}}">
+                                                    @error('jam_mulai_wawancara')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label for="jam_selesai_wawancara">Jam Selesai Wawancara</label>
                                                     <input type="time" name="jam_selesai_wawancara"
-                                                        id="jam_selesai_wawancara" class="form-control">
+                                                        id="jam_selesai_wawancara" class="form-control"
+                                                        value="{{old('jam_selesai_wawancara')}}">
+                                                    @error('jam_selesai_wawancara')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="nama_wawancara">Nama Pewawancara / Enumerator</label>
                                                     <input type="text" name="nama_wawancara" id="nama_wawancara"
-                                                        class="form-control">
+                                                        class="form-control" value="{{old('nama_wawancara')}}">
+                                                    @error('nama_wawancara')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="nama_supervisor">Nama Supervisor</label>
                                                     <input type="text" name="nama_supervisor" id="nama_supervisor"
-                                                        class="form-control">
+                                                        class="form-control" value="{{old('nama_supervisor')}}">
+                                                    @error('nama_supervisor')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="nama_koordinator_kecamatan">Nama Koordinator
                                                         Kecamatan</label>
                                                     <input type="text" name="nama_koordinator_kecamatan"
-                                                        id="nama_koordinator_kecamatan" class="form-control">
+                                                        id="nama_koordinator_kecamatan" class="form-control"
+                                                        value="{{old('nama_koordinator_kecamatan')}}">
+                                                    @error('nama_koordinator_kecamatan')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="nama_kepala_rumah_tangga">Nama Kepala Rumah
                                                         Tangga</label>
                                                     <input type="text" name="nama_kepala_rumah_tangga"
-                                                        id="nama_kepala_rumah_tangga" class="form-control">
+                                                        id="nama_kepala_rumah_tangga" class="form-control"
+                                                        value="{{old('nama_kepala_rumah_tangga')}}">
+                                                    @error('nama_kepala_rumah_tangga')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="jumlah_keluarga_rumah_tangga">Jumlah Keluarga Dalam
                                                         Rumah Tangga</label>
-                                                    <input type="text" name="jumlah_keluarga_rumah_tangga"
-                                                        id="jumlah_keluarga_rumah_tangga" class="form-control">
+                                                    <input type="number" name="jumlah_keluarga_rumah_tangga"
+                                                        id="jumlah_keluarga_rumah_tangga" class="form-control"
+                                                        value="{{old('jumlah_keluarga_rumah_tangga')}}">
+                                                    @error('jumlah_keluarga_rumah_tangga')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-8">
                                                     <label for="">Jumlah Jiwa Dalam Rumah</label>
@@ -187,7 +258,11 @@
                                                                     <td>
                                                                         <input type="text" name="jumlah_jiwa_laki_laki"
                                                                             id="jumlah_jiwa_laki_laki"
-                                                                            class="form-control">
+                                                                            class="form-control"
+                                                                            value="{{old('jumlah_jiwa_laki_laki')}}">
+                                                                        @error('jumlah_jiwa_laki_laki')
+                                                                        <span class="text-danger">{{$message}}</span>
+                                                                        @enderror
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -201,7 +276,11 @@
                                                                     <td>
                                                                         <input type="text" name="jumlah_jiwa_perempuan"
                                                                             id="jumlah_jiwa_perempuan"
-                                                                            class="form-control">
+                                                                            class="form-control"
+                                                                            value="{{old('jumlah_jiwa_perempuan')}}">
+                                                                        @error('jumlah_jiwa_perempuan')
+                                                                        <span class="text-danger">{{$message}}</span>
+                                                                        @enderror
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -211,18 +290,28 @@
                                                 <div class="form-group col-lg-4">
                                                     <label for="nama_responden">Nama Responden</label>
                                                     <input type="text" name="nama_responden" id="nama_responden"
-                                                        class="form-control">
+                                                        class="form-control" value="{{old('nama_responden')}}">
+                                                    @error('nama_responden')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="hubungan_dengan_kepala_rumah_tangga">Hubungan Responden
                                                         Dg Kepala Rumah Tangga</label>
                                                     <input type="text" name="hubungan_dengan_kepala_rumah_tangga"
-                                                        id="hubungan_dengan_kepala_rumah_tangga" class="form-control">
+                                                        id="hubungan_dengan_kepala_rumah_tangga" class="form-control"
+                                                        value="{{old('hubungan_dengan_kepala_rumah_tangga')}}">
+                                                    @error('hubungan_dengan_kepala_rumah_tangga')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="alamat_telepon">Alamat / Telepon</label>
                                                     <input type="text" name="alamat_telepon" id="alamat_telepon"
-                                                        class="form-control">
+                                                        class="form-control" value="{{old('alamat_telepon')}}">
+                                                    @error('alamat_telepon')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -232,13 +321,14 @@
                         </div>
 
                         <div class="card">
-                            @foreach($questionnaire->questions as $question)
+                            @foreach($questionnaire->questions as $k => $question)
                             <div class="form-group col-lg-12">
                                 <label>{{ $loop->iteration }}. {{ $question->question_text }}</label>
                                 @if($question->type == 'text')
                                 <div class="form-group">
                                     <input type="text" name="answers[{{ $question->id }}]"
-                                        id="answers[{{ $question->id }}]" class="form-control">
+                                        id="answers[{{ $question->id }}]" class="form-control" {{--dadaw--}}
+                                        value="{{old('answers.'.$question->id)}}">
                                 </div>
                                 @else
                                 @foreach($question->options as $option)

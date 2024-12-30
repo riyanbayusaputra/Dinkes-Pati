@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -22,8 +23,19 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {
+        $executed = RateLimiter::attempt(
+            'send-message:' . $request->email,
+            $perMinute = 5,
+            function () {
+                // Send message...
+            }
+        );
+
+        if (! $executed) {
+            return 'Terlalu banyak usaha untuk login, silahkan tunggu 1 menit!';
+        }
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -42,6 +54,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
